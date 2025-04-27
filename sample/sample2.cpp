@@ -6,18 +6,17 @@
 #include "gsminres_blas.hpp"
 
 
-int main() {
+int main(int argc, char* argv[]) {
   std::size_t N, M;
-  //std::string Aname = "BNZ30_A.csr", Bname = "BNZ30_B.csr";
-  //std::string Aname = "DIAB18h_A.csr", Bname = "DIAB18h_B.csr";
-  //std::string Aname = "/home/stern/multi/data/PPE3594_A.csr", Bname = "/home/stern/multi/data/PPE3594_B.csr";
-  std::string Aname = "VCNT900_A.csr", Bname = "VCNT900_B.csr";
+  if (argc < 3) {
+    std::cerr << "Usage: " << argv[0] << "<MTX file(A)> <MTX file(B)>" << std::endl;
+    return 1;
+  }
+  std::string Aname = argv[1], Bname = argv[2];
   const gsminres::util::CSRMat A = gsminres::util::load_csr_from_csr(Aname);
   const gsminres::util::CSRMat B = gsminres::util::load_csr_from_csr(Bname);
   N = A.matrix_size;
   const std::vector<std::complex<double>>     b = gsminres::util::generate_ones(N);
-  //const std::vector<std::complex<double>> sigma = gsminres::util::load_vector("shift.txt");
-  
   std::vector<std::complex<double>> sigma(10);
   for(std::size_t i=0; i<10; i++) {
     std::complex<double> I(0.0, 1.0);

@@ -1,16 +1,31 @@
+# Compiler and Flags
 CXX      = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -O3
-#LAFLAGS  = -lm -lgfortran -lblas -llapack
-LAFLAGS  = -I/opt/OpenBLAS/include/ -L/opt/OpenBLAS/lib -lopenblas
+CXXFLAGS = -std=c++17 -Wall -Wextra -O3
+LAFLAGS  = -lm -lgfortran -lblas -llapack
+#LAFLAGS  = -I/opt/OpenBLAS/include/ -L/opt/OpenBLAS/lib -lopenblas
 ifdef debug
-	CXXFLAGS = -std=c++17 -Wall -Wextra -Wconversion -fsanitize=address -fsanitize=undefined -Wpedantic -O0 -g3
+	CXXFLAGS += -g3 -fsanitize=address -fsanitize=undefined -Wpedantic -O0
 endif
 
-TARGET = sample1.out sample2.out
-all: $(TARGET)
-sample1.out: sample1.cpp gsminres_solver.cpp gsminres_util.cpp
-	$(CXX) $(CXXFLAGS) $^ $(LAFLAGS) -o $@
-sample2.out: sample2.cpp gsminres_solver.cpp gsminres_util.cpp
-	$(CXX) $(CXXFLAGS) $^ $(LAFLAGS) -o $@
+# Directories
+INCDIR    = include
+SRCDIR    = src
+SAMPLEDIR = sample
+BUILDDIR  = build
+
+# Files
+SRCFILES = $(SRCDIR)/gsminres_solver.cpp $(SRCDIR)/gsminres_util.cpp
+HEADERS  = $(INCDIR)/gsminres_solver.hpp $(INCDIR)/gsminres_util.hpp $(INCDIR)/gsminres_blas.hpp
+TARGETS  = $(BUILDDIR)/sample1.out $(BUILDDIR)/sample2.out
+
+# Targets
+all: $(TARGETS)
+$(BUILDDIR)/sample1.out: $(SAMPLEDIR)/sample1.cpp $(SRCFILES) $(HEADERS)
+	mkdir -p $(BUILDDIR)
+	$(CXX) $(CXXFLAGS) -I$(INCDIR) $^ $(LAFLAGS) -o $@
+$(BUILDDIR)/sample2.out: $(SAMPLEDIR)/sample2.cpp $(SRCFILES) $(HEADERS)
+	mkdir -p $(BUILDDIR)
+	$(CXX) $(CXXFLAGS) -I$(INCDIR) $^ $(LAFLAGS) -o $@
+
 clean:
-	rm -f *.out
+	rm -rf $(BUILDDIR)
