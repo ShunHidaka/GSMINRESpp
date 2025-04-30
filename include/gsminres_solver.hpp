@@ -14,10 +14,11 @@ namespace gsminres {
     ~Solver() = default;
 
     // Initialize Generalized shifted MINRES solver
-    void initialize(const std::vector<std::complex<double>>& b,     // Right-hand side vector
-                    std::vector<std::complex<double>>& w,           // B^{-1}b
-                    const std::vector<std::complex<double>>& sigma, // Shift values
-                    const double threshold);                        // threshold
+    void initialize(std::vector<std::vector<std::complex<double>>>& x, // solution vectors
+                    const std::vector<std::complex<double>>& b,        // Right-hand side vector
+                    std::vector<std::complex<double>>& w,              // B^{-1}b
+                    const std::vector<std::complex<double>>& sigma,    // Shift values
+                    const double threshold);                           // threshold
     // Preprocess of Generalized Laczos process
     void glanczos_pre(std::vector<std::complex<double>>& u);
     // Postprocess of Generalized Lanczos process
