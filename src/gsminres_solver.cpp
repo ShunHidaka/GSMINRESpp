@@ -36,10 +36,14 @@ namespace gsminres {
       threshold_(1e-12) {
   }
 
-  void Solver::initialize(const std::vector<std::complex<double>>& b,
+  void Solver::initialize(std::vector<std::vector<std::complex<double>>>& x,
+                          const std::vector<std::complex<double>>& b,
                           std::vector<std::complex<double>>& w,
                           const std::vector<std::complex<double>>& sigma,
                           const double threshold) {
+    for (std::size_t i=0; i<shift_size_; i++) {
+      blas::zdscal(0.0, x[i]);
+    }
     r0_norm_ = std::sqrt((blas::zdotc(b, w)).real());
     blas::zcopy(w, w_curr_);
     blas::zcopy(b, u_curr_);
@@ -67,8 +71,8 @@ namespace gsminres {
   }
 
   bool Solver::update(std::vector<std::vector<std::complex<double>>>& x) {
-    for(std::size_t m=0; m<shift_size_; m++) {
-      if(is_conv_[m] != 0) {
+    for (std::size_t m=0; m<shift_size_; m++) {
+      if (is_conv_[m] != 0) {
         continue;
       }
       T_prev2_[0] = 0.0;

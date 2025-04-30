@@ -165,7 +165,9 @@ namespace gsminres {
       }
       return mat;
     }
+
     void spmv(const CSRMat& A, const std::vector<std::complex<double>>& x, std::vector<std::complex<double>>& y) {
+      #pragma omp parallel for
       for (std::size_t i=0; i < A.matrix_size; ++i) {
         y[i] = {0.0, 0.0};
         for (std::size_t j=A.row_pointer[i]; j < A.row_pointer[i+1]; ++j) {
@@ -173,6 +175,7 @@ namespace gsminres {
         }
       }
     }
+
     bool cg(const CSRMat& A, std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& b, const double tol=1e-12, const std::size_t max_iter=10000) {
       bool status = false;
       std::size_t N = A.matrix_size;
