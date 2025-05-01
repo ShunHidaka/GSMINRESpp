@@ -9,7 +9,7 @@
 int main(int argc, char* argv[]) {
   std::size_t N, M;
   if (argc < 3) {
-    std::cerr << "Usage: " << argv[0] << "<MTX file(A)> <MTX file(B)>" << std::endl;
+    std::cerr << "Usage: " << argv[0] << " <CSR_file(A)> <CSR_file(B)>" << std::endl;
     return 1;
   }
   std::string Aname = argv[1], Bname = argv[2];
@@ -21,13 +21,14 @@ int main(int argc, char* argv[]) {
   for(std::size_t i=0; i<10; i++) {
     std::complex<double> I(0.0, 1.0);
     std::complex<double> tmp = 2 * M_PI * I * (i+0.5) / 10.0;
-    sigma[i] = 0.01 * std::exp(tmp);
+    sigma[i] = 0.1 * std::exp(tmp);
     std::cout << sigma[i] << std::endl;
   }
   M = sigma.size();
 
   std::vector<std::vector<std::complex<double>>> x(M, std::vector<std::complex<double>>(N, {0.0, 0.0}));
   std::vector<std::complex<double>> w(N, {0.0, 0.0}), u(N, {0.0, 0.0});
+  std::vector<std::size_t> itr(M);
   std::vector<double> res(M);
 
   gsminres::Solver solver(N, M);
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]) {
     std::cerr << "Failed" << std::endl;
     std::exit(1);
   }
-  solver.initialize(b, w, sigma, 1e-13);
+  solver.initialize(x, b, w, sigma, 1e-13);
   for(std::size_t j=1; j<10000; j++) {
     gsminres::util::spmv(A, w, u);
     solver.glanczos_pre(u);
@@ -49,7 +50,7 @@ int main(int argc, char* argv[]) {
       break;
     }
     solver.get_residual(res);
-
+    /*
     if(j % 10 == 1) {
       std::cout << j;
       for(std::size_t j=0; j<M/2; j++){
@@ -64,10 +65,9 @@ int main(int argc, char* argv[]) {
       }
       std::cout << std::endl;
     }
-
+    */
   }
-  solver.finalize();
-  solver.get_residual(res);
+  solver.finalize(itr, res);
 
   for(std::size_t j=0; j<M; j++){
     std::vector<std::complex<double>> tmp1(N, {0.0, 0.0}), tmp2(N, {0.0, 0.0});
@@ -77,23 +77,6 @@ int main(int argc, char* argv[]) {
     gsminres::blas::zaxpy(sigma[j], tmp2, tmp1);
     gsminres::blas::zaxpy({-1.0, 0.0}, b, tmp1);
     tmp_nrm = gsminres::blas::dznrm2(tmp1);
-    std::cout << j << " " << res[j] << " " << tmp_nrm << std::endl;
+    std::cout << j << " " << itr[j] << " " << res[j] << " " << tmp_nrm << std::endl;
   }
-
 }
-
-/*
-  gsminres::Solver solver();
-  線形方程式の求解;
-  solver.initialize();
-  for(int j=0; j<MAX_ITR; j++) {
-    行列ベクトル積;
-    solver.glanczos_pre();
-    線形方程式の求解;
-    solver.glanczos_pst();
-    if(solver.update() == true)
-      break;
-  }
-  solver.get_residual();
-  solver.finalize();
-*/
