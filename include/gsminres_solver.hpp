@@ -27,7 +27,7 @@ namespace gsminres {
     // Update approximate solutions
     bool update(std::vector<std::vector<std::complex<double>>>& x);
     // Finalize Generalized shifted MINRES solver
-    void finalize();
+    void finalize(std::vector<std::size_t>& conv_itr, std::vector<double>& conv_res);
     // Get residual norms
     void get_residual(std::vector<double>& res) const;
 

@@ -113,18 +113,12 @@ namespace gsminres {
     return false;
   }
 
-  void Solver::finalize() {
+  void Solver::finalize(std::vector<std::size_t>& conv_itr,
+                        std::vector<double>&      conv_res) {
     // 当初はメモリの解放などを行う予定だったが
-    // （動的な確保をおこなっていないため）不要なので収束までの反復回数と残差のノルムを返す関数とする
-    std::cout << "# m conv_iter sigma.real sigma.imag residual" << std::endl;
-    for (std::size_t m=0; m < shift_size_; ++m) {
-      std::cout << m << " "
-                << is_conv_[m] << " "
-                << std::real(sigma_[m]) << " "
-                << std::imag(sigma_[m]) << " "
-                << h_[m]
-                << std::endl;
-    }
+    // (動的な確保をおこなっていないため)不要なので収束までの反復回数と残差のノルムを返す関数とする
+    conv_itr = is_conv_;
+    conv_res = h_;
   }
 
   void Solver::get_residual(std::vector<double>& res) const {
