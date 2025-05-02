@@ -35,10 +35,10 @@ int main(int argc, char *argv[]) {
   const size_t N=n, M=10;
   // Prepare sigma
   double _Complex *sigma = (double _Complex *)calloc(M, sizeof(double _Complex));
-  for(int i=0; i<M; i++) sigma[i] = 0.1 * cexp(2 * M_PI * I * (i-0.5) / M);
+  for(size_t i=0; i<M; i++) sigma[i] = 0.1 * cexp(2 * M_PI * I * (i-0.5) / M);
   // Prepare RHS vector
   double _Complex *b = (double _Complex *)calloc(N, sizeof(double _Complex)*N);
-  for(int i=0; i<N; i++) b[i] = 1.0;
+  for(size_t i=0; i<N; i++) b[i] = 1.0;
 
   // Allocate vectors
   double _Complex *x = (double _Complex *)calloc(N, sizeof(double _Complex)*M*N);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
   gsminres_initialize(solver, x, b, w, sigma, 1e-13, N, M);
 
   // Solve
-  for (int j=0; j<10000; ++j) {
+  for (size_t j=0; j<10000; ++j) {
     SpMV(A_row,A_col,A_ele, w, u, N);
     gsminres_glanczos_pre(solver, u, N);
     if (CG_method(B_row,B_col,B_ele, w, u, n, 1e-13) == 0){
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
   double _Complex *r_tmp = calloc(N, sizeof(double _Complex));
   double _Complex *tmp = calloc(N, sizeof(double _Complex));
   double _Complex cTMP;
-  for(int k=0; k<M; k++){
+  for(size_t k=0; k<M; k++){
     zcopy_(&n, b, &ONE, r_tmp, &ONE);
     SpMV(A_row,A_col,A_ele, &(x[k*N]), tmp, n);
     cTMP = -1.0;
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
     SpMV(B_row,B_col,B_ele, &(x[k*N]), tmp, n);
     cTMP = -sigma[k];
     zaxpy_(&n, &cTMP, tmp, &ONE, r_tmp, &ONE);
-    fprintf(stdout, "%d %lf %lf %d %e %e\n",
+    fprintf(stdout, "%ld %lf %lf %d %e %e\n",
             k, creal(sigma[k]), cimag(sigma[k]), itr[k],
             res[k], dznrm2_(&n,r_tmp,&ONE));
   }
@@ -103,7 +103,7 @@ void SpMV(const int *A_row, const int *A_col, const double _Complex *A_ele,
   double _Complex tmp;
 #pragma omp parallel for private(tmp)
   for(int i=0; i<N; i++){
-    tmp = 0.0+0.0I;
+    tmp = 0.0 + 0.0*_Complex_I;
     for(int j=A_row[i]; j<A_row[i+1]; j++)
       tmp += A_ele[j]*x[A_col[j]];
     b[i] = tmp;
@@ -117,7 +117,7 @@ int CG_method(const int *B_row, const int *B_col, const double _Complex *B_ele,
   double _Complex r[N], p[N], Bp[N];
   double _Complex alpha, beta, rr, rr_old, cTMP;
   for(int i=0; i<N; i++){
-    x[i] = 0.0 + 0.0I;
+    x[i] = 0.0 + 0.0*_Complex_I;
     r[i] = b[i];
     p[i] = r[i];
   }
@@ -139,7 +139,7 @@ int CG_method(const int *B_row, const int *B_col, const double _Complex *B_ele,
     rr = zdotc_(&N, r, &ONE, r, &ONE);
     beta = rr / rr_old;
     zscal_(&N, &beta, p, &ONE);
-    cTMP = 1.0 + 0.0I;
+    cTMP = 1.0 + 0.0*_Complex_I;
     zaxpy_(&N, &cTMP, r, &ONE, p, &ONE);
   }
   return status;
