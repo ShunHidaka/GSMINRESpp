@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(GSMINRESpp VERSION 1.0.0 LANGUAGES CXX)
+project(GSMINRESpp VERSION 1.0.0 LANGUAGES CXX C)
 
 # Default build is Release
 if(NOT CMAKE_BUILD_TYPE)
@@ -16,6 +16,33 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
+
+# Complex number ABI compatibility (Default OFF)
+option(GSMINRES_ASSUME_ABI_COMPATIBLE
+  "Assume std::complex<double> and double _Complex are ABI-compatible" OFF)
+if(GSMINRES_ASSUME_ABI_COMPATIBLE)
+  message(STATUS
+    "GSMINRES: Assuming ABI compatibility between std::complex and double _Complex (using reinterpret_cast)")
+  add_compile_definitions(GSMINRES_ASSUME_ABI_COMPATIBLE)
+else()
+  message(STATUS "GSMINRES: Using memcpy-based conversion for ABI safety")
+endif()
+
+# Find and Link OpenMP (Default ON)
+option(USE_OPENMP "Enable OpenMP parallelization" ON)
+if(USE_OPENMP)
+  find_package(OpenMP)
+  if(OpenMP_CXX_FOUND)
+    message(STATUS "OpenMP found, enabling parallelization.")
+    set(OPENMP_OPTION OpenMP::OpenMP_CXX)
+  else()
+    message(WARNING "OpenMP not found, disabling parallelization.")
+    set(OPENMP_OPTION "")
+  endif()
+else()
+  message(STATUS "OpenMP disabled.")
+  set(OPENMP_OPTION "")
+endif()
 
 # Include path
 include_directories(include)
@@ -44,24 +71,8 @@ if(OPENBLAS_INCLUDE_DIR)
   endif()
 endif()
 
-# Find and Link OpenMP (Default ON)
-option(USE_OPENMP "Enable OpenMP parallelization" ON)
-if(USE_OPENMP)
-  find_package(OpenMP)
-  if(OpenMP_CXX_FOUND)
-    message(STATUS "OpenMP found, enabling parallelization.")
-    set(OPENMP_OPTION OpenMP::OpenMP_CXX)
-  else()
-    message(WARNING "OpenMP not found, disabling parallelization.")
-    set(OPENMP_OPTION "")
-  endif()
-else()
-  message(STATUS "OpenMP disabled.")
-  set(OPENMP_OPTION "")
-endif()
-
 # Source files
-set(SRC src/gsminres_solver.cpp src/gsminres_util.cpp)
+set(SRC src/gsminres_solver.cpp src/gsminres_util.cpp src/gsminres_c_api.cpp)
 
 # Shared Library (libgsminres.so)
 add_library(gsminres_shared SHARED ${SRC})
@@ -118,3 +129,11 @@ configure_package_config_file(
   INSTALL_DESTINATION lib/cmake/gsminres)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake" DESTINATION lib/cmake/gsminres)
 
+
+# C API sample program
+add_executable(sample2_c sample/sample2_c.c)
+set_target_properties(sample2_c PROPERTIES LINKER_LANGUAGE C)
+target_include_directories(sample2_c PRIVATE include)
+target_link_libraries(sample2_c PRIVATE gsminres_shared ${BLAS_LIBRARIES}
+                                                        ${LAPACK_LIBRARIES}
+                                                        ${OPENMP_OPTION})
