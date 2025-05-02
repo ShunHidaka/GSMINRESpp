@@ -22,7 +22,6 @@ int main(int argc, char* argv[]) {
     std::complex<double> I(0.0, 1.0);
     std::complex<double> tmp = 2 * M_PI * I * (i+0.5) / 10.0;
     sigma[i] = 0.1 * std::exp(tmp);
-    std::cout << sigma[i] << std::endl;
   }
   M = sigma.size();
 
