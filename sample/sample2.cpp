@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
   }
   M = sigma.size();
 
-  std::vector<std::vector<std::complex<double>>> x(M, std::vector<std::complex<double>>(N, {0.0, 0.0}));
+  std::vector<std::complex<double>> x(M*N, {0.0, 0.0});
   std::vector<std::complex<double>> w(N, {0.0, 0.0}), u(N, {0.0, 0.0});
   std::vector<std::size_t> itr(M);
   std::vector<double> res(M);
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
     std::exit(1);
   }
   solver.initialize(x, b, w, sigma, 1e-13);
-  for(std::size_t j=1; j<10000; j++) {
+  for(std::size_t j=1; j<10000; ++j) {
     gsminres::util::spmv(A, w, u);
     solver.glanczos_pre(u);
     if (!gsminres::util::cg(B, w, u, 1e-13, 10000)) {
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     /*
     if(j % 10 == 1) {
       std::cout << j;
-      for(std::size_t j=0; j<M/2; j++){
+      for(std::size_t j=0; j<M/2; ++j){
 	std::vector<std::complex<double>> tmp1(N, {0.0, 0.0}), tmp2(N, {0.0, 0.0});
 	double tmp_nrm = 0.0;
 	gsminres::util::spmv(A, x[j], tmp1);
@@ -68,14 +68,15 @@ int main(int argc, char* argv[]) {
   }
   solver.finalize(itr, res);
 
-  for(std::size_t j=0; j<M; j++){
+  for(std::size_t j=0; j<M; ++j){
+    std::vector<std::complex<double>> ans(x.begin()+j*N, x.begin()+(j+1)*N);
     std::vector<std::complex<double>> tmp1(N, {0.0, 0.0}), tmp2(N, {0.0, 0.0});
     double tmp_nrm = 0.0;
-    gsminres::util::spmv(A, x[j], tmp1);
-    gsminres::util::spmv(B, x[j], tmp2);
-    gsminres::blas::zaxpy(sigma[j], tmp2, tmp1);
-    gsminres::blas::zaxpy({-1.0, 0.0}, b, tmp1);
-    tmp_nrm = gsminres::blas::dznrm2(tmp1);
+    gsminres::util::spmv(A, ans, tmp1);
+    gsminres::util::spmv(B, ans, tmp2);
+    gsminres::blas::zaxpy(N, sigma[j], tmp2, 0, tmp1, 0);
+    gsminres::blas::zaxpy(N, {-1.0, 0.0}, b, 0, tmp1, 0);
+    tmp_nrm = gsminres::blas::dznrm2(N, tmp1);
     std::cout << j << " " << itr[j] << " " << res[j] << " " << tmp_nrm << std::endl;
   }
 }

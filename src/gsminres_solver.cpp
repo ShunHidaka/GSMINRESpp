@@ -26,9 +26,9 @@ namespace gsminres {
       T_next_( 1, {0.0, 0.0}),
       Gc_(shift_size, std::array<double, 3>{0.0, 0.0, 0.0}),
       Gs_(shift_size, std::array<std::complex<double>, 3>{{{0.0,0.0}, {0.0,0.0}, {0.0,0.0}}}),
-      p_prev2_(shift_size, std::vector<std::complex<double>>(matrix_size, {0.0, 0.0})),
-      p_prev_( shift_size, std::vector<std::complex<double>>(matrix_size, {0.0, 0.0})),
-      p_curr_( shift_size, std::vector<std::complex<double>>(matrix_size, {0.0, 0.0})),
+      p_prev2_(shift_size*matrix_size, {0.0, 0.0}),
+      p_prev_( shift_size*matrix_size, {0.0, 0.0}),
+      p_curr_( shift_size*matrix_size, {0.0, 0.0}),
       f_(shift_size, {1.0, 0.0}),
       h_(shift_size, 1.0),
       conv_num_(0),
@@ -36,41 +36,39 @@ namespace gsminres {
       threshold_(1e-12) {
   }
 
-  void Solver::initialize(std::vector<std::vector<std::complex<double>>>& x,
+  void Solver::initialize(std::vector<std::complex<double>>& x,
                           const std::vector<std::complex<double>>& b,
                           std::vector<std::complex<double>>& w,
                           const std::vector<std::complex<double>>& sigma,
                           const double threshold) {
-    for (std::size_t i=0; i<shift_size_; i++) {
-      blas::zdscal(0.0, x[i]);
-    }
-    r0_norm_ = std::sqrt((blas::zdotc(b, w)).real());
-    blas::zcopy(w, w_curr_);
-    blas::zcopy(b, u_curr_);
-    blas::zdscal(1.0/r0_norm_, w_curr_);
-    blas::zdscal(1.0/r0_norm_, u_curr_);
-    blas::zcopy(w_curr_, w);
-    blas::dscal(r0_norm_, h_);
-    blas::zcopy(sigma, sigma_);
+    blas::zdscal(shift_size_*matrix_size_, 0.0, x);
+    r0_norm_ = std::sqrt((blas::zdotc(matrix_size_, b, 0, w, 0)).real());
+    blas::zcopy(matrix_size_, w, 0, w_curr_, 0);
+    blas::zcopy(matrix_size_, b, 0, u_curr_, 0);
+    blas::zdscal(matrix_size_, 1.0/r0_norm_, w_curr_);
+    blas::zdscal(matrix_size_, 1.0/r0_norm_, u_curr_);
+    blas::zcopy(matrix_size_, w_curr_, 0, w, 0);
+    blas::dscal(shift_size_, r0_norm_, h_);
+    blas::zcopy(shift_size_, sigma, 0, sigma_, 0);
     threshold_ = threshold;
   }
 
   void Solver::glanczos_pre(std::vector<std::complex<double>>& u) {
-    alpha_ = (blas::zdotc(w_curr_, u)).real();
-    blas::zaxpy(-alpha_,     u_curr_, u);
-    blas::zaxpy(-beta_prev_, u_prev_, u);
+    alpha_ = (blas::zdotc(matrix_size_, w_curr_, 0, u, 0)).real();
+    blas::zaxpy(matrix_size_, -alpha_,     u_curr_, 0, u, 0);
+    blas::zaxpy(matrix_size_, -beta_prev_, u_prev_, 0, u, 0);
   }
 
   void Solver::glanczos_pst(std::vector<std::complex<double>>& w,
                             std::vector<std::complex<double>>& u) {
-    beta_curr_ = std::sqrt((blas::zdotc(u, w)).real());
-    blas::zdscal(1.0/beta_curr_, w);
-    blas::zdscal(1.0/beta_curr_, u);
-    blas::zcopy(w, w_next_);
-    blas::zcopy(u, u_next_);
+    beta_curr_ = std::sqrt((blas::zdotc(matrix_size_, u, 0, w, 0)).real());
+    blas::zdscal(matrix_size_, 1.0/beta_curr_, w);
+    blas::zdscal(matrix_size_, 1.0/beta_curr_, u);
+    blas::zcopy(matrix_size_, w, 0, w_next_, 0);
+    blas::zcopy(matrix_size_, u, 0, u_next_, 0);
   }
 
-  bool Solver::update(std::vector<std::vector<std::complex<double>>>& x) {
+  bool Solver::update(std::vector<std::complex<double>>& x) {
     for (std::size_t m=0; m<shift_size_; m++) {
       if (is_conv_[m] != 0) {
         continue;
@@ -80,19 +78,20 @@ namespace gsminres {
       T_curr_[0]  = alpha_ + sigma_[m];
       T_next_[0]  = beta_curr_;
       if (iter_ >= 3) {
-        blas::zrot(T_prev2_, T_prev_, Gc_[m][0], Gs_[m][0]);
+        blas::zrot(1, T_prev2_, 0, T_prev_, 0, Gc_[m][0], Gs_[m][0]);
       }
       if (iter_ >= 2) {
-        blas::zrot(T_prev_,  T_curr_, Gc_[m][1], Gs_[m][1]);
+        blas::zrot(1, T_prev_,  0, T_curr_, 0, Gc_[m][1], Gs_[m][1]);
       }
       blas::zrotg(T_curr_[0], T_next_[0], Gc_[m][2], Gs_[m][2]);
-      blas::zcopy(p_prev_[m], p_prev2_[m]);
-      blas::zcopy(p_curr_[m], p_prev_[m]);
-      blas::zcopy(w_curr_,    p_curr_[m]);
-      blas::zaxpy(-T_prev2_[0], p_prev2_[m], p_curr_[m]);
-      blas::zaxpy(-T_prev_[0],  p_prev_[m],  p_curr_[m]);
-      blas::zscal(1.0/T_curr_[0], p_curr_[m]);
-      blas::zaxpy(r0_norm_*Gc_[m][2]*f_[m], p_curr_[m], x[m]);
+      std::size_t offset = m*matrix_size_;
+      blas::zcopy(matrix_size_, p_prev_, offset, p_prev2_, offset);
+      blas::zcopy(matrix_size_, p_curr_, offset, p_prev_,  offset);
+      blas::zcopy(matrix_size_, w_curr_,    0,   p_curr_,  offset);
+      blas::zaxpy(matrix_size_, -T_prev2_[0], p_prev2_, offset, p_curr_, offset);
+      blas::zaxpy(matrix_size_, -T_prev_[0],  p_prev_,  offset, p_curr_, offset);
+      blas::zscal(matrix_size_, 1.0/T_curr_[0], p_curr_, offset);
+      blas::zaxpy(matrix_size_, r0_norm_*Gc_[m][2]*f_[m], p_curr_, offset, x, offset);
       f_[m] = -std::conj(Gs_[m][2]) * f_[m];
       h_[m] = std::abs(-std::conj(Gs_[m][2])) * h_[m];
       if (h_[m]/r0_norm_ < threshold_) {
@@ -104,8 +103,10 @@ namespace gsminres {
       Gs_[m][0] = Gs_[m][1]; Gs_[m][1] = Gs_[m][2];
     }
     beta_prev_ = beta_curr_;
-    blas::zcopy(w_curr_, w_prev_); blas::zcopy(w_next_, w_curr_);
-    blas::zcopy(u_curr_, u_prev_); blas::zcopy(u_next_, u_curr_);
+    blas::zcopy(matrix_size_, w_curr_, 0, w_prev_, 0);
+    blas::zcopy(matrix_size_, w_next_, 0, w_curr_, 0);
+    blas::zcopy(matrix_size_, u_curr_, 0, u_prev_, 0);
+    blas::zcopy(matrix_size_, u_next_, 0, u_curr_, 0);
     iter_++;
     if (conv_num_ >= shift_size_) {
       return true;
@@ -122,6 +123,6 @@ namespace gsminres {
   }
 
   void Solver::get_residual(std::vector<double>& res) const {
-    blas::dcopy(h_, res);
+    blas::dcopy(shift_size_, h_, 0, res, 0);
   }
 }

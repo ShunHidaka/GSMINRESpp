@@ -4,71 +4,135 @@
 #include <iostream>
 #include <complex>
 #include <vector>
+#include <cstddef>
 #include <cstdlib>
 
 extern "C" {
-  // using solver
-  void dscal_(int *n, double *a, double *x, int *incx);
-  void zdscal_(int *n, double *a, std::complex<double> *x, int *incx);
-  void zscal_(int *n, std::complex<double> *a, std::complex<double> *x, int *incx);
-  void zaxpy_(int *n, std::complex<double> *alpha, std::complex<double> *x, int *incx, std::complex<double> *y, int *incy);
-  void dcopy_(int *n, double *x, int *incx, double *y, int *incy);
-  void zcopy_(int *n, std::complex<double> *x, int *incx, std::complex<double> *y, int *incy);
-  std::complex<double> zdotc_(int *n, std::complex<double> *x, int *incx, std::complex<double> *y, int *incy);
-  double dznrm2_(int *n, std::complex<double> *x, int *incx);
-  void zrotg_(std::complex<double> *a, std::complex<double> *b, double *c, std::complex<double> *s);
-  void zrot_(int *n, std::complex<double> *x, int *incx, std::complex<double> *y, int *incy, double *c, std::complex<double> *s);
-  // using util
+  // BLAS
+  void dscal_(const int *n, const double *a, double *x, const int *incx);
+  void dcopy_(const int *n, const double *x, const int *incx, double *y, const int *incy);
+  void zdscal_(const int *n, const double *a, std::complex<double> *x, const int *incx);
+  void zscal_(const int *n, const std::complex<double> *a, std::complex<double> *x, const int *incx);
+  void zcopy_(const int *n,
+              const std::complex<double> *x, const int *incx,
+              std::complex<double> *y, const int *incy);
+  void zaxpy_(const int *n, const std::complex<double> *alpha,
+              const std::complex<double> *x, const int *incx,
+              std::complex<double> *y, const int *incy);
+  std::complex<double> zdotc_(const int *n,
+                              const std::complex<double> *x, const int *incx,
+                              const std::complex<double> *y, const int *incy);
+  double dznrm2_(const int *n, const std::complex<double> *x, const int *incx);
   void zhpmv_(char *uplo, int *n, std::complex<double> *alpha, std::complex<double> *A, std::complex<double> *x, int *incx, std::complex<double> *beta, std::complex<double> *y, int *incy);
+  void zrotg_(std::complex<double> *a, std::complex<double> *b, double *c, std::complex<double> *s);
+  void zrot_(const int *n,
+             std::complex<double> *x, const int *incx,
+             std::complex<double> *y, const int *incy,
+             const double *c, const std::complex<double> *s);
+  // LAPACK
   void zpptrf_(char *uplo, int *n, std::complex<double> *ap, int *info);
   void zpptrs_(char *uplo, int *n, int *nrhs, std::complex<double> *ap, std::complex<double> *b, int *ldb, int *info);
 }
 
 namespace gsminres {
   namespace blas {
-    inline void dscal(double a, std::vector<double>& x) {
-      int n = static_cast<int>(x.size()), incx = 1;
-      dscal_(&n, &a, x.data(), &incx);
+    //
+    // Real double precision BLAS
+    //
+    inline void dscal(std::size_t n, double a,
+                      std::vector<double>& x, std::size_t x_offset=0, std::size_t incx=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx);
+      dscal_(&nn, &a, x.data()+x_offset, &ix);
     }
-    inline void zdscal(double a, std::vector<std::complex<double>>& x) {
-      int n = static_cast<int>(x.size()), incx = 1;
-      zdscal_(&n, &a, x.data(), &incx);
+
+    inline void dcopy(std::size_t n,
+                      const std::vector<double>& x, std::size_t x_offset,
+                      std::vector<double>&       y, std::size_t y_offset,
+                      std::size_t incx=1, std::size_t incy=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx), iy = static_cast<int>(incy);
+      dcopy_(&nn, x.data()+x_offset, &ix, y.data()+y_offset, &iy);
     }
-    inline void zscal(std::complex<double> a, std::vector<std::complex<double>>& x) {
-      int n = static_cast<int>(x.size()), incx = 1;
-      zscal_(&n, &a, x.data(), &incx);
+
+    //
+    // Complex double precision BLAS
+    //
+    inline void zdscal(std::size_t n, double a,
+                       std::vector<std::complex<double>>& x, std::size_t x_offset=0, std::size_t incx=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx);
+      zdscal_(&nn, &a, x.data()+x_offset, &ix);
     }
-    inline void zaxpy(std::complex<double> alpha, const std::vector<std::complex<double>>& x, std::vector<std::complex<double>>& y) {
-      int n = static_cast<int>(x.size()), incx = 1, incy = 1;
-      zaxpy_(&n, &alpha, const_cast<std::complex<double>*>(x.data()), &incx, y.data(), &incy);
+
+    inline void zscal(std::size_t n, std::complex<double> a,
+                      std::vector<std::complex<double>>& x, std::size_t x_offset=0, std::size_t incx=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx);
+      zscal_(&nn, &a, x.data()+x_offset, &ix);
     }
-    inline void dcopy(const std::vector<double>& x, std::vector<double>& y) {
-      int n = static_cast<int>(x.size()), incx = 1, incy = 1;
-      dcopy_(&n, const_cast<double*>(x.data()), &incx, y.data(), &incy);
+
+    inline void zcopy(std::size_t n,
+                      const std::vector<std::complex<double>>& x, std::size_t x_offset,
+                      std::vector<std::complex<double>>&       y, std::size_t y_offset,
+                      std::size_t incx=1, std::size_t incy=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx), iy = static_cast<int>(incy);
+      zcopy_(&nn, x.data()+x_offset, &ix, y.data()+y_offset, &iy);
     }
-    inline void zcopy(const std::vector<std::complex<double>>& x, std::vector<std::complex<double>>& y) {
-      int n = static_cast<int>(x.size()), incx = 1, incy = 1;
-      zcopy_(&n, const_cast<std::complex<double>*>(x.data()), &incx, y.data(), &incy);
+
+    inline void zaxpy(std::size_t n, std::complex<double> alpha,
+                      const std::vector<std::complex<double>>& x, std::size_t x_offset,
+                      std::vector<std::complex<double>>&       y, std::size_t y_offset,
+                      std::size_t incx=1, std::size_t incy=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx), iy = static_cast<int>(incy);
+      zaxpy_(&nn, &alpha, x.data()+x_offset, &ix, y.data()+y_offset, &iy);
     }
-    inline std::complex<double> zdotc(const std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& y) {
-      int n = static_cast<int>(x.size()), incx = 1, incy = 1;
-      return zdotc_(&n, const_cast<std::complex<double>*>(x.data()), &incx, const_cast<std::complex<double>*>(y.data()), &incy);
+
+    inline std::complex<double> zdotc(std::size_t n,
+                                      const std::vector<std::complex<double>>& x, std::size_t x_offset,
+                                      const std::vector<std::complex<double>>& y, std::size_t y_offset,
+                                      std::size_t incx=1, std::size_t incy=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx), iy = static_cast<int>(incy);
+      return zdotc_(&nn, x.data()+x_offset, &ix, y.data()+y_offset, &iy);
     }
-    inline double dznrm2(const std::vector<std::complex<double>>& x) {
-      int n = static_cast<int>(x.size()), incx = 1;
-      return dznrm2_(&n, const_cast<std::complex<double>*>(x.data()), &incx);
+
+    inline double dznrm2(std::size_t n,
+                         const std::vector<std::complex<double>>& x, std::size_t x_offset=0,
+                         std::size_t incx=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx);
+      return dznrm2_(&nn, x.data()+x_offset, &ix);
     }
-    inline void zrotg(std::complex<double>& a, std::complex<double>& b, double& c, std::complex<double>& s) {
-      zrotg_(&a, &b, &c, &s);
-    }
-    inline void zrot(std::vector<std::complex<double>>& x, std::vector<std::complex<double>>& y, double c, std::complex<double> s) {
-      int n = static_cast<int>(x.size()), incx = 1, incy = 1;
-      zrot_(&n, x.data(), &incx, y.data(), &incy, &c, &s);
-    }
-    inline void zhpmv(std::complex<double> alpha, const std::vector<std::complex<double>>& A, const std::vector<std::complex<double>>& x, std::complex<double> beta, std::vector<std::complex<double>>& y) {
+
+    inline void zhpmv(std::complex<double> alpha,
+                      const std::vector<std::complex<double>>& A,
+                      const std::vector<std::complex<double>>& x,
+                      std::complex<double> beta,
+                      std::vector<std::complex<double>>&       y) {
       char uplo = 'U';
       int n = static_cast<int>(x.size()), incx = 1, incy = 1;
       zhpmv_(&uplo, &n, &alpha, const_cast<std::complex<double>*>(A.data()), const_cast<std::complex<double>*>(x.data()), &incx, &beta, y.data(), &incy);
+    }
+
+    //
+    // BLAS Givens rotation
+    //
+    inline void zrotg(std::complex<double>& a, std::complex<double>& b,
+                      double& c, std::complex<double>& s) {
+      zrotg_(&a, &b, &c, &s);
+    }
+
+    inline void zrot(std::size_t n,
+                     std::vector<std::complex<double>>& x, std::size_t x_offset,
+                     std::vector<std::complex<double>>& y, std::size_t y_offset,
+                     double c, std::complex<double> s,
+                     std::size_t incx=1, std::size_t incy=1) {
+      int nn = static_cast<int>(n);
+      int ix = static_cast<int>(incx), iy = static_cast<int>(incy);
+      zrot_(&nn, x.data()+x_offset, &ix, y.data()+y_offset, &iy, &c, &s);
     }
   }  //namespace blas
 
@@ -85,7 +149,7 @@ namespace gsminres {
     inline void zpptrs(int n, const std::vector<std::complex<double>>& ap, std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& b){
       char uplo = 'U';
       int nrhs = 1, ldb = n, info = 0;
-      blas::zcopy(b, x);
+      blas::zcopy(n, b, 0, x, 0);
       zpptrs_(&uplo, &n, &nrhs, const_cast<std::complex<double>*>(ap.data()), x.data(), &ldb, &info);
       if (info != 0) {
         std::cerr << "zpptrf: [ERROR] failed INFO = " << std::to_string(info) << std::endl;

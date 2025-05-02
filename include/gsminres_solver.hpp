@@ -14,18 +14,18 @@ namespace gsminres {
     ~Solver() = default;
 
     // Initialize Generalized shifted MINRES solver
-    void initialize(std::vector<std::vector<std::complex<double>>>& x, // solution vectors
-                    const std::vector<std::complex<double>>& b,        // Right-hand side vector
-                    std::vector<std::complex<double>>& w,              // B^{-1}b
-                    const std::vector<std::complex<double>>& sigma,    // Shift values
-                    const double threshold);                           // threshold
+    void initialize(std::vector<std::complex<double>>& x,           // solution vectors
+                    const std::vector<std::complex<double>>& b,     // Right-hand side vector
+                    std::vector<std::complex<double>>& w,           // B^{-1}b
+                    const std::vector<std::complex<double>>& sigma, // Shift values
+                    const double threshold);                        // threshold
     // Preprocess of Generalized Laczos process
     void glanczos_pre(std::vector<std::complex<double>>& u);
     // Postprocess of Generalized Lanczos process
     void glanczos_pst(std::vector<std::complex<double>>& w,
                       std::vector<std::complex<double>>& u);
     // Update approximate solutions
-    bool update(std::vector<std::vector<std::complex<double>>>& x);
+    bool update(std::vector<std::complex<double>>& x);
     // Finalize Generalized shifted MINRES solver
     void finalize(std::vector<std::size_t>& conv_itr, std::vector<double>& conv_res);
     // Get residual norms
@@ -43,11 +43,11 @@ namespace gsminres {
     std::vector<std::complex<double>> w_prev_, w_curr_, w_next_; // Basis vectors
     std::vector<std::complex<double>> u_prev_, u_curr_, u_next_; // Auxiliary vectors
     // Variables for update solutions
-    std::vector<std::complex<double>> T_prev2_, T_prev_, T_curr_, T_next_; // BLASを使用するためにstd::vectorに
-    std::vector<std::array<double, 3>> Gc_;                      // Givens rotation matrixs element "c"
-    std::vector<std::array<std::complex<double>, 3>> Gs_;        // Givens rotation matrixs element "s"
-    std::vector<std::vector<std::complex<double>>> p_prev2_, p_prev_, p_curr_; // Auxiliary vectors
-    std::vector<std::complex<double>> f_;                         //Auxiliary variables
+    std::vector<std::complex<double>> T_prev2_, T_prev_, T_curr_, T_next_; // To use BLAS, std::vectorに
+    std::vector<std::array<double, 3>>               Gc_;         // Givens rotation matrixs element "c"
+    std::vector<std::array<std::complex<double>, 3>> Gs_;         // Givens rotation matrixs element "s"
+    std::vector<std::complex<double>> p_prev2_, p_prev_, p_curr_; // Auxiliary vectors (shift*matrix)
+    std::vector<std::complex<double>> f_;                         // Auxiliary variables
     std::vector<double> h_;                                       // Residual norms in Algorithm
     // Convergence-related variables
     unsigned int conv_num_;            // Number of converged systems

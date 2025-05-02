@@ -24,10 +24,11 @@ namespace gsminres {
       std::vector<std::size_t> row_pointer;
       std::vector<std::size_t> col_indices;
       std::vector<std::complex<double>> values;
-      CSRMat(std::size_t ROWPSIZE, std::size_t DATASIZE) : matrix_size(ROWPSIZE-1),
-                                                           row_pointer(ROWPSIZE, 0),
-                                                           col_indices(DATASIZE, 0),
-                                                           values(DATASIZE, std::complex<double>{0.0, 0.0}) {}
+      CSRMat(std::size_t ROWPSIZE, std::size_t DATASIZE) :
+        matrix_size(ROWPSIZE-1),
+        row_pointer(ROWPSIZE, 0),
+        col_indices(DATASIZE, 0),
+        values(DATASIZE, std::complex<double>{0.0, 0.0}) {}
     };
     // Read MM format to CSR format
     //CSRMat load_csr_from_mm(const std::string& filename);

@@ -179,27 +179,27 @@ namespace gsminres {
     bool cg(const CSRMat& A, std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& b, const double tol=1e-12, const std::size_t max_iter=10000) {
       bool status = false;
       std::size_t N = A.matrix_size;
-      double r0nrm = blas::dznrm2(b);
+      double r0nrm = blas::dznrm2(N, b);
       std::vector<std::complex<double>> r(N), p(N), Ap(N);
       std::complex<double> alpha, beta, rr, rr_old;
-      blas::zdscal(0.0, x);
-      blas::zcopy(b, r);
-      blas::zcopy(r, p);
-      rr = blas::zdotc(r, r);
+      blas::zdscal(N, 0.0, x);
+      blas::zcopy(N, b, 0, r, 0);
+      blas::zcopy(N, r, 0, p, 0);
+      rr = blas::zdotc(N, r, 0, r, 0);
       for (std::size_t i=0; i < max_iter; ++i) {
         spmv(A, p, Ap);
-        alpha = rr / blas::zdotc(p, Ap);
-        blas::zaxpy(alpha,   p, x);
-        blas::zaxpy(-alpha, Ap, r);
-        if (blas::dznrm2(r)/r0nrm < tol) {
+        alpha = rr / blas::zdotc(N, p, 0, Ap, 0);
+        blas::zaxpy(N, alpha,   p, 0, x, 0);
+        blas::zaxpy(N, -alpha, Ap, 0, r, 0);
+        if (blas::dznrm2(N, r)/r0nrm < tol) {
           status = true;
           break;
         }
         rr_old = rr;
-        rr = blas::zdotc(r, r);
+        rr = blas::zdotc(N, r, 0, r, 0);
         beta = rr / rr_old;
-        blas::zscal(beta, p);
-        blas::zaxpy({1.0, 0.0}, r, p);
+        blas::zscal(N, beta, p);
+        blas::zaxpy(N, {1.0, 0.0}, r, 0, p, 0);
       }
       return status;
     }
