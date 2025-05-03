@@ -10,14 +10,16 @@ program sample2_f
   complex(c_double_complex), allocatable :: A(:), B(:), x(:), rhs(:), w(:), u(:), sigma(:), r(:)
   real(c_double), allocatable :: res(:)
   integer, allocatable :: itr(:)
-  complex(c_double_complex) :: ONE=cmplx(1.0d0, 0.0d0, kind=c_double_complex), ZERO=cmplx(0.0d0, 0.0d0, kind=c_double_complex)
-
+  complex(c_double_complex) :: ONE, ZERO
   ! External BLAS/LAPACK routines
   external :: zhpmv, zpptrf, zpptrs
   double precision :: dznrm2
-
   ! Handle
   type(gsminres_handle) :: solver
+
+  ! BLAS/LAPACK constants
+  ONE  = cmplx(1.0d0, 0.0d0, kind=c_double_complex)
+  ZERO = cmplx(0.0d0, 0.0d0, kind=c_double_complex)
 
   ! Read matrices A,B form MTX files
   call load_matrix_from_mm("../data/ELSES_MATRIX_DIAB18h_A.mtx", A, n)
@@ -48,7 +50,7 @@ program sample2_f
      call zhpmv('U', n, ONE, A, w, ZERO, u, 1)
      call gsminres_glanczos_pre(solver, u, n)
      u = w
-     call zpptrs('U', n, 1, B, u, 1, info)
+     call zpptrs('U', n, 1, B, u, n, info)
      if (info /= 0) stop "zpptrs failed"
      call gsminres_glanczos_pst(solver, w, u, n)
      if (gsminres_update(solver, x, n, m) /= 0) exit
@@ -64,7 +66,8 @@ program sample2_f
      call zhpmv('U', n, (1.0d0,0.0d0), A, x((i-1)*n+1), (0.0d0,0.0d0), r, 1)
      call zhpmv('U', n, sigma(i),      B, x((i-1)*n+1), (1.0d0,0.0d0), r, 1)
      r = r - rhs
-     write(*, '(I2, 1X, 2F10.6, 1X, I5, 1X, 1P, E12.5, 1X, E12.5)') i, real(sigma), aimag(sigma), itr(i), res(i), dznrm2(n,r,1)
+     write(*, '(I2, 1X, 2F10.6, 1X, I5, 1X, 1P, E12.5, 1X, E12.5)') &
+          i, real(sigma), aimag(sigma), itr(i), res(i), dznrm2(n,r,1)
   end do
 
 contains
