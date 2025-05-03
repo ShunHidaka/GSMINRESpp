@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(GSMINRESpp VERSION 1.0.0 LANGUAGES CXX C)
+project(GSMINRESpp VERSION 1.0.0 LANGUAGES CXX C Fortran)
 
 # =======================
 # Build Configuration
@@ -32,13 +32,15 @@ set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
 # Options
 # =======================
 
+# OpenMP (Default ON)
+option(USE_OPENMP "Enable OpenMP parallelization" ON)
 # C API (Default ON)
 option(GSMINRES_ENABLE_C_API "Building with C API support" ON)
 # Complex number ABI compatibility (Default OFF)
 option(GSMINRES_ASSUME_ABI_COMPATIBLE
   "Assume std::complex<double> and double _Complex are ABI-compatible" OFF)
-# OpenMP (Default ON)
-option(USE_OPENMP "Enable OpenMP parallelization" ON)
+# Fortran Interface (Default ON)
+option(GSMINRES_ENABLE_FORTRAN_INTERFACE "Building with Fortran Interface" ON)
 
 # ABI compatibility
 if(GSMINRES_ASSUME_ABI_COMPATIBLE)
@@ -54,17 +56,20 @@ if(USE_OPENMP)
   find_package(OpenMP)
   if(OpenMP_CXX_FOUND)
     message(STATUS "OpenMP found, enabling parallelization.")
-    set(OPENMP_CXX_OPTION OpenMP::OpenMP_CXX)
-    set(OPENMP_C_OPTION   OpenMP::OpenMP_C)
+    set(OPENMP_CXX_OPTION     OpenMP::OpenMP_CXX)
+    set(OPENMP_C_OPTION       OpenMP::OpenMP_C)
+    set(OPENMP_FORTRAN_OPTION OpenMP::OpenMP_Fortran)
   else()
     message(WARNING "OpenMP not found, disabling parallelization.")
-    set(OPENMP_CXX_OPTION "")
-    set(OPENMP_C_OPTION   "")
+    set(OPENMP_CXX_OPTION     "")
+    set(OPENMP_C_OPTION       "")
+    set(OPENMP_FORTRAN OPTION "")
   endif()
 else()
   message(STATUS "OpenMP disabled.")
   set(OPENMP_CXX_OPTION "")
   set(OPENMP_C_OPTION   "")
+  set(OPENMP_FORTRAN OPTION "")
 endif()
 
 # =======================
@@ -107,6 +112,9 @@ if(GSMINRES_ENABLE_C_API)
   list(APPEND SRC src/gsminres_c_api.cpp)
 endif()
 
+if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
+  list(APPEND SRC src/gsminres_fortran_interface.f90)
+endif()
 
 # =======================
 # Build Targets
@@ -162,6 +170,15 @@ if(GSMINRES_ENABLE_C_API)
   target_link_libraries(sample2_c PRIVATE gsminres_shared ${BLAS_LIBRARIES}
                                                           ${LAPACK_LIBRARIES}
                                                           ${OPENMP_C_OPTION})
+endif()
+
+if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
+  add_executable(sample1_f sample/sample1_f.f90)
+  set_target_properties(sample1_f PROPERTIES LINKER_LANGUAGE Fortran)
+  target_include_directories(sample1_f PRIVATE include)
+  target_link_libraries(sample1_f PRIVATE gsminres_shared ${BLAS_LIBRARIES}
+                                                          ${LAPACK_LIBRARIES}
+                                                          ${OPENMP_FORTRAN_OPTION})
 endif()
 
 # =======================
