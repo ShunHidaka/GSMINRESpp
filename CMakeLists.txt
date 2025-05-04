@@ -43,8 +43,8 @@ option(GSMINRES_ASSUME_ABI_COMPATIBLE
 # This option allows future integration of a Fortran interface
 # Temporarily disabled until the interface is fully implemented and validated.
 option(GSMINRES_ENABLE_FORTRAN_INTERFACE "Building with Fortran Interface" ON)
-set(GSMINRES_ENABLE_FORTRAN_INTERFACE OFF)
-message(STATUS "Fortran interface is currently disabled (implementation pending)")
+#set(GSMINRES_ENABLE_FORTRAN_INTERFACE OFF)
+#message(STATUS "Fortran interface is currently disabled (implementation pending)")
 
 # ABI compatibility
 if(GSMINRES_ASSUME_ABI_COMPATIBLE)

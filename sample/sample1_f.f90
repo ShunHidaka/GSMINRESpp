@@ -1,4 +1,4 @@
-program sample2_f
+program sample1_f
   use gsminres_mod
   use iso_c_binding
   implicit none
@@ -37,37 +37,37 @@ program sample2_f
   ! Pre-process: Solve Bu = b
   call zpptrf('U', n, B, info)
   if (info /= 0) stop "zpptrf failed"
-  u = rhs
-  call zpptrs('U', n, 1, B, u, n, info)
-  if (info /= 0) stop "zpptrs failed"
 
   ! Initialize solver
   solver = gsminres_create(n, m);
   call gsminres_initialize(solver, x, rhs, w, sigma, 1.0d-13, n, m)
-
+  w = rhs
+  call zpptrs('U', n, 1, B, w, n, info)
+  print *, "norm(B^{-1} rhs) = ", dznrm2(n, w, 1)
   ! Solving
   do j = 1, 10000
-     call zhpmv('U', n, ONE, A, w, ZERO, u, 1)
+     call zhpmv('U', n, ONE, A, w, 1, ZERO, u, 1)
      call gsminres_glanczos_pre(solver, u, n)
      u = w
      call zpptrs('U', n, 1, B, u, n, info)
      if (info /= 0) stop "zpptrs failed"
      call gsminres_glanczos_pst(solver, w, u, n)
-     if (gsminres_update(solver, x, n, m) /= 0) exit
+     if (gsminres_update(solver, x, n, m) /= 0) then
+        exit
+     end if
      call gsminres_get_residual(solver, res, m)
   end do
 
   ! Finalize solver
   call gsminres_finalize(solver, itr, res, m)
   call gsminres_destroy(solver)
-
   ! Output Results
   do i = 1, m
-     call zhpmv('U', n, (1.0d0,0.0d0), A, x((i-1)*n+1), (0.0d0,0.0d0), r, 1)
-     call zhpmv('U', n, sigma(i),      B, x((i-1)*n+1), (1.0d0,0.0d0), r, 1)
+     call zhpmv('U', n, ONE,      A, x((i-1)*n+1), 1, ZERO, r, 1)
+     call zhpmv('U', n, sigma(i), B, x((i-1)*n+1), 1, ONE,  r, 1)
      r = r - rhs
      write(*, '(I2, 1X, 2F10.6, 1X, I5, 1X, 1P, E12.5, 1X, E12.5)') &
-          i, real(sigma), aimag(sigma), itr(i), res(i), dznrm2(n,r,1)
+          i, real(sigma(i)), aimag(sigma(i)), itr(i), res(i), dznrm2(n,r,1)
   end do
 
 contains
@@ -110,4 +110,4 @@ contains
     end do
   end subroutine load_matrix_from_mm
 
-end program sample2_f
+end program sample1_f

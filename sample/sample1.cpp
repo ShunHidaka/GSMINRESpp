@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
     gsminres::blas::zhpmv(sigma[j],    B, ans, {1.0, 0.0}, tmp);
     gsminres::blas::zaxpy(N, {-1.0, 0.0}, b, 0, tmp, 0);
     tmp_nrm = gsminres::blas::dznrm2(N, tmp);
-    std::cout << j << " " << itr[j] << " " << res[j] << " " << tmp_nrm << std::endl;
+    std::cout << j << " " << sigma[j].real() << " " << sigma[j].imag() << " " << itr[j] << " " << res[j] << " " << tmp_nrm << std::endl;
   }
 
 }
