@@ -27,6 +27,8 @@ set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
 set(CMAKE_C_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
+set(CMAKE_FORTRAN_FLAGS_DEBUG "")
+set(CMAKE_FORTRAN_FLAGS_RELEASE "")
 
 # =======================
 # Options
