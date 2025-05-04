@@ -23,15 +23,17 @@ void read_csr(const char *fname,
 
 int main(int argc, char *argv[]) {
   int n;
-  if (argc < 3) {
+  if (argc < 1) {
     fprintf(stderr, "Usage: %s <MTX_file(A)> <MTX_file(B)>\n", argv[0]);
     exit(1);
   }
   // Read Matrix file (CSR format)
   int *A_row, *A_col, A_nnz; double _Complex *A_ele;
   int *B_row, *B_col, B_nnz; double _Complex *B_ele;
-  read_csr(argv[1], &n, &A_nnz, &A_row, &A_col, &A_ele);
-  read_csr(argv[2], &n, &B_nnz, &B_row, &B_col, &B_ele);
+  //read_csr(argv[1], &n, &A_nnz, &A_row, &A_col, &A_ele);
+  //read_csr(argv[2], &n, &B_nnz, &B_row, &B_col, &B_ele);
+  read_csr("../data/DIAB18h_A.csr", &n, &A_nnz, &A_row, &A_col, &A_ele);
+  read_csr("../data/DIAB18h_B.csr", &n, &B_nnz, &B_row, &B_col, &B_ele);
   const size_t N=n, M=10;
   // Prepare sigma
   double _Complex *sigma = (double _Complex *)calloc(M, sizeof(double _Complex));
@@ -61,10 +63,12 @@ int main(int argc, char *argv[]) {
   for (size_t j=0; j<10000; ++j) {
     SpMV(A_row,A_col,A_ele, w, u, N);
     gsminres_glanczos_pre(solver, u, N);
+    fprintf(stdout, "(%lf, %lf), ", creal(u[0]), cimag(u[0]));
     if (CG_method(B_row,B_col,B_ele, w, u, n, 1e-13) == 0){
       fprintf(stderr, "# Inner CG failed\n");
       exit(1);
     }
+    fprintf(stdout, "(%lf, %lf)\n", creal(u[0]), cimag(u[0]));
     gsminres_glanczos_pst(solver, w, u, N);
     if (gsminres_update(solver, x, N, M))
       break;

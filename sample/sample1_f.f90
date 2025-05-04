@@ -41,16 +41,15 @@ program sample1_f
 
   ! Initialize solver
   solver = gsminres_create(n, m);
-  call gsminres_initialize(solver, x, rhs, w, sigma, 1.0d-13, n, m)
   w = rhs
   call zpptrs('U', n, 1, B, w, n, info)
-  call gsminres_get_residual(solver, res, m)
+  call gsminres_initialize(solver, x, rhs, w, sigma, 1.0d-13, n, m)
   ! Solving
-  do j = 1, 32
+  do j = 1, 10000
      call zhpmv('U', n, ONE, A, w, 1, ZERO, u, 1)
      call gsminres_glanczos_pre(solver, u, n)
-     u = w
-     call zpptrs('U', n, 1, B, u, n, info)
+     w = u
+     call zpptrs('U', n, 1, B, w, n, info)
      if (info /= 0) stop "zpptrs failed"
      call gsminres_glanczos_pst(solver, w, u, n)
      if (gsminres_update(solver, x, n, m) /= 0) then

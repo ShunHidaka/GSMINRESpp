@@ -63,7 +63,6 @@ contains
          integer(c_size_t),  value :: n, m
        end subroutine c_gsminres_initialize
     end interface
-    write(*,*) 'Fortran: ', sigma(1)
     xp = c_loc(x(1)); bp = c_loc(b(1)); wp = c_loc(w(1)); sigmap = c_loc(sigma(1))
     call c_gsminres_initialize(handle%ref, xp, bp, wp, sigmap, threshold, n, m)
   end subroutine gsminres_initialize
@@ -118,7 +117,9 @@ contains
        end function c_gsminres_update
     end interface
     xp = c_loc(x(1))
+    !write(*,*) 'Before: ', x(1), x(2)
     flag = c_gsminres_update(handle%ref, xp, n ,m)
+    !write(*,*) 'After: ', x(1), x(2)
   end function gsminres_update
 
   subroutine gsminres_finalize(handle, conv_itr, conv_res, m)

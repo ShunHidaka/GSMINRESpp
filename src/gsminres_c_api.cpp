@@ -4,9 +4,13 @@
 #include <complex>
 #include <vector>
 #include <cstring>
+#include <iostream>
 
 inline gsminres::Solver* as_solver(gsminres_handle handle) {
   return static_cast<gsminres::Solver*>(handle);
+}
+inline double _Complex* as_cmplx(void* ptr) {
+  return reinterpret_cast<double _Complex*>(ptr);
 }
 
 using namespace gsminres_c_api_util;
@@ -22,77 +26,79 @@ extern "C" {
   }
 
   void gsminres_initialize(gsminres_handle handle,
-                           double _Complex       *x,
-                           const double _Complex *b,
-                           double _Complex       *w,
-                           const double _Complex *sigma,
-                           const double          threshold,
-                           const size_t          n,
-                           const size_t          m) {
+                           void*           x,
+                           const void*     b,
+                           void*           w,
+                           const void*     sigma,
+                           const double    threshold,
+                           const size_t    n,
+                           const size_t    m) {
     gsminres::Solver* solver = as_solver(handle);
-    std::vector<std::complex<double>> xvec = to_cpp_vector(x, n*m);
-    std::vector<std::complex<double>> bvec = to_cpp_vector(b, n);
-    std::vector<std::complex<double>> wvec = to_cpp_vector(w, n);
-    std::vector<std::complex<double>> svec = to_cpp_vector(sigma, m);
+    std::vector<std::complex<double>> xvec = to_cpp_vector(as_cmplx(x), n*m);
+    std::vector<std::complex<double>> bvec = to_cpp_vector(as_cmplx(const_cast<void *>(b)), n);
+    std::vector<std::complex<double>> wvec = to_cpp_vector(as_cmplx(w), n);
+    std::vector<std::complex<double>> svec = to_cpp_vector(as_cmplx(const_cast<void *>(sigma)), m);
     solver->initialize(xvec, bvec, wvec, svec, threshold);
-    from_cpp_vector(xvec, x);
-    from_cpp_vector(wvec, w);
+    from_cpp_vector(xvec, as_cmplx(x));
+    from_cpp_vector(wvec, as_cmplx(w));
   }
 
   void gsminres_glanczos_pre(gsminres_handle handle,
-                             double _Complex *u,
+                             void*           u,
                              const size_t    n) {
     gsminres::Solver* solver = as_solver(handle);
-    std::vector<std::complex<double>> uvec = to_cpp_vector(u, n);
+    std::vector<std::complex<double>> uvec = to_cpp_vector(as_cmplx(u), n);
+    //std::cout << "Before: " << uvec[0] << ", ";
     solver->glanczos_pre(uvec);
-    from_cpp_vector(uvec, u);
+    //std::cout << "After: " << uvec[0] << std::endl;
+    from_cpp_vector(uvec, as_cmplx(u));
   }
 
   void gsminres_glanczos_pst(gsminres_handle handle,
-                             double _Complex *w,
-                             double _Complex *u,
+                             void*           w,
+                             void*           u,
                              const size_t    n) {
     gsminres::Solver* solver = as_solver(handle);
-    std::vector<std::complex<double>> wvec = to_cpp_vector(w, n);
-    std::vector<std::complex<double>> uvec = to_cpp_vector(u, n);
+    std::vector<std::complex<double>> wvec = to_cpp_vector(as_cmplx(w), n);
+    std::vector<std::complex<double>> uvec = to_cpp_vector(as_cmplx(u), n);
     solver->glanczos_pst(wvec, uvec);
-    from_cpp_vector(wvec, w);
-    from_cpp_vector(uvec, u);
+    from_cpp_vector(wvec, as_cmplx(w));
+    from_cpp_vector(uvec, as_cmplx(u));
   }
 
   int gsminres_update(gsminres_handle handle,
-                      double _Complex *x,
+                      void*           x,
                       const size_t    n,
                       const size_t    m) {
     gsminres::Solver* solver = as_solver(handle);
-    std::vector<std::complex<double>> xvec = to_cpp_vector(x, n*m);
+    std::vector<std::complex<double>> xvec = to_cpp_vector(as_cmplx(x), n*m);
     bool converged = solver->update(xvec);
-    from_cpp_vector(xvec, x);
+    from_cpp_vector(xvec, as_cmplx(x));
     return converged ? 1 : 0;
   }
 
   void gsminres_finalize(gsminres_handle handle,
-                         int          *conv_itr,
-                         double       *conv_res,
+                         void*           conv_itr,
+                         void*           conv_res,
                          const size_t m) {
     gsminres::Solver* solver = as_solver(handle);
     std::vector<std::size_t> itr(m);
     std::vector<double> res(m);
     solver->finalize(itr, res);
     for (size_t i = 0; i < m; ++i) {
-      conv_itr[i] = static_cast<int>(itr[i]);
-      conv_res[i] = res[i];
+      reinterpret_cast<int*>(conv_itr)[i]    = static_cast<int>(itr[i]);
+      reinterpret_cast<double*>(conv_res)[i] = res[i];
     }
   }
 
   void gsminres_get_residual(gsminres_handle handle,
-                             double       *res,
-                             const size_t m) {
+                             void*           res,
+                             const size_t    m) {
     gsminres::Solver* solver = as_solver(handle);
     std::vector<double> rvec(m);
     solver->get_residual(rvec);
     for (size_t i=0; i < m; ++i) {
-      res[i] = rvec[i];
+      reinterpret_cast<double*>(res)[i] = rvec[i];
     }
   }
 

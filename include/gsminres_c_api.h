@@ -36,14 +36,14 @@ extern "C" {
    * @param n         [in]     Matrix size
    * @param m         [in]     Number of shifts
    */
-  void gsminres_initialize(gsminres_handle       handle,
-                           double _Complex       *x,
-                           const double _Complex *b,
-                           double _Complex       *w,
-                           const double _Complex *sigma,
-                           const double          threshold,
-                           const size_t          n,
-                           const size_t          m);
+  void gsminres_initialize(gsminres_handle handle,
+                           void            *x,
+                           const void      *b,
+                           void            *w,
+                           const void      *sigma,
+                           const double    threshold,
+                           const size_t    n,
+                           const size_t    m);
 
   /**
    * @brief Apply pre-processing step of the Generalized Lanczos process
@@ -52,7 +52,7 @@ extern "C" {
    * @param n          Matrix size
    */
   void gsminres_glanczos_pre(gsminres_handle handle,
-                             double _Complex *u,
+                             void            *u,
                              const size_t    n);
 
   /**
@@ -63,8 +63,8 @@ extern "C" {
    * @param n [in]     Matrix size
    */
   void gsminres_glanczos_pst(gsminres_handle handle,
-                             double _Complex *w,
-                             double _Complex *u,
+                             void            *w,
+                             void            *u,
                              const size_t    n);
 
   /**
@@ -76,7 +76,7 @@ extern "C" {
    * @return 1 if all systems converged, 0 otherwise
    */
   int gsminres_update(gsminres_handle handle,
-                      double _Complex  *x,
+                      void            *x,
                       const size_t    n,
                       const size_t    m);
 
@@ -88,8 +88,8 @@ extern "C" {
    * @param m        [in]  Number of shifts
    */
   void gsminres_finalize(gsminres_handle handle,
-                         int             *conv_itr,
-                         double          *conv_res,
+                         void            *conv_itr,
+                         void            *conv_res,
                          const size_t    m);
 
   /**
@@ -99,7 +99,7 @@ extern "C" {
    * @param m        [in]  Number of shifts
    */
   void gsminres_get_residual(gsminres_handle handle,
-                             double          *res,
+                             void            *res,
                              const size_t    m);
 
 #ifdef __cplusplus
