@@ -7,7 +7,8 @@ program sample1_f
   integer, parameter :: dp = kind(0.0d0)
   integer(c_size_t) :: n, m
   integer :: i, j, info
-  complex(c_double_complex), allocatable :: A(:), B(:), x(:), rhs(:), w(:), u(:), sigma(:), r(:)
+  complex(c_double_complex), allocatable :: A(:), B(:), r(:)
+  complex(c_double_complex), pointer :: x(:), rhs(:), w(:), u(:), sigma(:)
   real(c_double), allocatable :: res(:)
   integer, allocatable :: itr(:)
   complex(c_double_complex) :: ONE, ZERO
@@ -43,9 +44,9 @@ program sample1_f
   call gsminres_initialize(solver, x, rhs, w, sigma, 1.0d-13, n, m)
   w = rhs
   call zpptrs('U', n, 1, B, w, n, info)
-  print *, "norm(B^{-1} rhs) = ", dznrm2(n, w, 1)
+  call gsminres_get_residual(solver, res, m)
   ! Solving
-  do j = 1, 10000
+  do j = 1, 32
      call zhpmv('U', n, ONE, A, w, 1, ZERO, u, 1)
      call gsminres_glanczos_pre(solver, u, n)
      u = w
