@@ -1,113 +1,83 @@
 cmake_minimum_required(VERSION 3.14)
+project(GSMINRESpp VERSION 1.0.0 LANGUAGES CXX C Fortran)
 
-# =====================================
-# Language configureation
-# =====================================
-include(CheckLanguage)
-check_language(C)
-check_language(Fortran)
+# =======================
+# Build Configuration
+# =======================
 
-# C API / Fortran Interface option (default ON)
-option(GSMINRES_ENABLE_C_API "Enable C API" ON)
-option(GSMINRES_ENABLE_FORTRAN_INTERFACE "Enable Fortran interface (requires C API)" ON)
-
-# Disable C API if C compiler not found
-if(NOT CMAKE_C_COMPILER AND GSMINRES_ENABLE_C_API)
-  message(WARNING "C compiler not found. Disabling C API.")
-  set(GSMINRES_ENABLE_C_API OFF)
+# Default build is Release
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
-
-# Disable Fortran interface if Fortran compiler is missing OR C API is disabled
-if((NOT Fortran_COMPILER OR NOT GSMINRES_ENABLE_C_API) AND GSMINRES_ENABLE_FORTRAN_INTERFACE)
-  message(WARNING "Fortran interface requires both Fortran and C compilers. Disabling Fortran interface.")
-  set(GSMINRES_ENABLE_FORTRAN_INTERFACE OFF)
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+# Set default installation Directory to home directory
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/gsminres_install" CACHE PATH "Default path" FORCE)
 endif()
+message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
-# Define language list
-set(LANGUAGE_LIST CXX)
-if(GSMINRES_ENABLE_C_API)
-  list(APPEND LANGUAGE_LIST C)
-endif()
-if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
-  list(APPEND LANGUAGE_LIST Fortran)
-endif()
-
-# =====================================
-# Project declaration
-# =====================================
-project(GSMINRESpp VERSION 1.0.0 LANGUAGES ${LANGUAGE_LIST})
-
-# =====================================
-# Compiler setting
-# =====================================
+# Language standard settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Compiler flags
 set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
+set(CMAKE_C_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra -Wpedantic")
+set(CMAKE_FORTRAN_FLAGS_DEBUG "")
+set(CMAKE_FORTRAN_FLAGS_RELEASE "")
 
-if(GSMINRES_ENABLE_C_API)
-  set(CMAKE_C_STANDARD 99)
-  set(CMAKE_C_STANDARD_REQUIRED ON)
-  set(CMAKE_C_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
-  set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
-endif()
+# =======================
+# Options
+# =======================
 
-if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
-  set(CMAKE_Fortran_STANDARD 2017)
-  set(CMAKE_Fortran_STANDARD_REQUIRED ON)
-  set(CMAKE_Fortran_FLAGS_DEBUG   "-g3 -O0 -Wall")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3 -DNDEBUG")
-endif()
-
-# =====================================
-# Install prefix configuration
-# =====================================
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/gsminres_install" CACHE PATH "Install path" FORCE)
-  message(STATUS "Install prefix not specified. Using default: ${CMAKE_INSTALL_PREFIX}")
-else()
-  message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
-endif()
-
-# =====================================
-# OpenMP setup
-# =====================================
+# OpenMP (Default ON)
 option(USE_OPENMP "Enable OpenMP parallelization" ON)
-set(OPENMP_CXX_OPTION     "")
-set(OPENMP_C_OPTION       "")
-set(OPENMP_FORTRAN OPTION "")
+# C API (Default ON)
+option(GSMINRES_ENABLE_C_API "Building with C API support" ON)
+# Complex number ABI compatibility (Default OFF)
+option(GSMINRES_ASSUME_ABI_COMPATIBLE
+  "Assume std::complex<double> and double _Complex are ABI-compatible" OFF)
+# Fortran Interface (Default ON)
+option(GSMINRES_ENABLE_FORTRAN_INTERFACE "Building with Fortran Interface" ON)
 
+# ABI compatibility
+if(GSMINRES_ASSUME_ABI_COMPATIBLE)
+  message(STATUS
+    "GSMINRES: Assuming ABI compatibility between std::complex and double _Complex (using reinterpret_cast)")
+  add_compile_definitions(GSMINRES_ASSUME_ABI_COMPATIBLE)
+else()
+  message(STATUS "GSMINRES: Using memcpy-based conversion for ABI safety")
+endif()
+
+# OpenMP setup
 if(USE_OPENMP)
   find_package(OpenMP)
   if(OpenMP_CXX_FOUND)
     message(STATUS "OpenMP found, enabling parallelization.")
-    set(OPENMP_CXX_OPTION OpenMP::OpenMP_CXX)
-    if(OpenMP_C_FOUND)
-      set(OPENMP_C_OPTION OpenMP::OpenMP_C)
-    endif()
-    if(OpenMP_Fortran_FOUND)
-      set(OPENMP_Fortran_OPTION OpenMP::OpenMP_Fortran)
-    endif()
+    set(OPENMP_CXX_OPTION     OpenMP::OpenMP_CXX)
+    set(OPENMP_C_OPTION       OpenMP::OpenMP_C)
+    set(OPENMP_FORTRAN_OPTION OpenMP::OpenMP_Fortran)
   else()
     message(WARNING "OpenMP not found, disabling parallelization.")
+    set(OPENMP_CXX_OPTION     "")
+    set(OPENMP_C_OPTION       "")
+    set(OPENMP_FORTRAN OPTION "")
   endif()
 else()
   message(STATUS "OpenMP disabled.")
+  set(OPENMP_CXX_OPTION "")
+  set(OPENMP_C_OPTION   "")
+  set(OPENMP_FORTRAN OPTION "")
 endif()
 
-# =====================================
-# ABI compatibility option
-# =====================================
-option(GSMINRES_ASSUME_ABI_COMPATIBLE
-  "Assume ABI compatibility between std::complex<double> and double _Complex"
-  OFF)
-if(GSMINRES_ASSUME_ABI_COMPATIBLE)
-  add_compile_definitions(GSMINRES_ASSUME_ABI_COMPATIBLE)
-endif()
+# =======================
+# Dependencies
+# =======================
 
-# =====================================
-# BLAS / LAPACK configuration
-# =====================================
 find_package(BLAS REQUIRED)
 find_package(LAPACK REQUIRED)
 message(STATUS "BLAS libraries: ${BLAS_LIBRARIES}")
@@ -132,43 +102,50 @@ if(OPENBLAS_INCLUDE_DIR)
   endif()
 endif()
 
-# =====================================
-# Source files
-# =====================================
+# =======================
+# Source Files
+# =======================
+
 set(SRC src/gsminres_solver.cpp
         src/gsminres_util.cpp)
 
-# Optionally add C API / Fortran Interface
+# Optionally add C API
 if(GSMINRES_ENABLE_C_API)
   list(APPEND SRC src/gsminres_c_api.cpp)
 endif()
+
 if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
   list(APPEND SRC src/gsminres_fortran_interface.f90)
 endif()
 
-# =====================================
+# =======================
 # Build Targets
-# =====================================
-# Shared library (libgsminres.so)
+# =======================
+
+# Include path
 include_directories(include)
+
+# Shared Library (libgsminres.so)
 add_library(gsminres_shared SHARED ${SRC})
 target_link_libraries(gsminres_shared PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
-					      ${OPENMP_CXX_OPTION})
-set_target_properties(gsminres_shared PROPERTIES
+                                              ${OPENMP_CXX_OPTION})
+set_target_properties(gsminres_shared PROPERTIES OUTPUT_NAME gsminres
                       OUTPUT_NAME gsminres
-		      VERSION     ${PROJECT_VERSION}
-		      SOVERSION   1)
+                      VERSION     ${PROJECT_VERSION}
+                      SOVERSION   1)
+
 # Static Library (libgsminres.a)
 add_library(gsminres_static STATIC ${SRC})
 target_link_libraries(gsminres_static PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
-					      ${OPENMP_CXX_OPTION})
-set_target_properties(gsminres_shared PROPERTIES OUTPUT_NAME gsminres)
+                                              ${OPENMP_CXX_OPTION})
+set_target_properties(gsminres_static PROPERTIES OUTPUT_NAME gsminres)
 
-# =====================================
-# Sample programs
-# =====================================
+# =======================
+# Sample Executables
+# =======================
+
 add_executable(sample1 sample/sample1.cpp)
 add_executable(sample2 sample/sample2.cpp)
 
@@ -194,11 +171,9 @@ if(GSMINRES_ENABLE_C_API)
   target_include_directories(sample2_c PRIVATE include)
   target_link_libraries(sample2_c PRIVATE gsminres_shared ${BLAS_LIBRARIES}
                                                           ${LAPACK_LIBRARIES}
-                                                          ${OPENMP_C_OPTION}
-							  m)
+                                                          ${OPENMP_C_OPTION})
 endif()
 
-# Fortran Interface sample program
 if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
   add_executable(sample1_f sample/sample1_f.f90)
   set_target_properties(sample1_f PROPERTIES LINKER_LANGUAGE Fortran)
@@ -208,9 +183,10 @@ if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
                                                           ${OPENMP_FORTRAN_OPTION})
 endif()
 
-# =====================================
+# =======================
 # Installation
-# =====================================
+# =======================
+
 install(TARGETS gsminres_shared gsminres_static
         EXPORT  gsminresTargets
         ARCHIVE DESTINATION lib
