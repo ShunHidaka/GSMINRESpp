@@ -77,6 +77,9 @@ int main(int argc, char* argv[]) {
     gsminres::blas::zaxpy(N, sigma[j], tmp2, 0, tmp1, 0);
     gsminres::blas::zaxpy(N, {-1.0, 0.0}, b, 0, tmp1, 0);
     tmp_nrm = gsminres::blas::dznrm2(N, tmp1);
-    std::cout << j << " " << itr[j] << " " << res[j] << " " << tmp_nrm << std::endl;
+    std::cout << j << " "
+	      << sigma[j].real() << " " << sigma[j].imag() << " "
+	      << itr[j] << " " << res[j] << " " << tmp_nrm
+	      << std::endl;
   }
 }
