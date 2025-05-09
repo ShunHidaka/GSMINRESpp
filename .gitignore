@@ -2,3 +2,4 @@ build/
 bin/
 data/*.mtx
 data/*.csr
+memo.txt
