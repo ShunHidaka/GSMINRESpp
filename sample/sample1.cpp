@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #include <complex>
 #include <vector>
@@ -72,10 +73,14 @@ int main(int argc, char* argv[]) {
     gsminres::blas::zhpmv(sigma[j],    B, ans, {1.0, 0.0}, tmp);
     gsminres::blas::zaxpy(N, {-1.0, 0.0}, b, 0, tmp, 0);
     tmp_nrm = gsminres::blas::dznrm2(N, tmp);
-    std::cout << j << " "
-	      << sigma[j].real() << " " << sigma[j].imag() << " "
-	      << itr[j] << " " << res[j] << " " << tmp_nrm
-	      << std::endl;
+    std::cout << std::right
+              << std::setw(2) << j << " "
+              << std::fixed << std::setw(10) << std::setprecision(6) << sigma[j].real() << " "
+              << std::fixed << std::setw(10) << std::setprecision(6) << sigma[j].imag() << " "
+              << std::setw(5) << itr[j] << " "
+              << std::scientific << std::setw(12) << std::setprecision(5) << res[j] << " "
+              << std::scientific << std::setw(12) << std::setprecision(5) << tmp_nrm
+              << std::endl;
   }
 
 }

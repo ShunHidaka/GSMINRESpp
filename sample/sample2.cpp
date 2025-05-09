@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <complex>
 #include <vector>
 #include "gsminres_solver.hpp"
@@ -77,9 +78,13 @@ int main(int argc, char* argv[]) {
     gsminres::blas::zaxpy(N, sigma[j], tmp2, 0, tmp1, 0);
     gsminres::blas::zaxpy(N, {-1.0, 0.0}, b, 0, tmp1, 0);
     tmp_nrm = gsminres::blas::dznrm2(N, tmp1);
-    std::cout << j << " "
-	      << sigma[j].real() << " " << sigma[j].imag() << " "
-	      << itr[j] << " " << res[j] << " " << tmp_nrm
-	      << std::endl;
+    std::cout << std::right
+              << std::setw(2) << j << " "
+              << std::fixed << std::setw(10) << std::setprecision(6) << sigma[j].real() << " "
+              << std::fixed << std::setw(10) << std::setprecision(6) << sigma[j].imag() << " "
+              << std::setw(5) << itr[j] << " "
+              << std::scientific << std::setw(12) << std::setprecision(5) << res[j] << " "
+              << std::scientific << std::setw(12) << std::setprecision(5) << tmp_nrm
+              << std::endl;
   }
 }

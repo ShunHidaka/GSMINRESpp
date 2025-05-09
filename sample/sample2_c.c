@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     SpMV(B_row,B_col,B_ele, &(x[k*N]), tmp, n);
     cTMP = -sigma[k];
     zaxpy_(&n, &cTMP, tmp, &ONE, r_tmp, &ONE);
-    fprintf(stdout, "%ld %lf %lf %d %e %e\n",
+    fprintf(stdout, "%2ld %10.6lf %10.6lf %5d %12.5e %12.5e\n",
             k, creal(sigma[k]), cimag(sigma[k]), itr[k],
             res[k], dznrm2_(&n,r_tmp,&ONE));
   }

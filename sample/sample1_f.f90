@@ -66,7 +66,7 @@ program sample1_f
      call zhpmv('U', n, ONE,      A, x((i-1)*n+1), 1, ZERO, r, 1)
      call zhpmv('U', n, sigma(i), B, x((i-1)*n+1), 1, ONE,  r, 1)
      r = r - rhs
-     write(*, '(I2, 1X, 2F10.6, 1X, I5, 1X, 1P, E12.5, 1X, E12.5)') &
+     write(*, '(I2, 1X, F10.6, 1X, F10.6, 1X, I5, 1X, 1P, E12.5, 1X, E12.5)') &
           i, real(sigma(i)), aimag(sigma(i)), itr(i), res(i), dznrm2(n,r,1)
   end do
 
