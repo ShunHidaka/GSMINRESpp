@@ -42,14 +42,14 @@ project(GSMINRESpp VERSION 1.0.0 LANGUAGES ${LANGUAGE_LIST})
 # =====================================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG         "-g3 -O0 -Wall -Wextra -Wpedantic")
+set(CMAKE_CXX_FLAGS_RELEASE       "-O3 -DNDEBUG")
 
 if(GSMINRES_ENABLE_C_API)
   set(CMAKE_C_STANDARD 99)
   set(CMAKE_C_STANDARD_REQUIRED ON)
-  set(CMAKE_C_FLAGS_DEBUG   "-g3 -O0 -Wall -Wextra -Wpedantic")
-  set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+  set(CMAKE_C_FLAGS_DEBUG         "-g3 -O0 -Wall -Wextra -Wpedantic")
+  set(CMAKE_C_FLAGS_RELEASE       "-O3 -DNDEBUG")
 endif()
 
 if(GSMINRES_ENABLE_FORTRAN_INTERFACE)
