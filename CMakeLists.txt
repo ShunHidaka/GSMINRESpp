@@ -18,7 +18,7 @@ if(NOT CMAKE_C_COMPILER AND GSMINRES_ENABLE_C_API)
 endif()
 
 # Disable Fortran interface if Fortran compiler is missing OR C API is disabled
-if((NOT Fortran_COMPILER OR NOT GSMINRES_ENABLE_C_API) AND GSMINRES_ENABLE_FORTRAN_INTERFACE)
+if((NOT CMAKE_Fortran_COMPILER OR NOT GSMINRES_ENABLE_C_API) AND GSMINRES_ENABLE_FORTRAN_INTERFACE)
   message(WARNING "Fortran interface requires both Fortran and C compilers. Disabling Fortran interface.")
   set(GSMINRES_ENABLE_FORTRAN_INTERFACE OFF)
 endif()
@@ -154,11 +154,11 @@ include_directories(include)
 add_library(gsminres_shared SHARED ${SRC})
 target_link_libraries(gsminres_shared PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
-					      ${OPENMP_CXX_OPTION})
+                                              ${OPENMP_CXX_OPTION})
 set_target_properties(gsminres_shared PROPERTIES
                       OUTPUT_NAME gsminres
-		      VERSION     ${PROJECT_VERSION}
-		      SOVERSION   1)
+                      VERSION     ${PROJECT_VERSION}
+                      SOVERSION   1)
 # Static Library (libgsminres.a)
 add_library(gsminres_static STATIC ${SRC})
 target_link_libraries(gsminres_static PRIVATE ${BLAS_LIBRARIES}
@@ -192,10 +192,10 @@ if(GSMINRES_ENABLE_C_API)
   add_executable(sample2_c sample/sample2_c.c)
   set_target_properties(sample2_c PROPERTIES LINKER_LANGUAGE C)
   target_include_directories(sample2_c PRIVATE include)
-  target_link_libraries(sample2_c PRIVATE gsminres_shared ${BLAS_LIBRARIES}
+  target_link_libraries(sample2_c PRIVATE gsminres_shared m
+                                                          ${BLAS_LIBRARIES}
                                                           ${LAPACK_LIBRARIES}
-                                                          ${OPENMP_C_OPTION}
-							  m)
+                                                          ${OPENMP_C_OPTION})
 endif()
 
 # Fortran Interface sample program
@@ -216,7 +216,7 @@ install(TARGETS gsminres_shared gsminres_static
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin)
-install(DIRECTORY include/ DESTINATION include FILES_MATCHING PATTERN "*.hpp")
+install(DIRECTORY include/ DESTINATION include)
 
 # Generate CMake Package
 include(CMakePackageConfigHelpers)
@@ -224,8 +224,7 @@ install(EXPORT gsminresTargets
         FILE gsminresTargets.cmake
         NAMESPACE gsminres::
         DESTINATION lib/cmake/gsminres)
-configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/gsminresConfig.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake"
-  INSTALL_DESTINATION lib/cmake/gsminres)
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/gsminresConfig.cmake.in"
+                              "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake"
+                              INSTALL_DESTINATION lib/cmake/gsminres)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake" DESTINATION lib/cmake/gsminres)
