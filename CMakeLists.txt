@@ -150,8 +150,9 @@ endif()
 # Build Targets
 # =====================================
 # Shared library (libgsminres.so)
-include_directories(include)
 add_library(gsminres_shared SHARED ${SRC})
+target_include_directories(gsminres_shared PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:include>)
 target_link_libraries(gsminres_shared PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
                                               ${OPENMP_CXX_OPTION})
@@ -161,9 +162,11 @@ set_target_properties(gsminres_shared PROPERTIES
                       SOVERSION   1)
 # Static Library (libgsminres.a)
 add_library(gsminres_static STATIC ${SRC})
+target_include_directories(gsminres_static PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:include>)
 target_link_libraries(gsminres_static PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
-					      ${OPENMP_CXX_OPTION})
+                                              ${OPENMP_CXX_OPTION})
 set_target_properties(gsminres_shared PROPERTIES OUTPUT_NAME gsminres)
 
 # =====================================
@@ -211,7 +214,7 @@ endif()
 # =====================================
 # Installation
 # =====================================
-install(TARGETS gsminres_shared gsminres_static
+install(TARGETS gsminres_shared
         EXPORT  gsminresTargets
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
@@ -220,11 +223,13 @@ install(DIRECTORY include/ DESTINATION include)
 
 # Generate CMake Package
 include(CMakePackageConfigHelpers)
-install(EXPORT gsminresTargets
-        FILE gsminresTargets.cmake
-        NAMESPACE gsminres::
+configure_package_config_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/gsminresConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake"
+  INSTALL_DESTINATION lib/cmake/gsminres)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake"
         DESTINATION lib/cmake/gsminres)
-configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/gsminresConfig.cmake.in"
-                              "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake"
-                              INSTALL_DESTINATION lib/cmake/gsminres)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/gsminresConfig.cmake" DESTINATION lib/cmake/gsminres)
+install(EXPORT      gsminresTargets
+        FILE        gsminresTargets.cmake
+        NAMESPACE   gsminres::
+        DESTINATION lib/cmake/gsminres)
