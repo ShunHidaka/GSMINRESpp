@@ -6,7 +6,7 @@ program sample1_f
   ! Parameters
   integer, parameter :: dp = kind(0.0d0)
   integer(c_size_t) :: n, m
-  integer :: i, j, info
+  integer(c_size_t) :: i, j, info
   complex(c_double_complex), allocatable :: A(:), B(:), r(:)
   complex(c_double_complex), pointer :: x(:), rhs(:), w(:), u(:), sigma(:)
   real(c_double), allocatable :: res(:)
@@ -32,7 +32,7 @@ program sample1_f
   allocate(res(m), itr(m))
   rhs = (1.0d0, 0.0d0)
   do i = 1,m
-     sigma(i) = 0.1d0 * exp( cmplx(0.0d0, 2*acos(-1.0d0)*(i-0.5d0) / real(m)) )
+     sigma(i) = 0.1d0 * exp( cmplx(0.0d0, 2*acos(-1.0d0)*(i-0.5d0) / real(m), kind=8) )
   end do
 
   ! Pre-process: Solve Bu = b
@@ -76,11 +76,10 @@ contains
     character(*), intent(in) ::fname
     complex(c_double_complex), allocatable, intent(out) :: A(:)
     integer(c_size_t), intent(out) :: n
-    integer :: i, j, k, row,col,nnz
+    integer(c_size_t) :: i, j, k, row,col,nnz
     complex(c_double_complex), allocatable :: full(:,:)
     real(dp) :: re, im
     character(len=256) :: line
-    logical :: sym
     integer :: ios
     open(unit=10, file=fname, status='old', action='read', iostat=ios)
     if(ios /= 0) stop "Cannot open MTX file"
