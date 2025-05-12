@@ -41,29 +41,29 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 
 ```
 .  
-├── CMakeLists.txt                         #
-├── Makefile                               #
+├── CMakeLists.txt                         # CMake build script
+├── Makefile                               # Make build script
 ├── README.md                              # This file
-├── bin                                    # Output directory (created by Make)
-├── build                                  # Build directory (created by CMake)
-├── cmake                                  #
+├── bin/                                   # Output directory (created by Make)
+├── build/                                 # Build directory (created by CMake)
+├── cmake/                                 #
 │   ├── gsminresConfig.cmake.in            # CMake configuration file
-├── data  
+├── data/  
 │   ├── check_PD.py                        # Check if matrix is positive definite
 │   ├── converter.py                       # Convert Matrix Market format to CSR
-├── include  
+├── include/  
 │   ├── gsminres_blas.hpp                  #
 │   ├── gsminres_c_api.h                   #
 │   ├── gsminres_c_api_util.hpp            #
 │   ├── gsminres_lapack.hpp                #
 │   ├── gsminres_solver.hpp                #
 │   ├── gsminres_util.hpp                  #
-├── sample  
-│   ├── sample1.cpp                        #
-│   ├── sample1_f.f90                      #
-│   ├── sample2.cpp                        #
-│   ├── sample2_c.c                        #
-├── src  
+├── sample/  
+│   ├── sample1.cpp                        # C++ example (Matrix Market packed format)
+│   ├── sample1_f.f90                      # Fortran example
+│   ├── sample2.cpp                        # C++ example (CSR format)
+│   ├── sample2_c.c                        # C example
+├── src/  
 │   ├── gsminres_c_api.cpp                 #
 │   ├── gsminres_fortran_interface.f90     #
 │   ├── gsminres_solver.cpp                #
@@ -97,26 +97,30 @@ See the manual for detailed instructions.
 This library provides several example programs to demonstrate how to use the GSMINRES++ solver in different formats and languages.
 
 ### 1. `sample1.cpp`: C++ + Matrix Market Format
+C++ program using packed Hermitian matrices in Matrix Market format. LAPACK routines (`zhpmv`, `zpptrf`, `zpptrs`) are used for matrix-vector multiplication and solving linear systems in inner iterations.
 ``` bash
 ./sample1 ../data/A.mtx ../data/B.mtx
 ```
 ### 2. `sample2.cpp`: C++ + Sparse CSR Format
+C++ program using CSR format defined in `gsminres_util.cpp`. Built-in functions (`gsminres::util::SpMV`, `gsminres::util::cg`) are used for matrix-vector multiplication and inner solves.
 ``` bash
 ./sample2 ../data/A.csr ../data/B.csr
 ```
 ### 3. `sample1_f.f90`: Fortan + Matrix Market Format
+Fortran program using packed Hermitian matrices in Matrix Market format. LAPACK routines (`zhpmv`, `zpptrf`, `zpptrs`) are used for matrix-vector multiplication and solving linear systems in inner iterations.
 ``` bash
 ./sample1_f ../data/A.mtx ../data/B.mtx
 ```
 ### 4. `sample2_c.c`: C + Sparse CSR Format
+C program using CSR format matrices defined in `sample2_c.c`. Matrix-vector multiplication and CG solves are also defined in the same source file.
 ``` bash
 ./sample2_c ../data/A.csr ../data/B.csr
 ```
 
-Do not forget to preprocess the matrices using the Python scripts in `data/`:
+Do not forget to convert the matrices using the Python scripts in `data/`:
 ```bash
-python3 data/converter.py A.mtx --output A.csr
-python3 data/converter.py B.mtx --output B.csr
+python3 data/converter.py A.mtx A.csr
+python3 data/converter.py B.mtx B.csr
 ```
 
 ---
