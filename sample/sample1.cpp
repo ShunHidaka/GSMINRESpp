@@ -6,6 +6,7 @@
 #include "gsminres_solver.hpp"
 #include "gsminres_util.hpp"
 #include "gsminres_blas.hpp"
+#include "gsminres_lapack.hpp"
 
 
 int main(int argc, char* argv[]) {
