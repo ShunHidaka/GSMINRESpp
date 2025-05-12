@@ -167,7 +167,7 @@ target_include_directories(gsminres_static PUBLIC $<BUILD_INTERFACE:${CMAKE_CURR
 target_link_libraries(gsminres_static PRIVATE ${BLAS_LIBRARIES}
                                               ${LAPACK_LIBRARIES}
                                               ${OPENMP_CXX_OPTION})
-set_target_properties(gsminres_shared PROPERTIES OUTPUT_NAME gsminres)
+set_target_properties(gsminres_static PROPERTIES OUTPUT_NAME gsminres)
 
 # =====================================
 # Sample programs
@@ -215,6 +215,11 @@ endif()
 # Installation
 # =====================================
 install(TARGETS gsminres_shared
+        EXPORT  gsminresTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin)
+install(TARGETS gsminres_static
         EXPORT  gsminresTargets
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
