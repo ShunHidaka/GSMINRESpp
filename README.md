@@ -96,22 +96,22 @@ See the manual for detailed instructions.
 
 This library provides several example programs to demonstrate how to use the GSMINRES++ solver in different formats and languages.
 
-### 1. `sample1.cpp`: C++ + Matrix Market Format
+### 1. `sample1.cpp`: C++ with Matrix Market Format
 C++ program using packed Hermitian matrices in Matrix Market format. LAPACK routines (`zhpmv`, `zpptrf`, `zpptrs`) are used for matrix-vector multiplication and solving linear systems in inner iterations.
 ``` bash
 ./sample1 ../data/A.mtx ../data/B.mtx
 ```
-### 2. `sample2.cpp`: C++ + Sparse CSR Format
+### 2. `sample2.cpp`: C++ with Sparse CSR Format
 C++ program using CSR format defined in `gsminres_util.cpp`. Built-in functions (`gsminres::util::SpMV`, `gsminres::util::cg`) are used for matrix-vector multiplication and inner solves.
 ``` bash
 ./sample2 ../data/A.csr ../data/B.csr
 ```
-### 3. `sample1_f.f90`: Fortan + Matrix Market Format
+### 3. `sample1_f.f90`: Fortan with Matrix Market Format
 Fortran program using packed Hermitian matrices in Matrix Market format. LAPACK routines (`zhpmv`, `zpptrf`, `zpptrs`) are used for matrix-vector multiplication and solving linear systems in inner iterations.
 ``` bash
 ./sample1_f ../data/A.mtx ../data/B.mtx
 ```
-### 4. `sample2_c.c`: C + Sparse CSR Format
+### 4. `sample2_c.c`: C with Sparse CSR Format
 C program using CSR format matrices defined in `sample2_c.c`. Matrix-vector multiplication and CG solves are also defined in the same source file.
 ``` bash
 ./sample2_c ../data/A.csr ../data/B.csr
@@ -126,9 +126,27 @@ python3 data/converter.py B.mtx B.csr
 ---
 
 ## How to link this library
+
+### Shared library
+Add the `LD_LIBRARY_PATH`
 ``` bash
+# Standard Complication
+$ g++ myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
+# Using C API
+$ gcc myprog.cpp -L gsminres_install/lib -lgsminres -lm -lblas -I gsminres_install/include
+# Using Fortran interfase
+$ gfortran myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
 ```
-詳細はマニュアルを参照
+
+### Static library
+``` bash
+# Standard Complication
+$ g++ myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
+# Using C API
+$ gcc myprog.cpp -L gsminres_install/lib -lgsminres -lm -lblas -I gsminres_install/include
+# Using Fortran interfase
+$ gfortran myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
+```
 
 ---
 
