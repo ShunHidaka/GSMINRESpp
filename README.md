@@ -2,6 +2,7 @@
 
 A high-performance solver library for generalized shifted linear systems using MINRES method.
 
+---
 
 ## Overview
 
@@ -11,13 +12,15 @@ $$ (A + \sigma^{(m)}B)\textbf{x}^{(m)} = \textbf{b}, \quad (m=1, 2, \dots, M) $$
 
 where $A$ is **real symmetric** or **Hermitian** matrix and $B$ is **positive definite real symmetric** or **positive definite Hermitian** matrices.
 
+---
 
 ## Requirement
-- C++ compiler
+
+- C++17 compiler
 - BLAS library
-- LAPACK library (Used in the sample programs, but 無ければコンパイルが通らない)
-- C compiler (Optional, for C API)
-- Fortran compiler (Optional, for Fortran interface)
+- LAPACK library (required for sample programs, but **complication will fail without it in some BLAS/LAPACK**)
+- C compiler (optional, for C API)
+- Fortran compiler (optional, for Fortran interface)
 - `make` or `CMake`
 - Python3 with `numpy` and `scipy` (used for matrix data conversion)
 <!-- zrot_ が原因
@@ -26,69 +29,109 @@ collect2: error: ld returned 1 exit status
 make: *** [Makefile:83: bin/sample2_c] エラー 1
 -->
 
+---
 
 ## Documents
-- [Manual](https://github.com/ShunHidaka/GSMINRESpp/edit/main/README.md)
+
+- [Manual](https://github.com/ShunHidaka/GSMINRESpp/#readme)
+
+---
 
 ## Directory Structure
 
-    .  
-    ├── CMakeLists.txt                         #
-    ├── Makefile                               #
-    ├── README.md                              # This file
-    ├── bin                                    # Directory Makefile での
-    ├── build                                  # Directory CMake での ユーザーが創る
-    ├── cmake  
-    │   ├── gsminresConfig.cmake.in  
-    ├── data  
-    │   ├── check_PD.py                        # MTX形式の行列が正定値か調べる
-    │   ├── converter.py                       # MTX形式の行列をCSR形式に変換する
-    ├── include  
-    │   ├── gsminres_blas.hpp                  #
-    │   ├── gsminres_c_api.h                   #
-    │   ├── gsminres_c_api_util.hpp            #
-    │   ├── gsminres_lapack.hpp                #
-    │   ├── gsminres_solver.hpp                #
-    │   ├── gsminres_util.hpp                  #
-    ├── sample  
-    │   ├── sample1.cpp                        #
-    │   ├── sample1_f.f90                      #
-    │   ├── sample2.cpp                        #
-    │   ├── sample2_c.c                        #
-    ├── src  
-    │   ├── gsminres_c_api.cpp                 #
-    │   ├── gsminres_fortran_interface.f90     #
-    │   ├── gsminres_solver.cpp                #
-    │   ├── gsminres_util.cpp                  #
+```
+.  
+├── CMakeLists.txt                         #
+├── Makefile                               #
+├── README.md                              # This file
+├── bin                                    # Output directory (created by Make)
+├── build                                  # Build directory (created by CMake)
+├── cmake                                  #
+│   ├── gsminresConfig.cmake.in            # CMake configuration file
+├── data  
+│   ├── check_PD.py                        # Check if matrix is positive definite
+│   ├── converter.py                       # Convert Matrix Market format to CSR
+├── include  
+│   ├── gsminres_blas.hpp                  #
+│   ├── gsminres_c_api.h                   #
+│   ├── gsminres_c_api_util.hpp            #
+│   ├── gsminres_lapack.hpp                #
+│   ├── gsminres_solver.hpp                #
+│   ├── gsminres_util.hpp                  #
+├── sample  
+│   ├── sample1.cpp                        #
+│   ├── sample1_f.f90                      #
+│   ├── sample2.cpp                        #
+│   ├── sample2_c.c                        #
+├── src  
+│   ├── gsminres_c_api.cpp                 #
+│   ├── gsminres_fortran_interface.f90     #
+│   ├── gsminres_solver.cpp                #
+│   ├── gsminres_util.cpp                  #
+```
 
+---
 
-## Install
-もっとも簡単な方法は
+## Installation
+
+### Using CMake (recommended)
 ``` bash
 mkdir build
 cd build
 cmake ..
-make         # サンプルプログラムがコンパイルされる
-make install # デフォルトではホームディレクトリにインストール
+make           # Build sample programs and libraries
+make install   # Install to $HOME/gsminres_install by default
 ```
-or
+### Using Makefile
 ``` bash
-# Makefile の設定を適切に変更する
-make
-make install
+# Edit the Makefile options correctly
+make           # Build sample programs and libraries in bin/
+make install   # Install to $HOME/gsminres_install by default
+```
+See the manual for detailed instructions.
+
+---
+
+## How to use sample programs
+
+This library provides several example programs to demonstrate how to use the GSMINRES++ solver in different formats and languages.
+
+### 1. `sample1.cpp`: C++ + Matrix Market Format
+``` bash
+./sample1 ../data/A.mtx ../data/B.mtx
+```
+### 2. `sample2.cpp`: C++ + Sparse CSR Format
+``` bash
+./sample2 ../data/A.csr ../data/B.csr
+```
+### 3. `sample1_f.f90`: Fortan + Matrix Market Format
+``` bash
+./sample1_f ../data/A.mtx ../data/B.mtx
+```
+### 4. `sample2_c.c`: C + Sparse CSR Format
+``` bash
+./sample2_c ../data/A.csr ../data/B.csr
+```
+
+Do not forget to preprocess the matrices using the Python scripts in `data/`:
+```bash
+python3 data/converter.py A.mtx --output A.csr
+python3 data/converter.py B.mtx --output B.csr
+```
+
+---
+
+## How to link this library
+``` bash
 ```
 詳細はマニュアルを参照
 
-
-## Sample programs
-
-
-## Usage
-
+---
 
 ## API Summary
 See the manual.
 
+---
 
 ## Known Issues
 - OpenBLAS versions prior to 0.3.27 has bug in the `zrotg`.
@@ -97,6 +140,8 @@ See the manual.
     - Update OpenBLAS version 0.3.27 or later.
     - Use an alternative BLAS implementation (e.g., Netlib BLAS or Interl MKL).
     - Optionally, modify the source ~~~
+
+---
 
 ## Citation
 If you use this code, please cite:
@@ -111,6 +156,8 @@ If you use this code, please cite:
   year    = {}
 }
 ```
+
+---
 
 ## Licnse
 MIT License
