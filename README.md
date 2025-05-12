@@ -7,9 +7,9 @@ A high-performance solver library for generalized shifted linear systems using M
 
 This library solves multiple shifted linear systems of the form:
 
-$$ (A + \sigma^{(m)}B)x^{(m)} = b, \quad (m=1, 2, \dots, M) $$
+$$ (A + \sigma^{(m)}B)\textbf{x}^{(m)} = \textbf{b}, \quad (m=1, 2, \dots, M) $$
 
-where $A$ is Hermitian (or real symmetric) matrix and $B$ is positive definite Hermitian (or real symmetric) matrices.
+where $A$ is **real symmetric** or **Hermitian** matrix and $B$ is **positive definite real symmetric** or **positive definite Hermitian** matrices.
 
 
 ## Requirement
@@ -28,14 +28,14 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 
 
 ## Documents
-- Manual for the library
+- [Manual](https://github.com/ShunHidaka/GSMINRESpp/edit/main/README.md)
 
 ## Directory Structure
 
     .  
     ├── CMakeLists.txt                         #
     ├── Makefile                               #
-    ├── README.md                              #
+    ├── README.md                              # This file
     ├── bin                                    # Directory Makefile での
     ├── build                                  # Directory CMake での ユーザーが創る
     ├── cmake  
@@ -77,6 +77,8 @@ or
 make
 make install
 ```
+詳細はマニュアルを参照
+
 
 ## Sample programs
 
