@@ -11,6 +11,7 @@ extern "C" {
   // LAPACK
   void zpptrf_(char *uplo, int *n, std::complex<double> *ap, int *info);
   void zpptrs_(char *uplo, int *n, int *nrhs, std::complex<double> *ap, std::complex<double> *b, int *ldb, int *info);
+  void zlartg_(std::complex<double> *f, std::complex<double> *g, double *c, std::complex<double> *s, std::complex<double> *r);
 }
 
 namespace gsminres {
@@ -33,6 +34,12 @@ namespace gsminres {
         std::cerr << "zpptrf: [ERROR] failed INFO = " << std::to_string(info) << std::endl;
         std::exit(EXIT_FAILURE);
       }
+    }
+    inline void zlartg(std::complex<double>& f, std::complex<double>& g,
+                       double& c, std::complex<double>& s){
+      std::complex<double> r;
+      zlartg_(&f, &g, &c, &s, &r);
+      f = r;
     }
       
   }  // namespace lapack

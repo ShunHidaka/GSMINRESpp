@@ -1,5 +1,6 @@
 #include "gsminres_solver.hpp"
 #include "gsminres_blas.hpp"
+//#include "gsminres_lapack.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -84,6 +85,7 @@ namespace gsminres {
         blas::zrot(1, T_prev_,  0, T_curr_, 0, Gc_[m][1], Gs_[m][1]);
       }
       blas::zrotg(T_curr_[0], T_next_[0], Gc_[m][2], Gs_[m][2]);
+      //lapack::zlartg(T_curr_[0], T_next_[0], Gc_[m][2], Gs_[m][2]);
       std::size_t offset = m*matrix_size_;
       blas::zcopy(matrix_size_, p_prev_, offset, p_prev2_, offset);
       blas::zcopy(matrix_size_, p_curr_, offset, p_prev_,  offset);
