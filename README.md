@@ -52,22 +52,22 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 │   ├── check_PD.py                        # Check if matrix is positive definite
 │   ├── converter.py                       # Convert Matrix Market format to CSR
 ├── include/  
-│   ├── gsminres_blas.hpp                  #
-│   ├── gsminres_c_api.h                   #
-│   ├── gsminres_c_api_util.hpp            #
-│   ├── gsminres_lapack.hpp                #
-│   ├── gsminres_solver.hpp                #
-│   ├── gsminres_util.hpp                  #
+│   ├── gsminres_blas.hpp                  # BLAS wrapper for C++
+│   ├── gsminres_c_api.h                   # C API header
+│   ├── gsminres_c_api_util.hpp            # C API utils (std::vector<std::complex<double>> <=> double _Complex *)
+│   ├── gsminres_lapack.hpp                # LAPACK wrapper for C++
+│   ├── gsminres_solver.hpp                # GSMINRES Solver header
+│   ├── gsminres_util.hpp                  # Utility's header
 ├── sample/  
 │   ├── sample1.cpp                        # C++ example (Matrix Market packed format)
 │   ├── sample1_f.f90                      # Fortran example
 │   ├── sample2.cpp                        # C++ example (CSR format)
 │   ├── sample2_c.c                        # C example
 ├── src/  
-│   ├── gsminres_c_api.cpp                 #
-│   ├── gsminres_fortran_interface.f90     #
-│   ├── gsminres_solver.cpp                #
-│   ├── gsminres_util.cpp                  #
+│   ├── gsminres_c_api.cpp                 # C API implementation
+│   ├── gsminres_fortran_interface.f90     # Fortran interface implementation
+│   ├── gsminres_solver.cpp                # GSMINRES Solver implementation
+│   ├── gsminres_util.cpp                  # Utilitiy's implementation
 ```
 
 ---
@@ -141,11 +141,11 @@ $ gfortran myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_inst
 ### Static library
 ``` bash
 # Standard Complication
-$ g++ myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
+$ g++ myprog.cpp
 # Using C API
-$ gcc myprog.cpp -L gsminres_install/lib -lgsminres -lm -lblas -I gsminres_install/include
+$ gcc myprog.cpp
 # Using Fortran interfase
-$ gfortran myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_install/include
+$ gfortran myprog.cpp
 ```
 
 ---
