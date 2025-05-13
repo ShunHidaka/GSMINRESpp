@@ -19,8 +19,8 @@ where $A$ is **real symmetric** or **Hermitian** matrix and $B$ is **positive de
 - C++17 compiler
 - BLAS library
 - LAPACK library (required for sample programs, but **complication will fail without it in some BLAS/LAPACK**)
-- C compiler (optional, for C API)
-- Fortran compiler (optional, for Fortran interface)
+- C compiler (**optional**, for C API)
+- Fortran compiler (**optional**, for Fortran interface)
 - `make` or `CMake`
 - Python3 with `numpy` and `scipy` (used for matrix data conversion)
 <!-- zrot_ が原因
@@ -33,7 +33,7 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 
 ## Documents
 
-- [Manual](https://github.com/ShunHidaka/GSMINRESpp/#readme)
+- [Manual](https://github.com/ShunHidaka/GSMINRESpp/)
 
 ---
 
@@ -88,7 +88,7 @@ make install   # Install to $HOME/gsminres_install by default
 make           # Build sample programs and libraries in bin/
 make install   # Install to $HOME/gsminres_install by default
 ```
-See the manual for detailed instructions.
+See the [manual](https://github.com/ShunHidaka/GSMINRESpp/) for detailed instructions.
 
 ---
 
@@ -139,9 +139,10 @@ $ gfortran myprog.cpp -L gsminres_install/lib -lgsminres -lblas -I gsminres_inst
 ```
 
 ### Static library
+ホームディレクトリに `gsminres_install` がインストール済みであるとする
 ``` bash
 # Standard Complication
-$ g++ myprog.cpp
+$ g++ -std=c++17 -O3 -I~gsminres_install/includemyprog.cpp myprog.cpp -L~gsminres_install/lib -lgsminres -lblas -llapack -fopenmp -o myprog
 # Using C API
 $ gcc myprog.cpp
 # Using Fortran interfase
@@ -151,7 +152,7 @@ $ gfortran myprog.cpp
 ---
 
 ## API Summary
-See the manual.
+See the [manual](https://github.com/ShunHidaka/GSMINRESpp/).
 
 ---
 
