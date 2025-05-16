@@ -18,7 +18,7 @@ namespace gsminres {
         std::cerr << "load_matrix_from_mm: [ERROR] Unable to open file " << filename << std::endl;
         std::exit(EXIT_FAILURE);
       }
-      // Analyze header (matrix coordinate であるものとする)
+      // Analyze header (assumes matrix coordinate)
       std::string line;
       bool isReal      = false;
       bool isComplex   = false;
@@ -26,18 +26,10 @@ namespace gsminres {
       bool isHermitian = false;
       if (std::getline(inputFile, line)) {
         if (line.find("%%MatrixMarket matrix coordinate") != std::string::npos) {
-          if (line.find("real")      != std::string::npos) {
-            isReal      = true;
-          }
-          if (line.find("complex")   != std::string::npos) {
-            isComplex   = true;
-          }
-          if (line.find("symmetric") != std::string::npos) {
-            isSymmetric = true;
-          }
-          if (line.find("hermitian") != std::string::npos) {
-            isHermitian = true;           
-          }
+          if (line.find("real")      != std::string::npos) isReal      = true;
+          if (line.find("complex")   != std::string::npos) isComplex   = true;
+          if (line.find("symmetric") != std::string::npos) isSymmetric = true;
+          if (line.find("hermitian") != std::string::npos) isHermitian = true;           
         } else {
           std::cerr << "load_matrix_from_mm: [ERROR] Inappropriate format " << filename << std::endl;
           std::exit(EXIT_FAILURE);
@@ -45,8 +37,8 @@ namespace gsminres {
       }
       // Skip comments
       while (std::getline(inputFile, line)) {
-        if (line[0] == '%') { continue;}
-        else                { break;}
+        if (line[0] == '%') continue;
+        else                break;
       }
       // Read matrix size
       std::istringstream iss(line);
@@ -74,7 +66,7 @@ namespace gsminres {
           if (row <= col) {
             mat[row + col*(col+1)/2] = {real, 0.0};
           } else {
-            mat[col + row*(row+1)/2] = {real, imag};
+            mat[col + row*(row+1)/2] = {real, 0.0};
           }
         } else if (isComplex && isHermitian) {
           if (!(inputFile >> row >> col >> real >> imag)) {
