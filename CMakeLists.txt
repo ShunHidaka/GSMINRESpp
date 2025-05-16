@@ -174,12 +174,16 @@ set_target_properties(gsminres_static PROPERTIES OUTPUT_NAME gsminres)
 # =====================================
 add_executable(sample1 sample/sample1.cpp)
 add_executable(sample2 sample/sample2.cpp)
+add_executable(sample_std sample/sample_std.cpp)
 
 # Using shared library
 target_link_libraries(sample1 PRIVATE gsminres_shared ${BLAS_LIBRARIES}
                                                       ${LAPACK_LIBRARIES}
                                                       ${OPENMP_CXX_OPTION})
 target_link_libraries(sample2 PRIVATE gsminres_shared ${BLAS_LIBRARIES}
+                                                      ${LAPACK_LIBRARIES}
+                                                      ${OPENMP_CXX_OPTION})
+target_link_libraries(sample_std PRIVATE gsminres_shared ${BLAS_LIBRARIES}
                                                       ${LAPACK_LIBRARIES}
                                                       ${OPENMP_CXX_OPTION})
 # Using static library
