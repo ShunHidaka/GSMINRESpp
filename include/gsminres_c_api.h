@@ -1,3 +1,9 @@
+/**
+ * \file gsminres_c_api.h
+ * \brief C API for the GSMINRES++ solver.
+ * \detail
+ */
+
 #ifndef GSMINRES_C_API_H
 #define GSMINRES_C_API_H
 
