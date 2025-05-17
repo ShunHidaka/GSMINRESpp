@@ -8,9 +8,16 @@
 namespace gsminres {
   class Solver {
   public:
-    // Constructor
+    /**
+     * @brief Generalized shifted MINRES solver constructor.
+     * @param matrix_size [in] Matrix size
+     * @param shift_size  [in] Number of shifts
+     */
     Solver(std::size_t matrix_size, std::size_t shift_size);
-    // Deconstructor
+
+    /**
+     * @brief Generalized shifted MINRES solver deconstructor
+     */
     ~Solver() = default;
 
     // Initialize Generalized shifted MINRES solver
