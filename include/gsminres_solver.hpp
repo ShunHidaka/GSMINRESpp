@@ -1,3 +1,12 @@
+/**
+ * \file gsminres_solver.hpp
+ * \brief Header file for the GSMINRES++ solver class
+ * \details This file declares the Solver class, which implements
+ *          the Generalized shifted MINRES method for solving
+ *          multiple generalized shifted linear systems of the form
+ *          (A + sigma^{(m)}B)x^{(m)} = b.
+ */
+
 #ifndef GSMINRES_SOLVER_HPP
 #define GSMINRES_SOLVER_HPP
 
@@ -6,36 +15,74 @@
 #include <array>
 
 namespace gsminres {
+
+  /**
+   * \class Solver
+   * \brief Generalized shifted MINRES solver class.
+   * \details This class solves a set of shifted linear systems using
+   *          the MINRES method and the generalized Lanczos process.
+   */
   class Solver {
   public:
     /**
-     * @brief Generalized shifted MINRES solver constructor.
-     * @param matrix_size [in] Matrix size
-     * @param shift_size  [in] Number of shifts
+     * @brief Constructor.
+     * @param[in] matrix_size Matrix size
+     * @param[in] shift_size  Number of shifts
      */
     Solver(std::size_t matrix_size, std::size_t shift_size);
 
     /**
-     * @brief Generalized shifted MINRES solver deconstructor
+     * @brief Deconstructor.
+     * @details Maybe do not need to use
      */
     ~Solver() = default;
 
-    // Initialize Generalized shifted MINRES solver
-    void initialize(std::vector<std::complex<double>>& x,           // solution vectors
-                    const std::vector<std::complex<double>>& b,     // Right-hand side vector
-                    std::vector<std::complex<double>>& w,           // B^{-1}b
-                    const std::vector<std::complex<double>>& sigma, // Shift values
-                    const double threshold);                        // threshold
-    // Preprocess of Generalized Laczos process
+    /**
+     * \brief Set up the solver with input data and prepare for iteration.
+     * \param[out]    x         Approximate solutions (size = matrix_size * shift_size).
+     * \param[in]     b         Right-hand side vector (size = matrix_size).
+     * \param[in,out] w         Pre-processed right-hand side B^{-1}b (size = matrix_size).
+     * \param[in]     sigma     Array of shift parameters (size = shift_size).
+     * \param[in]     threshold Convergence threshold for relative residuals.
+     */
+    void initialize(std::vector<std::complex<double>>& x,
+                    const std::vector<std::complex<double>>& b,
+                    std::vector<std::complex<double>>& w,
+                    const std::vector<std::complex<double>>& sigma,
+                    const double threshold);
+
+    /**
+     * \brief Perform the pre-processing step of the generalized Lanczos process.
+     * \param[in,out] u Vector to which matrix-vector multiplication is applied u=A*w
+     */
     void glanczos_pre(std::vector<std::complex<double>>& u);
-    // Postprocess of Generalized Lanczos process
+
+    /**
+     * \brief Perform the post-processing step of the generalized Lanczos process.
+     * \param[in,out] w Pre-processed vector w=B^{-1}u
+     * \param[in,out] u Vector which used in glanczos_pre
+     */
     void glanczos_pst(std::vector<std::complex<double>>& w,
                       std::vector<std::complex<double>>& u);
-    // Update approximate solutions
+
+    /**
+     * \bried Update the approximate solutions and check convergence.
+     * \param[in,out] x Solution vectors to be updated (size = matrix_size * shift_size)
+     * \return true if all systems have converged, false otherwise.
+     */
     bool update(std::vector<std::complex<double>>& x);
-    // Finalize Generalized shifted MINRES solver
+
+    /**
+     * \brief Finalize the solver and retrieve iteration info.
+     * \param[out] conv_itr Number of iterations for each shift (size = shift_size)
+     * \param[out] conv_res Final residual norms in Algorithm for each shift (size = shift_size)
+     */
     void finalize(std::vector<std::size_t>& conv_itr, std::vector<double>& conv_res);
-    // Get residual norms
+
+    /**
+     * \brief Retrieve current residual norms in Algorithm.
+     * \param[out] res Residual norms in Algorithm for each shift (shift = shift_size).
+     */
     void get_residual(std::vector<double>& res) const;
 
   private:
