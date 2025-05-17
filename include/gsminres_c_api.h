@@ -13,8 +13,8 @@ extern "C" {
 
   /**
    * @brief Create a new GSMINRES Solver
-   * @param n [in] Matrix size
-   * @param m [in] Number of shifts
+   * @param[in] n Matrix size
+   * @param[in] m Number of shifts
    * @return Solver handle
    */
   gsminres_handle gsminres_create(size_t n, size_t m);
@@ -27,14 +27,14 @@ extern "C" {
 
   /**
    * @brief Initalize the solver
-   * @param handle Solver handle
-   * @param x         [out]    Approximate solutions (length=n*m, row-major)
-   * @param b         [in]     Right-hand side vector (length=n)
-   * @param w         [in,out] B^{-1}b (length=n)
-   * @param sigma     [in]     Shift parameters (length=m)
-   * @param threshold [in]     Relative residual threshold for convergence
-   * @param n         [in]     Matrix size
-   * @param m         [in]     Number of shifts
+   * @param[in]     handle    Solver handle
+   * @param[out]    x         Approximate solutions (length=n*m, row-major)
+   * @param[in]     b         Right-hand side vector (length=n)
+   * @param[in,out] w         B^{-1}b (length=n)
+   * @param[in]     sigma     Shift parameters (length=m)
+   * @param[in]     threshold Relative residual threshold for convergence
+   * @param[in]     n         Matrix size
+   * @param[in]     m         Number of shifts
    */
   void gsminres_initialize(gsminres_handle handle,
                            void            *x,
@@ -47,9 +47,9 @@ extern "C" {
 
   /**
    * @brief Apply pre-processing step of the Generalized Lanczos process
-   * @param handle Solver handle
-   * @param u [in,out] A*w (length=n)
-   * @param n          Matrix size
+   * @param[in]     handle Solver handle
+   * @param[in,out] u      A*w (length=n)
+   * @param[in]     n      Matrix size
    */
   void gsminres_glanczos_pre(gsminres_handle handle,
                              void            *u,
@@ -57,10 +57,10 @@ extern "C" {
 
   /**
    * @brief Apply post-processing step of the Generalized Lanczos process
-   * @param handle Solver handle
-   * @param w [in,out] (length=n)
-   * @param u [in,out] B^{-1}Aw (length=n)
-   * @param n [in]     Matrix size
+   * @param[in]     handle Solver handle
+   * @param[in,out] w      (length=n)
+   * @param[in,out] u      B^{-1}Aw (length=n)
+   * @param[in]     n      Matrix size
    */
   void gsminres_glanczos_pst(gsminres_handle handle,
                              void            *w,
@@ -69,10 +69,10 @@ extern "C" {
 
   /**
    * @brief Update the approximate solutions
-   * @param handle Solver handle
-   * @param x [in,out] Approximate solutions (length=n*m, row-major)
-   * @param n [in]     Matrix size
-   * @param m [in]     Number of shifts
+   * @param[in]     handle Solver handle
+   * @param[in,out] x      Approximate solutions (length=n*m, row-major)
+   * @param[in]     n      Matrix size
+   * @param[in]     m      Number of shifts
    * @return 1 if all systems converged, 0 otherwise
    */
   int gsminres_update(gsminres_handle handle,
@@ -82,10 +82,10 @@ extern "C" {
 
   /**
    * @brief Get converged iteration and converged residual norm
-   * @param handle Solver handle
-   * @param conv_itr [out] Array storage the number of iterations until convergence (length=m)
-   * @param conv_res [out] Array storage converged residual norm for each system (lenght=m)
-   * @param m        [in]  Number of shifts
+   * @param[in]  handle   Solver handle
+   * @param[out] conv_itr Array storage the number of iterations until convergence (length=m)
+   * @param[out] conv_res Array storage converged residual norm for each system (lenght=m)
+   * @param[in]  m        Number of shifts
    */
   void gsminres_finalize(gsminres_handle handle,
                          void            *conv_itr,
@@ -94,9 +94,9 @@ extern "C" {
 
   /**
    * @brief Get current residual norms
-   * @param handle Solver handle
-   * @param res [out] Array storage residual norm for each system (length=m)
-   * @param m        [in]  Number of shifts
+   * @param[in]  handle Solver handle
+   * @param[out] res    Array storage residual norm for each system (length=m)
+   * @param[in]  m      Number of shifts
    */
   void gsminres_get_residual(gsminres_handle handle,
                              void            *res,

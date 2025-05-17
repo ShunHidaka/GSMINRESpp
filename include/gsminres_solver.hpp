@@ -86,27 +86,39 @@ namespace gsminres {
     void get_residual(std::vector<double>& res) const;
 
   private:
-    std::size_t iter_;                        // Number of iterations
-    std::size_t matrix_size_;                 // Matrix size
-    std::size_t shift_size_;                  // Number of shift
-    double r0_norm_;                          // Norm of the initial residual norm
-    std::vector<std::complex<double>> sigma_; // Shift values
-    // Generalized Lanczos process variables
-    double alpha_;
-    double beta_prev_, beta_curr_;
-    std::vector<std::complex<double>> w_prev_, w_curr_, w_next_; // Basis vectors
-    std::vector<std::complex<double>> u_prev_, u_curr_, u_next_; // Auxiliary vectors
-    // Variables for update solutions
-    std::vector<std::complex<double>> T_prev2_, T_prev_, T_curr_, T_next_; // To use BLAS, std::vectorに
-    std::vector<std::array<double, 3>>               Gc_;         // Givens rotation matrixs element "c"
-    std::vector<std::array<std::complex<double>, 3>> Gs_;         // Givens rotation matrixs element "s"
-    std::vector<std::complex<double>> p_prev2_, p_prev_, p_curr_; // Auxiliary vectors (shift*matrix)
-    std::vector<std::complex<double>> f_;                         // Auxiliary variables
-    std::vector<double> h_;                                       // Residual norms in Algorithm
+    // Basic algorithm parameters
+    std::size_t iter_;                        ///< Number of iterations
+    std::size_t matrix_size_;                 ///< Matrix size
+    std::size_t shift_size_;                  ///< Number of shift
+
+    double r0_norm_;                          ///< Norm of the initial residual norm
+
+    std::vector<std::complex<double>> sigma_; ///< Shift values
+
+    // Variables for generalized Lanczos process variables
+    double alpha_;                 ///< alpha coeffcient
+    double beta_prev_, beta_curr_; ///< beta coefficients (previous and current)
+    std::vector<std::complex<double>> w_prev_, w_curr_, w_next_; ///< Lanczos basis vectors
+    std::vector<std::complex<double>> u_prev_, u_curr_, u_next_; ///< Auxiliary vectors
+
+    // Variables for updating the sollutions
+    /**
+     * @brief Elements of the tridiagonal matrix by Lanczos process
+     * These vectors store the column-wise elements of a tridiagonal matrix (T),
+     * used during the Lanczos process. Although each vector contains only one
+     * element in practice, they are wrapped in 'std::vector' to be compatible
+     * with my BLAS routine wropper that require vector inputs.
+     */
+    std::vector<std::complex<double>> T_prev2_, T_prev_, T_curr_, T_next_;
+    std::vector<std::array<double, 3>>               Gc_; ///< Givens rotation matrixs element "c"
+    std::vector<std::array<std::complex<double>, 3>> Gs_; ///< Givens rotation matrixs element "s"
+    std::vector<std::complex<double>> p_prev2_, p_prev_, p_curr_; ///< Auxiliary vectors (shift*matrix)
+    std::vector<std::complex<double>> f_; ///< Auxiliary variables
+    std::vector<double> h_;               ///< Residual norms in Algorithm
     // Convergence-related variables
-    unsigned int conv_num_;            // Number of converged systems
-    std::vector<std::size_t> is_conv_; // Converged flag for each system
-    double threshold_;                 // Convergence threshold
+    unsigned int conv_num_;            ///< Number of converged systems
+    std::vector<std::size_t> is_conv_; ///< Converged flag for each system
+    double threshold_;                 ///< Convergence threshold
   };
 
 }  // namespace gsminres
