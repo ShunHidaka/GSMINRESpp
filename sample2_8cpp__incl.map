@@ -1,0 +1,33 @@
+<map id="sample/sample2.cpp" name="sample/sample2.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="311,5,468,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,85,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,30,185,49,128,64,91,81,78,93,68,108,54,140,49,138,63,106,74,90,88,76,127,59,183,44,310,25"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="715,79,789,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="454,28,702,76,701,81,453,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="294,152,373,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="364,33,334,52,321,65,310,80,306,94,308,110,320,140,315,142,303,111,301,94,306,78,317,61,331,48,361,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="481,152,543,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="412,28,442,49,473,77,493,108,506,138,501,140,488,110,469,80,439,53,409,33"/>
+<area shape="rect" id="Node000006" href="$gsminres__solver_8hpp.html" title="Header file for the GSMINRES++ solver class." alt="" coords="534,79,690,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="426,28,564,72,562,77,424,33"/>
+<area shape="rect" id="Node000008" href="$gsminres__util_8hpp.html" title="Utility functions and data structures for GSMINRES++." alt="" coords="320,79,459,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="392,31,392,65,387,65,387,31"/>
+<area shape="rect" id="Node000010" href="$gsminres__blas_8hpp.html" title="BLAS wrappers for the GSMINRES++ solver." alt="" coords="101,79,245,104"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="355,33,222,77,220,72,354,28"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="568,107,387,153,385,147,567,101"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="597,106,541,146,538,142,594,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="584,152,640,177"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="615,104,615,138,609,138,609,104"/>
+<area shape="poly" id="edge10_Node000008_Node000002" title=" " alt="" coords="333,107,99,154,98,149,332,101"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="382,106,353,143,349,140,378,103"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="410,102,482,143,479,147,408,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="397,152,456,177"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="398,103,417,139,412,141,393,106"/>
+<area shape="poly" id="edge15_Node000010_Node000002" title=" " alt="" coords="154,106,80,147,77,143,151,102"/>
+<area shape="poly" id="edge16_Node000010_Node000004" title=" " alt="" coords="200,102,296,144,294,149,198,106"/>
+<area shape="poly" id="edge17_Node000010_Node000005" title=" " alt="" coords="236,101,468,149,467,155,235,107"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="110,152,181,177"/>
+<area shape="poly" id="edge18_Node000010_Node000011" title=" " alt="" coords="171,105,157,140,152,138,166,103"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="205,152,270,177"/>
+<area shape="poly" id="edge19_Node000010_Node000012" title=" " alt="" coords="186,103,220,140,216,144,182,106"/>
+</map>
