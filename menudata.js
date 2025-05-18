@@ -109,4 +109,5 @@ var menudata={children:[
 {text:"s",url:"globals_func.html#index_s"},
 {text:"z",url:"globals_func.html#index_z"}]},
 {text:"Typedefs",url:"globals_type.html"},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"Macros",url:"globals_defs.html"}]}]},
+{text:"Examples",url:"examples.html"}]}
