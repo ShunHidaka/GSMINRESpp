@@ -25,7 +25,7 @@ extern "C" {
 #endif
 
   /**
-   * \brief Opaque solver handle to internal C++ \t gsminres::Solver class.
+   * \brief Opaque solver handle to internal C++ `gsminres::Solver` class.
    * \details This handle abstracts the internal solver object used in C++ and
    *          allows it to be manipulated via C-compatible interface.
    *          The actual structure and memory layout are hidden from the C side.

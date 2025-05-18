@@ -141,7 +141,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Compute dot product of complex vectors: \f$ \sum_i \bar{x[i]} * y[i]) \f$.
+     * \brief Compute dot product of complex vectors: \f$ \sum_i \overline{x[i]} * y[i]) \f$.
      * \param[in] n        Number of elements to compute.
      * \param[in] x        First input vector.
      * \param[in] x_offset Starting index within the x vector.
