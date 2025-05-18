@@ -33,7 +33,7 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 
 ## Documents
 
-- [Manual](https://github.com/ShunHidaka/GSMINRESpp/)
+- [Manual](https://shunhidaka.github.io/GSMINRESpp/)
 
 ---
 
@@ -88,7 +88,7 @@ make install   # Install to $HOME/gsminres_install by default
 make           # Build sample programs and libraries in bin/
 make install   # Install to $HOME/gsminres_install by default
 ```
-See the [manual](https://github.com/ShunHidaka/GSMINRESpp/) for detailed instructions.
+See the [manual](https://shunhidaka.github.io/GSMINRESpp/) for detailed instructions.
 
 ---
 
@@ -152,7 +152,7 @@ $ gfortran myprog.cpp
 ---
 
 ## API Summary
-See the [manual](https://github.com/ShunHidaka/GSMINRESpp/).
+See the [manual](https://shunhidaka.github.io/GSMINRESpp/).
 
 ---
 
