@@ -132,7 +132,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html">gsminres::util::CSRMat</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a sparse matrix in CSR format.  <a href="structgsminres_1_1util_1_1CSRMat.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.  <a href="structgsminres_1_1util_1_1CSRMat.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -148,27 +148,29 @@ Functions</h2></td></tr>
 <tr class="memdesc:a425d6034008c64094817344e1d345176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a packed 'U' Hermitian or symmetric matrix from a Matrix Market file.  <br /></td></tr>
 <tr class="separator:a425d6034008c64094817344e1d345176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a023ff9d13c5d7d7a59c52b14053fb6" id="r_a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a0a023ff9d13c5d7d7a59c52b14053fb6">gsminres::util::load_vector</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a complex vector from a plain text file.  <br /></td></tr>
+<tr class="memdesc:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a complex-value vector from a plain text file.  <br /></td></tr>
 <tr class="separator:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ae6854ed69f2142374d1148ff6b457" id="r_af3ae6854ed69f2142374d1148ff6b457"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#af3ae6854ed69f2142374d1148ff6b457">gsminres::util::generate_ones</a> (const std::size_t size)</td></tr>
 <tr class="memdesc:af3ae6854ed69f2142374d1148ff6b457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector filled with ones.  <br /></td></tr>
 <tr class="separator:af3ae6854ed69f2142374d1148ff6b457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39a63da4844a24fba3b980a927bd57df" id="r_a39a63da4844a24fba3b980a927bd57df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a39a63da4844a24fba3b980a927bd57df">gsminres::util::generate_identity</a> (const std::size_t size)</td></tr>
-<tr class="memdesc:a39a63da4844a24fba3b980a927bd57df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a packed 'U' identity matrix.  <br /></td></tr>
+<tr class="memdesc:a39a63da4844a24fba3b980a927bd57df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a packed identity matrix in upper-triangular format.  <br /></td></tr>
 <tr class="separator:a39a63da4844a24fba3b980a927bd57df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15741b5c6c5859b19876d61fb2216b83" id="r_a15741b5c6c5859b19876d61fb2216b83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a15741b5c6c5859b19876d61fb2216b83">gsminres::util::load_csr_from_csr</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a15741b5c6c5859b19876d61fb2216b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a sparse matrix form a custom CSR-format file.  <br /></td></tr>
+<tr class="memdesc:a15741b5c6c5859b19876d61fb2216b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a sparse matrix from a file in custom CSR format.  <br /></td></tr>
 <tr class="separator:a15741b5c6c5859b19876d61fb2216b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53ba88d8f8faa06be510f24d52ba5c0" id="r_ae53ba88d8f8faa06be510f24d52ba5c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#ae53ba88d8f8faa06be510f24d52ba5c0">gsminres::util::spmv</a> (const <a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a> &amp;A, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x, std::vector&lt; std::complex&lt; double &gt; &gt; &amp;y)</td></tr>
-<tr class="memdesc:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sparse matrix-vector multiplication: y = A * x.  <br /></td></tr>
+<tr class="memdesc:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sparse matrix-vector multiplication: \( y = A x \).  <br /></td></tr>
 <tr class="separator:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef34f377a1274f044fb822ce9e60f0e5" id="r_aef34f377a1274f044fb822ce9e60f0e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#aef34f377a1274f044fb822ce9e60f0e5">gsminres::util::cg</a> (const <a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a> &amp;A, std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;b, const double tol, const std::size_t max_iter)</td></tr>
-<tr class="memdesc:aef34f377a1274f044fb822ce9e60f0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conjugate Gradient method for solving Ax = b.  <br /></td></tr>
+<tr class="memdesc:aef34f377a1274f044fb822ce9e60f0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve \( Ax=b \) using the Conjugate Gradient method.  <br /></td></tr>
 <tr class="separator:aef34f377a1274f044fb822ce9e60f0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility functions and data structures for GSMINRES++. </p>
-<p>This header provides matrix/vector loaders, generators and sparse matrix data structure (CSR format), as well as utility kernels such as sparse matrix-vector multiplication and a simple CG solver. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This header provides common utility components related to matrix and vector operations, including functions to load and generate test data, a custom sparse matrix data structure in CSR format, and basic computational kernels such as sparse matrix-vector multiplication and a simple Conjugate Gradient (CG) solver.</p>
+<p>These functions are not used internally by the GSMINRES++ solver itself, but are provided for convenience in sample programs, testing, and exploratory use. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

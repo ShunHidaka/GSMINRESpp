@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m_5fpi_0',['M_PI',['../sample2__c_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'sample2_c.c']]],
-  ['main_1',['main',['../sample1_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample1.cpp'],['../sample2_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample2.cpp'],['../sample2__c_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample2_c.c'],['../sample__std_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample_std.cpp']]],
-  ['matrix_5fsize_2',['matrix_size',['../structgsminres_1_1util_1_1CSRMat.html#a01a308ecf97d11dbabb9dbbca12c4707',1,'gsminres::util::CSRMat']]]
+  ['initialize_0',['initialize',['../classgsminres_1_1Solver.html#a9278fe3602d86353509a7e85f8d33528',1,'gsminres::Solver']]],
+  ['is_5fconv_5f_1',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
+  ['iter_5f_2',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
 ];

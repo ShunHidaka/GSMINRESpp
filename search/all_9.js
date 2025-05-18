@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['sample1_2ecpp_0',['sample1.cpp',['../sample1_8cpp.html',1,'']]],
-  ['sample1_5ff_1',['sample1_f',['../sample1__f_8f90.html#a9d75f9edcfe910c813fbd0113ec473b2',1,'sample1_f.f90']]],
-  ['sample1_5ff_2ef90_2',['sample1_f.f90',['../sample1__f_8f90.html',1,'']]],
-  ['sample2_2ecpp_3',['sample2.cpp',['../sample2_8cpp.html',1,'']]],
-  ['sample2_5fc_2ec_4',['sample2_c.c',['../sample2__c_8c.html',1,'']]],
-  ['sample_5fstd_2ecpp_5',['sample_std.cpp',['../sample__std_8cpp.html',1,'']]],
-  ['solver_6',['solver',['../classgsminres_1_1Solver.html',1,'gsminres::Solver'],['../classgsminres_1_1Solver.html#a652aa6cf07811368c3bb2d0e0ec46d05',1,'gsminres::Solver::Solver()']]],
-  ['spmv_7',['spmv',['../namespacegsminres_1_1util.html#ae53ba88d8f8faa06be510f24d52ba5c0',1,'gsminres::util::spmv()'],['../sample2__c_8c.html#a0ec091ccc27106ecdbd9df1f77d1e2c6',1,'SpMV():&#160;sample2_c.c']]]
+  ['m_5fpi_0',['M_PI',['../sample2__c_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'sample2_c.c']]],
+  ['main_1',['main',['../sample1_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample1.cpp'],['../sample2_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample2.cpp'],['../sample2__c_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample2_c.c'],['../sample__std_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;sample_std.cpp']]],
+  ['matrix_5fsize_2',['matrix_size',['../structgsminres_1_1util_1_1CSRMat.html#a01a308ecf97d11dbabb9dbbca12c4707',1,'gsminres::util::CSRMat']]],
+  ['matrix_5fsize_5f_3',['matrix_size_',['../classgsminres_1_1Solver.html#a4beb73c3d16b0dc6f5824e5d05f0a69f',1,'gsminres::Solver']]]
 ];

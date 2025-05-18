@@ -90,7 +90,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a sparse matrix in CSR format.  <a href="structgsminres_1_1util_1_1CSRMat.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.  <a href="structgsminres_1_1util_1_1CSRMat.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -99,22 +99,22 @@ Functions</h2></td></tr>
 <tr class="memdesc:a425d6034008c64094817344e1d345176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a packed 'U' Hermitian or symmetric matrix from a Matrix Market file.  <br /></td></tr>
 <tr class="separator:a425d6034008c64094817344e1d345176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a023ff9d13c5d7d7a59c52b14053fb6" id="r_a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a0a023ff9d13c5d7d7a59c52b14053fb6">load_vector</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a complex vector from a plain text file.  <br /></td></tr>
+<tr class="memdesc:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a complex-value vector from a plain text file.  <br /></td></tr>
 <tr class="separator:a0a023ff9d13c5d7d7a59c52b14053fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ae6854ed69f2142374d1148ff6b457" id="r_af3ae6854ed69f2142374d1148ff6b457"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#af3ae6854ed69f2142374d1148ff6b457">generate_ones</a> (const std::size_t size)</td></tr>
 <tr class="memdesc:af3ae6854ed69f2142374d1148ff6b457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector filled with ones.  <br /></td></tr>
 <tr class="separator:af3ae6854ed69f2142374d1148ff6b457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39a63da4844a24fba3b980a927bd57df" id="r_a39a63da4844a24fba3b980a927bd57df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a39a63da4844a24fba3b980a927bd57df">generate_identity</a> (const std::size_t size)</td></tr>
-<tr class="memdesc:a39a63da4844a24fba3b980a927bd57df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a packed 'U' identity matrix.  <br /></td></tr>
+<tr class="memdesc:a39a63da4844a24fba3b980a927bd57df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a packed identity matrix in upper-triangular format.  <br /></td></tr>
 <tr class="separator:a39a63da4844a24fba3b980a927bd57df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15741b5c6c5859b19876d61fb2216b83" id="r_a15741b5c6c5859b19876d61fb2216b83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#a15741b5c6c5859b19876d61fb2216b83">load_csr_from_csr</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a15741b5c6c5859b19876d61fb2216b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a sparse matrix form a custom CSR-format file.  <br /></td></tr>
+<tr class="memdesc:a15741b5c6c5859b19876d61fb2216b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a sparse matrix from a file in custom CSR format.  <br /></td></tr>
 <tr class="separator:a15741b5c6c5859b19876d61fb2216b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53ba88d8f8faa06be510f24d52ba5c0" id="r_ae53ba88d8f8faa06be510f24d52ba5c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#ae53ba88d8f8faa06be510f24d52ba5c0">spmv</a> (const <a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a> &amp;A, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x, std::vector&lt; std::complex&lt; double &gt; &gt; &amp;y)</td></tr>
-<tr class="memdesc:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sparse matrix-vector multiplication: y = A * x.  <br /></td></tr>
+<tr class="memdesc:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sparse matrix-vector multiplication: \( y = A x \).  <br /></td></tr>
 <tr class="separator:ae53ba88d8f8faa06be510f24d52ba5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef34f377a1274f044fb822ce9e60f0e5" id="r_aef34f377a1274f044fb822ce9e60f0e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html#aef34f377a1274f044fb822ce9e60f0e5">cg</a> (const <a class="el" href="structgsminres_1_1util_1_1CSRMat.html">CSRMat</a> &amp;A, std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;b, const double tol, const std::size_t max_iter)</td></tr>
-<tr class="memdesc:aef34f377a1274f044fb822ce9e60f0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conjugate Gradient method for solving Ax = b.  <br /></td></tr>
+<tr class="memdesc:aef34f377a1274f044fb822ce9e60f0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve \( Ax=b \) using the Conjugate Gradient method.  <br /></td></tr>
 <tr class="separator:aef34f377a1274f044fb822ce9e60f0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -162,13 +162,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Conjugate Gradient method for solving Ax = b. </p>
+<p>Solve \( Ax=b \) using the Conjugate Gradient method. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td>Coefficient matrix (CSR format). </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Solution vector (initial guess input, solution output). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Solution vector. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Right-hand side vector. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tol</td><td>Tolerance for relative residual (default = 1e-12). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tol</td><td>Relative residual tolerance (default = 1e-12). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">max_iter</td><td>Maximum number of iterations (default = 10000). </td></tr>
   </table>
   </dd>
@@ -193,14 +193,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate a packed 'U' identity matrix. </p>
+<p>Generate a packed identity matrix in upper-triangular format. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Matrix size </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Dimension of the square matrix </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Packed upper-triangular identity matrix. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>std::vector&lt;std::complex&lt;double&gt;&gt;</code> storing identity matrix in packed format (upper triangle). </dd></dl>
 
 </div>
 </div>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>st::vector&lt;std::complex&lt;double&gt;&gt; with all entries set to 1.0+0.0i. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>std::vector&lt;std::complex&lt;double&gt;&gt;</code> with all entries set to <code>1.0+0.0i</code>. </dd></dl>
 
 </div>
 </div>
@@ -247,14 +247,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load a sparse matrix form a custom CSR-format file. </p>
+<p>Load a sparse matrix from a file in custom CSR format. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>File path of the CSR matrix </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Path to the file containing CSR-formatted matrix. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>CSR matrix. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>CSR matrix object. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Exits the program on failure. </dd></dl>
 
 </div>
@@ -288,12 +288,12 @@ Functions</h2></td></tr>
 <p>Load a packed 'U' Hermitian or symmetric matrix from a Matrix Market file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>File path of the Matrix Market file. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>Size of the square matrix. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Path to the Matrix Market file. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>Size of the resulting square matrix. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Packed upper-triangular matrix in std::vector&lt;std::complex&lt;double&gt;&gt;. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>std::vector&lt;std::complex&lt;double&gt;&gt;</code> containing packed matrix (upper-triangular). </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Exits the program on failure. </dd></dl>
 
 </div>
@@ -314,14 +314,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load a complex vector from a plain text file. </p>
+<p>Load a complex-value vector from a plain text file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>File path of the vector file. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Path to the vector file. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::complex&lt;double&gt;&gt;. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>std::vector&lt;std::complex&lt;double&gt;&gt;</code>. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Exits the program on failure. </dd></dl>
 
 </div>
@@ -358,12 +358,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sparse matrix-vector multiplication: y = A * x. </p>
+<p>Perform sparse matrix-vector multiplication: \( y = A x \). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td>Matrix in CSR format. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Input vector. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">y</td><td>Output vector (A * x). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">y</td><td>Output vector where result is stored. </td></tr>
   </table>
   </dd>
 </dl>

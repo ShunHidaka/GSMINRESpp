@@ -121,6 +121,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a57e57589998268e4e0f92582ded6126e" id="r_a57e57589998268e4e0f92582ded6126e"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a></td></tr>
+<tr class="memdesc:a57e57589998268e4e0f92582ded6126e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque solver handle to internal C++ \t <a class="el" href="classgsminres_1_1Solver.html" title="Generalized shifted MINRES solver class.">gsminres::Solver</a> class.  <br /></td></tr>
 <tr class="separator:a57e57589998268e4e0f92582ded6126e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -132,28 +133,34 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0a9671eb7ee8cbd19ccd9c5064a2c5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the solver and free memory.  <br /></td></tr>
 <tr class="separator:a0a9671eb7ee8cbd19ccd9c5064a2c5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab288fc66ded8f2ab6a84e43b7d94f36b" id="r_ab288fc66ded8f2ab6a84e43b7d94f36b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#ab288fc66ded8f2ab6a84e43b7d94f36b">gsminres_initialize</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *x, const void *b, void *w, const void *sigma, const double threshold, const size_t n, const size_t m)</td></tr>
-<tr class="memdesc:ab288fc66ded8f2ab6a84e43b7d94f36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalize the solver.  <br /></td></tr>
+<tr class="memdesc:ab288fc66ded8f2ab6a84e43b7d94f36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the solver with input data and prepare for iteration.  <br /></td></tr>
 <tr class="separator:ab288fc66ded8f2ab6a84e43b7d94f36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac64dd7d7c4ff97a8cae416e2bbf3e212" id="r_ac64dd7d7c4ff97a8cae416e2bbf3e212"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#ac64dd7d7c4ff97a8cae416e2bbf3e212">gsminres_glanczos_pre</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *u, const size_t n)</td></tr>
-<tr class="memdesc:ac64dd7d7c4ff97a8cae416e2bbf3e212"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply pre-processing step of the Generalized Lanczos process.  <br /></td></tr>
+<tr class="memdesc:ac64dd7d7c4ff97a8cae416e2bbf3e212"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the pre-processing step of the generalized Lanczos process.  <br /></td></tr>
 <tr class="separator:ac64dd7d7c4ff97a8cae416e2bbf3e212"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b1909fd8561fc38fcbc075ac9b966d7" id="r_a5b1909fd8561fc38fcbc075ac9b966d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#a5b1909fd8561fc38fcbc075ac9b966d7">gsminres_glanczos_pst</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *w, void *u, const size_t n)</td></tr>
-<tr class="memdesc:a5b1909fd8561fc38fcbc075ac9b966d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply post-processing step of the Generalized Lanczos process.  <br /></td></tr>
+<tr class="memdesc:a5b1909fd8561fc38fcbc075ac9b966d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the post-processing step of the generalized Lanczos process.  <br /></td></tr>
 <tr class="separator:a5b1909fd8561fc38fcbc075ac9b966d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b6356903082a4c49d4a74cc1f3b8946" id="r_a1b6356903082a4c49d4a74cc1f3b8946"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#a1b6356903082a4c49d4a74cc1f3b8946">gsminres_update</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *x, const size_t n, const size_t m)</td></tr>
-<tr class="memdesc:a1b6356903082a4c49d4a74cc1f3b8946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the approximate solutions.  <br /></td></tr>
+<tr class="memdesc:a1b6356903082a4c49d4a74cc1f3b8946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the approximate solutions and check convergence.  <br /></td></tr>
 <tr class="separator:a1b6356903082a4c49d4a74cc1f3b8946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ae1ca17bd20b352c4cd43b9a58fda0d" id="r_a5ae1ca17bd20b352c4cd43b9a58fda0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#a5ae1ca17bd20b352c4cd43b9a58fda0d">gsminres_finalize</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *conv_itr, void *conv_res, const size_t m)</td></tr>
-<tr class="memdesc:a5ae1ca17bd20b352c4cd43b9a58fda0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get converged iteration and converged residual norm.  <br /></td></tr>
+<tr class="memdesc:a5ae1ca17bd20b352c4cd43b9a58fda0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve converged iteration and converged residual norm.  <br /></td></tr>
 <tr class="separator:a5ae1ca17bd20b352c4cd43b9a58fda0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82baae1ab1e3462ca818d7368a8a5d48" id="r_a82baae1ab1e3462ca818d7368a8a5d48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gsminres__c__api_8h.html#a82baae1ab1e3462ca818d7368a8a5d48">gsminres_get_residual</a> (<a class="el" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle, void *res, const size_t m)</td></tr>
-<tr class="memdesc:a82baae1ab1e3462ca818d7368a8a5d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current residual norms.  <br /></td></tr>
+<tr class="memdesc:a82baae1ab1e3462ca818d7368a8a5d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve current residual norms in Algorithm.  <br /></td></tr>
 <tr class="separator:a82baae1ab1e3462ca818d7368a8a5d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>C API for the GSMINRES++ solver. </p>
 <dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
-<p>This file provides a C interface for the GSMINRES++ library, which solves multiple shifted linear systems of the form \( (A + \sigma^{(m)} B)x^{(m)} = b \) using a generalized MINRES method. The API is designed for interoperability with C and Fortran, and uses row-major layout for storing multiple solution vectors \( x^{(m)} \). </p>
+<p>This file provides a C interface for the GSMINRES++ library, which solves multiple shifted linear systems of the form  </p><p class="formulaDsp">
+\[
+           (A + \sigma^{(m)} B)x^{(m)} = b 
+         \]
+</p>
+<p> using a generalized MINRES method.</p>
+<p>The API is designed for interoperability with C and Fortran, and uses row-major layout for storing multiple solution vectors \( x^{(m)} \). </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a57e57589998268e4e0f92582ded6126e" name="a57e57589998268e4e0f92582ded6126e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57e57589998268e4e0f92582ded6126e">&#9670;&#160;</a></span>gsminres_handle</h2>
@@ -166,6 +173,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Opaque solver handle to internal C++ \t <a class="el" href="classgsminres_1_1Solver.html" title="Generalized shifted MINRES solver class.">gsminres::Solver</a> class. </p>
+<p>This handle abstracts the internal solver object used in C++ and allows it to be manipulated via C-compatible interface. The actual structure and memory layout are hidden from the C side. </p>
 
 </div>
 </div>
@@ -199,12 +209,12 @@ Functions</h2></td></tr>
 <p>Create a new GSMINRES Solver. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Solver handle </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Solver handle. </dd></dl>
 
 </div>
 </div>
@@ -227,7 +237,7 @@ Functions</h2></td></tr>
 <p>Destroy the solver and free memory. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Solver handle </td></tr>
+    <tr><td class="paramname">handle</td><td>Solver handle. </td></tr>
   </table>
   </dd>
 </dl>
@@ -272,13 +282,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get converged iteration and converged residual norm. </p>
+<p>Retrieve converged iteration and converged residual norm. </p>
+<p>This function does not finalize or delete the solver instance. It only retrieves the number of iterations and the residual norm in Algorithm at convergence for each shifted systems. To properly clean up the solver, call <code>gsminres_destory</code> explicitly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">conv_itr</td><td>Array storage the number of iterations until convergence (length=m) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">conv_res</td><td>Array storage converged residual norm for each system (lenght=m) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">conv_itr</td><td>Array storage the number of converged iterations (size = m). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">conv_res</td><td>Array storage converged residual norms (size = m). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>
@@ -317,12 +328,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get current residual norms. </p>
+<p>Retrieve current residual norms in Algorithm. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">res</td><td>Array storage residual norm for each system (length=m) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">res</td><td>Array storage residual norm for each system (size = m). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>
@@ -361,12 +372,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Apply pre-processing step of the Generalized Lanczos process. </p>
+<p>Perform the pre-processing step of the generalized Lanczos process. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>A*w (length=n) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector initially containing the \( Aw\) and is update (size = n). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size. </td></tr>
   </table>
   </dd>
 </dl>
@@ -411,13 +422,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Apply post-processing step of the Generalized Lanczos process. </p>
+<p>Perform the post-processing step of the generalized Lanczos process. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>(length=n) </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>B^{-1}Aw (length=n) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed vector \( w = B^{-1} u \) (size = n). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector which used in <code>glanczos_pre()</code> (size = n). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size. </td></tr>
   </table>
   </dd>
 </dl>
@@ -486,17 +497,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initalize the solver. </p>
+<p>Initialize the solver with input data and prepare for iteration. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Approximate solutions (length=n*m, row-major) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Right-hand side vector (length=n) </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>B^{-1}b (length=n) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">sigma</td><td>Shift parameters (length=m) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>Relative residual threshold for convergence </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Approximate solutions (size = n*m, row-major). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Right-hand side vector (size = n). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed right-hand side \( B^{-1}b \) (size = n). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sigma</td><td>Array of shift parameters (size = m). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>Convergence threshold for relative residuals. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>
@@ -541,13 +552,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update the approximate solutions. </p>
+<p>Update the approximate solutions and check convergence. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Approximate solutions (length=n*m, row-major) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>Solver handle. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Approximate solutions to be updated (size = n*m, row-major). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Matrix size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>

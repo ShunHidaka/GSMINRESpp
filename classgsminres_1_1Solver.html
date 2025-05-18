@@ -82,6 +82,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classgsminres_1_1Solver-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">gsminres::Solver Class Reference</div></div>
 </div><!--header-->
@@ -101,7 +102,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a90f352d4ba10033799b69915b3f7c01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <br /></td></tr>
 <tr class="separator:a90f352d4ba10033799b69915b3f7c01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9278fe3602d86353509a7e85f8d33528" id="r_a9278fe3602d86353509a7e85f8d33528"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a9278fe3602d86353509a7e85f8d33528">initialize</a> (std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;b, std::vector&lt; std::complex&lt; double &gt; &gt; &amp;w, const std::vector&lt; std::complex&lt; double &gt; &gt; &amp;sigma, const double threshold)</td></tr>
-<tr class="memdesc:a9278fe3602d86353509a7e85f8d33528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the solver with input data and prepare for iteration.  <br /></td></tr>
+<tr class="memdesc:a9278fe3602d86353509a7e85f8d33528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the solver with input data and prepare for iteration.  <br /></td></tr>
 <tr class="separator:a9278fe3602d86353509a7e85f8d33528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a310f96cd880b1b2fe5bb3a481e0ed641" id="r_a310f96cd880b1b2fe5bb3a481e0ed641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a310f96cd880b1b2fe5bb3a481e0ed641">glanczos_pre</a> (std::vector&lt; std::complex&lt; double &gt; &gt; &amp;u)</td></tr>
 <tr class="memdesc:a310f96cd880b1b2fe5bb3a481e0ed641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the pre-processing step of the generalized Lanczos process.  <br /></td></tr>
@@ -112,11 +113,88 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ee840487e30608fce0e0550cbdffd84" id="r_a9ee840487e30608fce0e0550cbdffd84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a9ee840487e30608fce0e0550cbdffd84">update</a> (std::vector&lt; std::complex&lt; double &gt; &gt; &amp;x)</td></tr>
 <tr class="separator:a9ee840487e30608fce0e0550cbdffd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87d61f56c7ced2a09f7759d98cf6d427" id="r_a87d61f56c7ced2a09f7759d98cf6d427"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a87d61f56c7ced2a09f7759d98cf6d427">finalize</a> (std::vector&lt; std::size_t &gt; &amp;conv_itr, std::vector&lt; double &gt; &amp;conv_res)</td></tr>
-<tr class="memdesc:a87d61f56c7ced2a09f7759d98cf6d427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize the solver and retrieve iteration info.  <br /></td></tr>
+<tr class="memdesc:a87d61f56c7ced2a09f7759d98cf6d427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve converged iteration and converged residual norm.  <br /></td></tr>
 <tr class="separator:a87d61f56c7ced2a09f7759d98cf6d427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a84ddbedfe524ed29bf0f8c58e298f" id="r_a18a84ddbedfe524ed29bf0f8c58e298f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a18a84ddbedfe524ed29bf0f8c58e298f">get_residual</a> (std::vector&lt; double &gt; &amp;res) const</td></tr>
 <tr class="memdesc:a18a84ddbedfe524ed29bf0f8c58e298f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve current residual norms in Algorithm.  <br /></td></tr>
 <tr class="separator:a18a84ddbedfe524ed29bf0f8c58e298f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5c019a181c36f210c0bec2293fba0803" id="r_a5c019a181c36f210c0bec2293fba0803"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803">iter_</a></td></tr>
+<tr class="memdesc:a5c019a181c36f210c0bec2293fba0803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of iterations.  <br /></td></tr>
+<tr class="separator:a5c019a181c36f210c0bec2293fba0803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4beb73c3d16b0dc6f5824e5d05f0a69f" id="r_a4beb73c3d16b0dc6f5824e5d05f0a69f"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a4beb73c3d16b0dc6f5824e5d05f0a69f">matrix_size_</a></td></tr>
+<tr class="memdesc:a4beb73c3d16b0dc6f5824e5d05f0a69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix size \( N \).  <br /></td></tr>
+<tr class="separator:a4beb73c3d16b0dc6f5824e5d05f0a69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f4175da74f26f5590f2c215853cb603" id="r_a7f4175da74f26f5590f2c215853cb603"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a7f4175da74f26f5590f2c215853cb603">shift_size_</a></td></tr>
+<tr class="memdesc:a7f4175da74f26f5590f2c215853cb603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of shift \( M \).  <br /></td></tr>
+<tr class="separator:a7f4175da74f26f5590f2c215853cb603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6f3415ffe3abaaf3779624676d1a76f" id="r_ae6f3415ffe3abaaf3779624676d1a76f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ae6f3415ffe3abaaf3779624676d1a76f">r0_norm_</a></td></tr>
+<tr class="memdesc:ae6f3415ffe3abaaf3779624676d1a76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Norm of the initial residual norm.  <br /></td></tr>
+<tr class="separator:ae6f3415ffe3abaaf3779624676d1a76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4244b86c8ac7f6b8a2042167f8d00995" id="r_a4244b86c8ac7f6b8a2042167f8d00995"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a4244b86c8ac7f6b8a2042167f8d00995">sigma_</a></td></tr>
+<tr class="memdesc:a4244b86c8ac7f6b8a2042167f8d00995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shift values \( \sigma^{(m)} \).  <br /></td></tr>
+<tr class="separator:a4244b86c8ac7f6b8a2042167f8d00995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39ee7103965ee545b61111b355b644e" id="r_ad39ee7103965ee545b61111b355b644e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ad39ee7103965ee545b61111b355b644e">alpha_</a></td></tr>
+<tr class="memdesc:ad39ee7103965ee545b61111b355b644e"><td class="mdescLeft">&#160;</td><td class="mdescRight">alpha coeffcient  <br /></td></tr>
+<tr class="separator:ad39ee7103965ee545b61111b355b644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43d2c6f6bdbc2a9a392931a2430322f" id="r_ae43d2c6f6bdbc2a9a392931a2430322f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ae43d2c6f6bdbc2a9a392931a2430322f">beta_prev_</a></td></tr>
+<tr class="separator:ae43d2c6f6bdbc2a9a392931a2430322f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5bf1004b1e741e445e821dc09d668f" id="r_aef5bf1004b1e741e445e821dc09d668f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#aef5bf1004b1e741e445e821dc09d668f">beta_curr_</a></td></tr>
+<tr class="memdesc:aef5bf1004b1e741e445e821dc09d668f"><td class="mdescLeft">&#160;</td><td class="mdescRight">beta coefficients (previous and current)  <br /></td></tr>
+<tr class="separator:aef5bf1004b1e741e445e821dc09d668f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67c56c39b13407f4daccc1e976e9bb7" id="r_ac67c56c39b13407f4daccc1e976e9bb7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ac67c56c39b13407f4daccc1e976e9bb7">w_prev_</a></td></tr>
+<tr class="separator:ac67c56c39b13407f4daccc1e976e9bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefcc62ed227bd7f205d9434984f0d6c3" id="r_aefcc62ed227bd7f205d9434984f0d6c3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#aefcc62ed227bd7f205d9434984f0d6c3">w_curr_</a></td></tr>
+<tr class="separator:aefcc62ed227bd7f205d9434984f0d6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeebbe5cb5c78f5d653994444913e46b9" id="r_aeebbe5cb5c78f5d653994444913e46b9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#aeebbe5cb5c78f5d653994444913e46b9">w_next_</a></td></tr>
+<tr class="memdesc:aeebbe5cb5c78f5d653994444913e46b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lanczos basis vectors.  <br /></td></tr>
+<tr class="separator:aeebbe5cb5c78f5d653994444913e46b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61bea1bafbd91897f87c5880868701c3" id="r_a61bea1bafbd91897f87c5880868701c3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a61bea1bafbd91897f87c5880868701c3">u_prev_</a></td></tr>
+<tr class="separator:a61bea1bafbd91897f87c5880868701c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a6a490498ccf5f30ac72879a3bf091d" id="r_a7a6a490498ccf5f30ac72879a3bf091d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a7a6a490498ccf5f30ac72879a3bf091d">u_curr_</a></td></tr>
+<tr class="separator:a7a6a490498ccf5f30ac72879a3bf091d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f5dcd12dbac17f5c477b3b2c541814" id="r_a91f5dcd12dbac17f5c477b3b2c541814"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a91f5dcd12dbac17f5c477b3b2c541814">u_next_</a></td></tr>
+<tr class="memdesc:a91f5dcd12dbac17f5c477b3b2c541814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliary vectors.  <br /></td></tr>
+<tr class="separator:a91f5dcd12dbac17f5c477b3b2c541814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac559a3b7e48428dcd897f991303cef7b" id="r_ac559a3b7e48428dcd897f991303cef7b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ac559a3b7e48428dcd897f991303cef7b">T_prev2_</a></td></tr>
+<tr class="memdesc:ac559a3b7e48428dcd897f991303cef7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elements of the tridiagonal matrix by Lanczos process These vectors store the column-wise elements of a tridiagonal matrix, used during the Lanczos process. Although each vector contains only one element in practice, they are wrapped in 'std::vector' to be compatible with my BLAS routine wropper that require vector inputs.  <br /></td></tr>
+<tr class="separator:ac559a3b7e48428dcd897f991303cef7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae89cf634bfe31a2537877e0a3496d0cc" id="r_ae89cf634bfe31a2537877e0a3496d0cc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ae89cf634bfe31a2537877e0a3496d0cc">T_prev_</a></td></tr>
+<tr class="separator:ae89cf634bfe31a2537877e0a3496d0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f7ebb66e24c56371a8eb756e1287d7" id="r_a60f7ebb66e24c56371a8eb756e1287d7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a60f7ebb66e24c56371a8eb756e1287d7">T_curr_</a></td></tr>
+<tr class="separator:a60f7ebb66e24c56371a8eb756e1287d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab96fed68ec615ed134749bf643a63b76" id="r_ab96fed68ec615ed134749bf643a63b76"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ab96fed68ec615ed134749bf643a63b76">T_next_</a></td></tr>
+<tr class="separator:ab96fed68ec615ed134749bf643a63b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86dd9f2ebbe8cb5250f0a95f0f0ff317" id="r_a86dd9f2ebbe8cb5250f0a95f0f0ff317"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; double, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a86dd9f2ebbe8cb5250f0a95f0f0ff317">Gc_</a></td></tr>
+<tr class="memdesc:a86dd9f2ebbe8cb5250f0a95f0f0ff317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Givens rotation matrixs element "c".  <br /></td></tr>
+<tr class="separator:a86dd9f2ebbe8cb5250f0a95f0f0ff317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067f195360790a05a795198641792cf9" id="r_a067f195360790a05a795198641792cf9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; std::complex&lt; double &gt;, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a067f195360790a05a795198641792cf9">Gs_</a></td></tr>
+<tr class="memdesc:a067f195360790a05a795198641792cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Givens rotation matrixs element "s".  <br /></td></tr>
+<tr class="separator:a067f195360790a05a795198641792cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c8cf4a9e0a82df830ecd245955071bd" id="r_a4c8cf4a9e0a82df830ecd245955071bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a4c8cf4a9e0a82df830ecd245955071bd">p_prev2_</a></td></tr>
+<tr class="separator:a4c8cf4a9e0a82df830ecd245955071bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1295deb284049799116f84c1b8490517" id="r_a1295deb284049799116f84c1b8490517"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a1295deb284049799116f84c1b8490517">p_prev_</a></td></tr>
+<tr class="separator:a1295deb284049799116f84c1b8490517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59723f6cd31c9246af2dc49b8d0134b0" id="r_a59723f6cd31c9246af2dc49b8d0134b0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a59723f6cd31c9246af2dc49b8d0134b0">p_curr_</a></td></tr>
+<tr class="memdesc:a59723f6cd31c9246af2dc49b8d0134b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliary vectors (shift*matrix)  <br /></td></tr>
+<tr class="separator:a59723f6cd31c9246af2dc49b8d0134b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec6d31a2feef2e33b6f65cf8c97ae699" id="r_aec6d31a2feef2e33b6f65cf8c97ae699"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#aec6d31a2feef2e33b6f65cf8c97ae699">f_</a></td></tr>
+<tr class="memdesc:aec6d31a2feef2e33b6f65cf8c97ae699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliary variables.  <br /></td></tr>
+<tr class="separator:aec6d31a2feef2e33b6f65cf8c97ae699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487052bdf956cff0a314ce913069c2a7" id="r_a487052bdf956cff0a314ce913069c2a7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a487052bdf956cff0a314ce913069c2a7">h_</a></td></tr>
+<tr class="memdesc:a487052bdf956cff0a314ce913069c2a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Residual norms in Algorithm.  <br /></td></tr>
+<tr class="separator:a487052bdf956cff0a314ce913069c2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac341062af4291ec26535a04236041c60" id="r_ac341062af4291ec26535a04236041c60"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#ac341062af4291ec26535a04236041c60">conv_num_</a></td></tr>
+<tr class="memdesc:ac341062af4291ec26535a04236041c60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of systems that have converged.  <br /></td></tr>
+<tr class="separator:ac341062af4291ec26535a04236041c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289603b24d872433de2169cd57462880" id="r_a289603b24d872433de2169cd57462880"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880">is_conv_</a></td></tr>
+<tr class="memdesc:a289603b24d872433de2169cd57462880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags indicating convergence for each system.  <br /></td></tr>
+<tr class="separator:a289603b24d872433de2169cd57462880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a86d25adb6d2ced17791d296d957708" id="r_a8a86d25adb6d2ced17791d296d957708"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgsminres_1_1Solver.html#a8a86d25adb6d2ced17791d296d957708">threshold_</a></td></tr>
+<tr class="memdesc:a8a86d25adb6d2ced17791d296d957708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative reisudal convergence threshold.  <br /></td></tr>
+<tr class="separator:a8a86d25adb6d2ced17791d296d957708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generalized shifted MINRES solver class. </p>
@@ -151,8 +229,8 @@ Public Member Functions</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">matrix_size</td><td>Matrix size </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">shift_size</td><td>Number of shifts </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">matrix_size</td><td>Matrix size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">shift_size</td><td>Number of shifts. </td></tr>
   </table>
   </dd>
 </dl>
@@ -183,7 +261,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deconstructor. </p>
-<p>Maybe do not need to use </p>
+<p>Default destructor. No manual cleanup required. </p>
 
 </div>
 </div>
@@ -214,11 +292,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finalize the solver and retrieve iteration info. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Retrieve converged iteration and converged residual norm. </p>
+<p>This function does not finalize or delete the solver instance. It only retrieves the number of iterations and the residual norm in Algorithm at convergence for each shifted systems. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">conv_itr</td><td>Number of iterations for each shift (size = shift_size) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">conv_res</td><td>Final residual norms in Algorithm for each shift (size = shift_size) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">conv_itr</td><td>Number of iterations for each shift (size = shift_size). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">conv_res</td><td>Final residual norms in Algorithm for each shift (size = shift_size). </td></tr>
   </table>
   </dd>
 </dl>
@@ -270,7 +348,7 @@ Public Member Functions</h2></td></tr>
 <p>Perform the pre-processing step of the generalized Lanczos process. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector to which matrix-vector multiplication is applied u=A*w </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector to which is matrix-vector multiplication is applied, \( u=Aw\). </td></tr>
   </table>
   </dd>
 </dl>
@@ -306,8 +384,8 @@ Public Member Functions</h2></td></tr>
 <p>Perform the post-processing step of the generalized Lanczos process. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed vector w=B^{-1}u </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector which used in glanczos_pre </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed vector \( w = B^{-1}u \). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">u</td><td>Vector which used in <code><a class="el" href="classgsminres_1_1Solver.html#a310f96cd880b1b2fe5bb3a481e0ed641" title="Perform the pre-processing step of the generalized Lanczos process.">glanczos_pre()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -358,13 +436,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set up the solver with input data and prepare for iteration. </p>
+<p>Initialize the solver with input data and prepare for iteration. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Approximate solutions (size = matrix_size * shift_size). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Right-hand side vector (size = matrix_size). </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed right-hand side B^{-1}b (size = matrix_size). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">sigma</td><td>Array of shift parameters (size = shift_size). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">w</td><td>Pre-processed right-hand side \( B^{-1}b \) (size = matrix_size). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sigma</td><td>Vector of shift parameters (size = shift_size). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>Convergence threshold for relative residuals. </td></tr>
   </table>
   </dd>
@@ -394,6 +472,659 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if all systems have converged, false otherwise. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad39ee7103965ee545b61111b355b644e" name="ad39ee7103965ee545b61111b355b644e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad39ee7103965ee545b61111b355b644e">&#9670;&#160;</a></span>alpha_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsminres::Solver::alpha_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>alpha coeffcient </p>
+
+</div>
+</div>
+<a id="aef5bf1004b1e741e445e821dc09d668f" name="aef5bf1004b1e741e445e821dc09d668f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5bf1004b1e741e445e821dc09d668f">&#9670;&#160;</a></span>beta_curr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsminres::Solver::beta_curr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>beta coefficients (previous and current) </p>
+
+</div>
+</div>
+<a id="ae43d2c6f6bdbc2a9a392931a2430322f" name="ae43d2c6f6bdbc2a9a392931a2430322f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43d2c6f6bdbc2a9a392931a2430322f">&#9670;&#160;</a></span>beta_prev_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsminres::Solver::beta_prev_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac341062af4291ec26535a04236041c60" name="ac341062af4291ec26535a04236041c60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac341062af4291ec26535a04236041c60">&#9670;&#160;</a></span>conv_num_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int gsminres::Solver::conv_num_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of systems that have converged. </p>
+
+</div>
+</div>
+<a id="aec6d31a2feef2e33b6f65cf8c97ae699" name="aec6d31a2feef2e33b6f65cf8c97ae699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec6d31a2feef2e33b6f65cf8c97ae699">&#9670;&#160;</a></span>f_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::f_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Auxiliary variables. </p>
+
+</div>
+</div>
+<a id="a86dd9f2ebbe8cb5250f0a95f0f0ff317" name="a86dd9f2ebbe8cb5250f0a95f0f0ff317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86dd9f2ebbe8cb5250f0a95f0f0ff317">&#9670;&#160;</a></span>Gc_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;double, 3&gt; &gt; gsminres::Solver::Gc_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Givens rotation matrixs element "c". </p>
+
+</div>
+</div>
+<a id="a067f195360790a05a795198641792cf9" name="a067f195360790a05a795198641792cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a067f195360790a05a795198641792cf9">&#9670;&#160;</a></span>Gs_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::array&lt;std::complex&lt;double&gt;, 3&gt; &gt; gsminres::Solver::Gs_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Givens rotation matrixs element "s". </p>
+
+</div>
+</div>
+<a id="a487052bdf956cff0a314ce913069c2a7" name="a487052bdf956cff0a314ce913069c2a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487052bdf956cff0a314ce913069c2a7">&#9670;&#160;</a></span>h_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; gsminres::Solver::h_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Residual norms in Algorithm. </p>
+
+</div>
+</div>
+<a id="a289603b24d872433de2169cd57462880" name="a289603b24d872433de2169cd57462880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a289603b24d872433de2169cd57462880">&#9670;&#160;</a></span>is_conv_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::size_t&gt; gsminres::Solver::is_conv_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flags indicating convergence for each system. </p>
+
+</div>
+</div>
+<a id="a5c019a181c36f210c0bec2293fba0803" name="a5c019a181c36f210c0bec2293fba0803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c019a181c36f210c0bec2293fba0803">&#9670;&#160;</a></span>iter_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t gsminres::Solver::iter_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of iterations. </p>
+
+</div>
+</div>
+<a id="a4beb73c3d16b0dc6f5824e5d05f0a69f" name="a4beb73c3d16b0dc6f5824e5d05f0a69f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4beb73c3d16b0dc6f5824e5d05f0a69f">&#9670;&#160;</a></span>matrix_size_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t gsminres::Solver::matrix_size_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Matrix size \( N \). </p>
+
+</div>
+</div>
+<a id="a59723f6cd31c9246af2dc49b8d0134b0" name="a59723f6cd31c9246af2dc49b8d0134b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59723f6cd31c9246af2dc49b8d0134b0">&#9670;&#160;</a></span>p_curr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::p_curr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Auxiliary vectors (shift*matrix) </p>
+
+</div>
+</div>
+<a id="a4c8cf4a9e0a82df830ecd245955071bd" name="a4c8cf4a9e0a82df830ecd245955071bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c8cf4a9e0a82df830ecd245955071bd">&#9670;&#160;</a></span>p_prev2_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::p_prev2_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1295deb284049799116f84c1b8490517" name="a1295deb284049799116f84c1b8490517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1295deb284049799116f84c1b8490517">&#9670;&#160;</a></span>p_prev_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::p_prev_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6f3415ffe3abaaf3779624676d1a76f" name="ae6f3415ffe3abaaf3779624676d1a76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6f3415ffe3abaaf3779624676d1a76f">&#9670;&#160;</a></span>r0_norm_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsminres::Solver::r0_norm_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Norm of the initial residual norm. </p>
+
+</div>
+</div>
+<a id="a7f4175da74f26f5590f2c215853cb603" name="a7f4175da74f26f5590f2c215853cb603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f4175da74f26f5590f2c215853cb603">&#9670;&#160;</a></span>shift_size_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t gsminres::Solver::shift_size_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of shift \( M \). </p>
+
+</div>
+</div>
+<a id="a4244b86c8ac7f6b8a2042167f8d00995" name="a4244b86c8ac7f6b8a2042167f8d00995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4244b86c8ac7f6b8a2042167f8d00995">&#9670;&#160;</a></span>sigma_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::sigma_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shift values \( \sigma^{(m)} \). </p>
+
+</div>
+</div>
+<a id="a60f7ebb66e24c56371a8eb756e1287d7" name="a60f7ebb66e24c56371a8eb756e1287d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60f7ebb66e24c56371a8eb756e1287d7">&#9670;&#160;</a></span>T_curr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::T_curr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab96fed68ec615ed134749bf643a63b76" name="ab96fed68ec615ed134749bf643a63b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96fed68ec615ed134749bf643a63b76">&#9670;&#160;</a></span>T_next_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::T_next_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac559a3b7e48428dcd897f991303cef7b" name="ac559a3b7e48428dcd897f991303cef7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac559a3b7e48428dcd897f991303cef7b">&#9670;&#160;</a></span>T_prev2_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::T_prev2_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elements of the tridiagonal matrix by Lanczos process These vectors store the column-wise elements of a tridiagonal matrix, used during the Lanczos process. Although each vector contains only one element in practice, they are wrapped in 'std::vector' to be compatible with my BLAS routine wropper that require vector inputs. </p>
+
+</div>
+</div>
+<a id="ae89cf634bfe31a2537877e0a3496d0cc" name="ae89cf634bfe31a2537877e0a3496d0cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae89cf634bfe31a2537877e0a3496d0cc">&#9670;&#160;</a></span>T_prev_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::T_prev_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a86d25adb6d2ced17791d296d957708" name="a8a86d25adb6d2ced17791d296d957708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a86d25adb6d2ced17791d296d957708">&#9670;&#160;</a></span>threshold_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gsminres::Solver::threshold_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Relative reisudal convergence threshold. </p>
+
+</div>
+</div>
+<a id="a7a6a490498ccf5f30ac72879a3bf091d" name="a7a6a490498ccf5f30ac72879a3bf091d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a6a490498ccf5f30ac72879a3bf091d">&#9670;&#160;</a></span>u_curr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::u_curr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91f5dcd12dbac17f5c477b3b2c541814" name="a91f5dcd12dbac17f5c477b3b2c541814"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91f5dcd12dbac17f5c477b3b2c541814">&#9670;&#160;</a></span>u_next_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::u_next_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Auxiliary vectors. </p>
+
+</div>
+</div>
+<a id="a61bea1bafbd91897f87c5880868701c3" name="a61bea1bafbd91897f87c5880868701c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61bea1bafbd91897f87c5880868701c3">&#9670;&#160;</a></span>u_prev_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::u_prev_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aefcc62ed227bd7f205d9434984f0d6c3" name="aefcc62ed227bd7f205d9434984f0d6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefcc62ed227bd7f205d9434984f0d6c3">&#9670;&#160;</a></span>w_curr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::w_curr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeebbe5cb5c78f5d653994444913e46b9" name="aeebbe5cb5c78f5d653994444913e46b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeebbe5cb5c78f5d653994444913e46b9">&#9670;&#160;</a></span>w_next_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::w_next_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lanczos basis vectors. </p>
+
+</div>
+</div>
+<a id="ac67c56c39b13407f4daccc1e976e9bb7" name="ac67c56c39b13407f4daccc1e976e9bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67c56c39b13407f4daccc1e976e9bb7">&#9670;&#160;</a></span>w_prev_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::complex&lt;double&gt; &gt; gsminres::Solver::w_prev_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

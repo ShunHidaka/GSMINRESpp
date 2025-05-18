@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['finalize_0',['finalize',['../classgsminres_1_1Solver.html#a87d61f56c7ced2a09f7759d98cf6d427',1,'gsminres::Solver']]],
-  ['fopen_5fmtx_1',['fopen_mtx',['../sample2__c_8c.html#ad871d0b9fee8d2b2eec35486f1f45539',1,'sample2_c.c']]],
-  ['from_5fcpp_5fvector_2',['from_cpp_vector',['../namespacegsminres__c__api__util.html#a19464816e7ab872efa25dbf627f2628e',1,'gsminres_c_api_util']]]
+  ['dcopy_0',['dcopy',['../namespacegsminres_1_1blas.html#a2f2587e7bded38a579556af223c73ff9',1,'gsminres::blas']]],
+  ['dcopy_5f_1',['dcopy_',['../gsminres__blas_8hpp.html#a042828cbdf34541b3ef1d16926cef567',1,'gsminres_blas.hpp']]],
+  ['dscal_2',['dscal',['../namespacegsminres_1_1blas.html#ab1937a3d7b482c82acbe309989626eac',1,'gsminres::blas']]],
+  ['dscal_5f_3',['dscal_',['../gsminres__blas_8hpp.html#a059b533b48398754b4a047265cb3ec67',1,'gsminres_blas.hpp']]],
+  ['dznrm2_4',['dznrm2',['../namespacegsminres_1_1blas.html#a8519e852682589ca0cfe3ee597ffb7c7',1,'gsminres::blas']]],
+  ['dznrm2_5f_5',['dznrm2_',['../gsminres__blas_8hpp.html#af0be015575d3a16b9ed9869adcfd85e8',1,'dznrm2_(const int *n, const std::complex&lt; double &gt; *x, const int *incx):&#160;gsminres_blas.hpp'],['../sample2__c_8c.html#a4a213de4fb1eb84166ac929fb7355098',1,'dznrm2_(const int *, const double _Complex *, const int *):&#160;sample2_c.c']]]
 ];

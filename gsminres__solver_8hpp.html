@@ -140,7 +140,13 @@ Namespaces</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the GSMINRES++ solver class. </p>
-<p>This file declares the Solver class, which implements the Generalized shifted MINRES method for solving multiple generalized shifted linear systems of the form (A + sigma^{(m)}B)x^{(m)} = b. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This header defines the core <code>Solver</code> class used in the GSMINRES++ library. The solver implements the Generalized Shifted MINRES method, capable of simultaneously solving a set of shifted linear systems of the form  </p><p class="formulaDsp">
+\[
+           (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m = 1, 2, \dots, M)
+         \]
+</p>
+<p> where A is Hermitian, B is Hermitian positive-definite, and the shift parameters \( \sigma^{(m)} \) are complex scalars. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

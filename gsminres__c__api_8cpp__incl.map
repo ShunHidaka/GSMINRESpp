@@ -8,7 +8,7 @@
 <area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="332,33,296,52,264,80,249,109,242,139,237,138,244,107,260,77,293,48,330,28"/>
 <area shape="rect" id="Node000006" href="$gsminres__c__api_8h.html" title="C API for the GSMINRES++ solver." alt="" coords="528,79,663,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="401,28,546,72,544,77,400,33"/>
-<area shape="rect" id="Node000009" href="$gsminres__c__api__util_8hpp.html" title=" " alt="" coords="274,79,453,104"/>
+<area shape="rect" id="Node000009" href="$gsminres__c__api__util_8hpp.html" title="Internal utility functions for GSMINRES++ C API complex data conversion." alt="" coords="274,79,453,104"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="366,31,366,65,361,65,361,31"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="445,152,511,177"/>
 <area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="399,28,435,47,453,61,467,77,479,108,482,138,477,139,474,109,462,80,449,65,432,52,397,33"/>

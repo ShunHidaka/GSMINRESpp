@@ -149,12 +149,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4634c0c2b1e5ba6200b826ecaa79eadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve Ax = b using the Cholesky factorization of a Hermitian positive-definite packed matrix.  <br /></td></tr>
 <tr class="separator:a4634c0c2b1e5ba6200b826ecaa79eadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c554f2ac59deee2ec7081b763421a3e" id="r_a5c554f2ac59deee2ec7081b763421a3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1lapack.html#a5c554f2ac59deee2ec7081b763421a3e">gsminres::lapack::zlartg</a> (std::complex&lt; double &gt; &amp;f, std::complex&lt; double &gt; &amp;g, double &amp;c, std::complex&lt; double &gt; &amp;s)</td></tr>
-<tr class="memdesc:a5c554f2ac59deee2ec7081b763421a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Givens rotation parameters for complex values using LAPACK's zlartg routine.  <br /></td></tr>
+<tr class="memdesc:a5c554f2ac59deee2ec7081b763421a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Givens rotation parameters for complex values using LAPACK's <code>zlartg</code> routine.  <br /></td></tr>
 <tr class="separator:a5c554f2ac59deee2ec7081b763421a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>LAPACK wrapper functions for the GSMINRES++ solver. </p>
-<p>Provede minimal C++ wrapperf for selected LAPACK routines used sample programs. The wrappers support packed Hermitian 'U' matrices. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This header provides minimal C++ wrappers for selected LAPACK routines used in sample programs of the GSMINRES++ solver. In particular, it supports operations on packed Hermitian matrices stored in upper-triangular ('U') format.</p>
+<p>The routines include Cholesky factorization (zpptrf), linear solve (zpptrs), and robust Givens rotation computation (zlartg) as a workaround for known OpenBLAS issues in zrot. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a516fd41c01ebbfee6c4b9176caee14b4" name="a516fd41c01ebbfee6c4b9176caee14b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a516fd41c01ebbfee6c4b9176caee14b4">&#9670;&#160;</a></span>zlartg_()</h2>

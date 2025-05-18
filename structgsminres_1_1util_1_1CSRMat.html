@@ -88,7 +88,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Struct representing a sparse matrix in CSR format.  
+<p>Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.  
  <a href="structgsminres_1_1util_1_1CSRMat.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gsminres__util_8hpp_source.html">gsminres_util.hpp</a>&gt;</code></p>
@@ -96,25 +96,26 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a290c0218125a36e09b02edaefa27596d" id="r_a290c0218125a36e09b02edaefa27596d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html#a290c0218125a36e09b02edaefa27596d">CSRMat</a> (std::size_t ROWPSIZE, std::size_t DATASIZE)</td></tr>
-<tr class="memdesc:a290c0218125a36e09b02edaefa27596d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-zero values (size = nnz)  <br /></td></tr>
+<tr class="memdesc:a290c0218125a36e09b02edaefa27596d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct for <a class="el" href="structgsminres_1_1util_1_1CSRMat.html" title="Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.">CSRMat</a>.  <br /></td></tr>
 <tr class="separator:a290c0218125a36e09b02edaefa27596d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a01a308ecf97d11dbabb9dbbca12c4707" id="r_a01a308ecf97d11dbabb9dbbca12c4707"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html#a01a308ecf97d11dbabb9dbbca12c4707">matrix_size</a></td></tr>
-<tr class="memdesc:a01a308ecf97d11dbabb9dbbca12c4707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows/columns (N times N square matrix)  <br /></td></tr>
+<tr class="memdesc:a01a308ecf97d11dbabb9dbbca12c4707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimension of the square matrix (N).  <br /></td></tr>
 <tr class="separator:a01a308ecf97d11dbabb9dbbca12c4707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff686701a9bcbb430191c73f90781cab" id="r_aff686701a9bcbb430191c73f90781cab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html#aff686701a9bcbb430191c73f90781cab">row_pointer</a></td></tr>
-<tr class="memdesc:aff686701a9bcbb430191c73f90781cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row pointer array (size = N+1)  <br /></td></tr>
+<tr class="memdesc:aff686701a9bcbb430191c73f90781cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row pointer array (size = N+1).  <br /></td></tr>
 <tr class="separator:aff686701a9bcbb430191c73f90781cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98fdaed82f8b887b3e78dc68629d6f0f" id="r_a98fdaed82f8b887b3e78dc68629d6f0f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html#a98fdaed82f8b887b3e78dc68629d6f0f">col_indices</a></td></tr>
-<tr class="memdesc:a98fdaed82f8b887b3e78dc68629d6f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column index array (size = nnz)  <br /></td></tr>
+<tr class="memdesc:a98fdaed82f8b887b3e78dc68629d6f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column index array (size = nnz).  <br /></td></tr>
 <tr class="separator:a98fdaed82f8b887b3e78dc68629d6f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7a827f95b8da6646e2c6c20b02c4279" id="r_ab7a827f95b8da6646e2c6c20b02c4279"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres_1_1util_1_1CSRMat.html#ab7a827f95b8da6646e2c6c20b02c4279">values</a></td></tr>
+<tr class="memdesc:ab7a827f95b8da6646e2c6c20b02c4279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-zero values (size = nnz).  <br /></td></tr>
 <tr class="separator:ab7a827f95b8da6646e2c6c20b02c4279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct representing a sparse matrix in CSR format. </p>
+<div class="textblock"><p>Struct representing a sparse matrix in Compressed Sparse Row (CSR) format. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a290c0218125a36e09b02edaefa27596d" name="a290c0218125a36e09b02edaefa27596d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a290c0218125a36e09b02edaefa27596d">&#9670;&#160;</a></span>CSRMat()</h2>
@@ -150,11 +151,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Non-zero values (size = nnz) </p>
-<p>Construct an empty CSR matrix with given size and number of non-zero elements. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Construct for <a class="el" href="structgsminres_1_1util_1_1CSRMat.html" title="Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.">CSRMat</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ROWPSIZE</td><td>Size of the row pointer array (usually N+1) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">DATASIZE</td><td>Number of non-zero elements (nnz) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ROWPSIZE</td><td>Size of the row pointer array (N+1). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">DATASIZE</td><td>Number of non-zero elements (nnz). </td></tr>
   </table>
   </dd>
 </dl>
@@ -174,7 +175,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Column index array (size = nnz) </p>
+<p>Column index array (size = nnz). </p>
 
 </div>
 </div>
@@ -190,7 +191,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of rows/columns (N times N square matrix) </p>
+<p>Dimension of the square matrix (N). </p>
 
 </div>
 </div>
@@ -206,7 +207,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Row pointer array (size = N+1) </p>
+<p>Row pointer array (size = N+1). </p>
 
 </div>
 </div>
@@ -221,6 +222,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Non-zero values (size = nnz). </p>
 
 </div>
 </div>

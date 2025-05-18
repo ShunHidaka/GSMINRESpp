@@ -95,7 +95,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4634c0c2b1e5ba6200b826ecaa79eadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve Ax = b using the Cholesky factorization of a Hermitian positive-definite packed matrix.  <br /></td></tr>
 <tr class="separator:a4634c0c2b1e5ba6200b826ecaa79eadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c554f2ac59deee2ec7081b763421a3e" id="r_a5c554f2ac59deee2ec7081b763421a3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1lapack.html#a5c554f2ac59deee2ec7081b763421a3e">zlartg</a> (std::complex&lt; double &gt; &amp;f, std::complex&lt; double &gt; &amp;g, double &amp;c, std::complex&lt; double &gt; &amp;s)</td></tr>
-<tr class="memdesc:a5c554f2ac59deee2ec7081b763421a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Givens rotation parameters for complex values using LAPACK's zlartg routine.  <br /></td></tr>
+<tr class="memdesc:a5c554f2ac59deee2ec7081b763421a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Givens rotation parameters for complex values using LAPACK's <code>zlartg</code> routine.  <br /></td></tr>
 <tr class="separator:a5c554f2ac59deee2ec7081b763421a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -145,7 +145,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Compute Givens rotation parameters for complex values using LAPACK's zlartg routine. </p>
+<p>Compute Givens rotation parameters for complex values using LAPACK's <code>zlartg</code> routine. </p>
 <p>This function computes the parameters of a Givens rotation matrix that eliminates the second entry of a 2-vector. It is a LAPACK-based alternative to zrotg, used in GSMINRES++ to work around known bugs in older versions of OpenBLAS where zrot does not behave correctly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -196,7 +196,7 @@ Functions</h2></td></tr>
 <p>Perform Cholesky factorization of a Hermitian positive-definite packed matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Dimension of the matrix (n times n). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Dimension of the matrix (n x n). </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ap</td><td>Packed Hermitian matrix stored in upper triangle (column-major). On output, contains the Cholesky factor. </td></tr>
   </table>
   </dd>
@@ -256,7 +256,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Dimension of the matrix (n x n). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ap</td><td>Cholesky factor of A (as computed by zpptrf). </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Right-hand side vector on input, solution vector on output. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Solution vector on output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Input right-hand side vector (copied internally to x). </td></tr>
   </table>
   </dd>
 </dl>

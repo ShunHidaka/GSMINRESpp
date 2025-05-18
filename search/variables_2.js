@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ref_0',['ref',['../structgsminres__mod_1_1gsminres__handle.html#a5f0421c4243c3fee7d80e2935044f240',1,'gsminres_mod::gsminres_handle']]],
-  ['row_5fpointer_1',['row_pointer',['../structgsminres_1_1util_1_1CSRMat.html#aff686701a9bcbb430191c73f90781cab',1,'gsminres::util::CSRMat']]]
+  ['col_5findices_0',['col_indices',['../structgsminres_1_1util_1_1CSRMat.html#a98fdaed82f8b887b3e78dc68629d6f0f',1,'gsminres::util::CSRMat']]],
+  ['conv_5fnum_5f_1',['conv_num_',['../classgsminres_1_1Solver.html#ac341062af4291ec26535a04236041c60',1,'gsminres::Solver']]]
 ];
