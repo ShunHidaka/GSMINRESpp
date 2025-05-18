@@ -4,4 +4,4 @@ data/*.mtx
 data/*.csr
 memo.txt
 docs/html/
-docs/latex
+docs/latex/

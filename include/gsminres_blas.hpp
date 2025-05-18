@@ -1,10 +1,14 @@
 /**
  * \file gsminres_blas.hpp
  * \brief BLAS wrappers for the GSMINRES++ solver.
- * \details Provide minimal C++ wrappers for selected BLAS level-1 and level-2 routines
- *          such as 'axpy', 'nrm2', 'dot', and 'mv' used internally in GSMINRES++.
- *          The interfaces are based on std::vector and allow explicit control over offsets
- *          and strides for flexible and safe numerical computations.
+ * \author Shuntaro Hidaka
+ *
+ * \details This header defines lightweight C++ wrapper functions for
+ *          selected BLAS Level-1 and Level-2 routines such as
+ *          \c zaxpy, \c dznrm2, \c zdotc, and \c zhpmv, which are used internally in GSMINRES++.
+ *          The interfaces are designed for safety and usability using \c std::vector,
+ *          and provide explicit control over starting offsets and memory strides
+ *          for advanced vector operations.
  */
 
 #ifndef GSMINRES_BLAS_HPP
