@@ -1,6 +1,7 @@
 /**
- * \example sample1.cpp
+ * \file sample1.cpp
  * \brief Example of using GSMINRES++ with Matrix Market input and LAPACK
+ * \example sample1.cpp
  * \author Shuntaro Hidaka
  *
  * \details This example demonstrates how to solve generalized shifted linear systems:

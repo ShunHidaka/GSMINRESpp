@@ -8,9 +8,10 @@
  * \f]
  *
  * \section toc_sec Table of Contens
- * - \subpage installation_age - How to build and install the library
- * - \subpage algorithm_page   - Algorithm
- * - \subpage usage_page       - Sample usage and API examples
+ * - \subpage installation_page - How to build and install the GSMINRES++
+ * - \subpage algorithm_page    - Algorithm of the generalized shifted MINRES method
+ * - \subpage usage_page        - Sample usage and API examples
+ *   - \subpage usage_page
  *
  * \section license_sec License
  * This project is licensed under the MIT License.
