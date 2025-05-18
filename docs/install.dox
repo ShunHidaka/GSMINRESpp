@@ -1,0 +1,40 @@
+/*! \page installation_page Installation Guide
+
+\section cmake_sec Building with CMake
+
+To build GSMINRES++ using CMake:
+
+\code{.sh}
+mkdir build
+cd build
+cmake ..
+make
+\endcode
+
+Optional CMake variables:
+- \c USE_OPENMP: Enable OpenMP parallelism (default: ON)
+- \c CMAKE_INSTALL_PREFIX: Specify install location
+
+To install the library:
+\code{.sh}
+make install DESTDIR=~/gsminres_install
+\endcode
+
+---
+
+\section manual_sec Manual Compilation (without CMake)
+
+If you prefer to compile manually:
+
+\code{.sh}
+g++ -std=c++17 -Iinclude -O2 -fopenmp                   \
+-c src/gsminres_solver.cpp -o obj/gsminres_solver.o
+
+ar rcs libgsminres.a obj/gsminres_solver.o
+
+# Example usage
+# g++ -std=c++17 -Iinclude sample1.cpp libgsminres.a -llapack -lblas -o sample1
+\endcode
+
+Ensure you link against BLAS and LAPACK. The library uses `zpptrf`, `zpptrs`, `zhpmv`.
+*/
