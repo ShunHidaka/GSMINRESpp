@@ -38,7 +38,7 @@ namespace gsminres {
   namespace blas {
 
     /**
-     * \brief Scale a real vector \( x \) by a real scalar \( a \).
+     * \brief Scale a real vector \f$ x \f$ by a real scalar \f$ a \f$.
      * \param[in]     n        Number of elements to scale.
      * \param[in]     a        Real scalar multiplier.
      * \param[in,out] x        Real vector to scale.
@@ -53,7 +53,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Copy real vector \( x \) into real vector \( y \).
+     * \brief Copy real vector \f$ x \f$ into real vector \f$ y \f$.
      * \param[in]  n        Number of elements to copy.
      * \param[in]  x        Real source vector.
      * \param[in]  x_offset Starting index within the x vector.
@@ -72,7 +72,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Scale a complex vector \( x \) by a real scalar \( a \).
+     * \brief Scale a complex vector \f$ x \f$ by a real scalar \f$ a \f$.
      * \param[in]     n        Number of elements to scale.
      * \param[in]     a        Real scalar multiplier.
      * \param[in,out] x        Complex vector to scale.
@@ -87,7 +87,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Scale a complex vector \( x \) by a complex scalar \( a \).
+     * \brief Scale a complex vector \f$ x \f$ by a complex scalar \f$ a \f$.
      * \param[in]     n        Number of elements to scale.
      * \param[in]     a        Complex scalar multiplier.
      * \param[in,out] x        Complex vector to scale.
@@ -102,7 +102,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Copy complex vector \( x \) into complex vector \( y \).
+     * \brief Copy complex vector \f$ x \f$ into complex vector \f$ y \f$.
      * \param[in]  n        Number of elements to copy.
      * \param[in]  x        Complex source vector.
      * \param[in]  x_offset Starting index within the x vector.
@@ -121,7 +121,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Perform \( y = \alpha * x + y \) for complex vector
+     * \brief Perform \f$ y = \alpha * x + y \f$ for complex vector
      * \param[in]  n        Number of elements to perform.
      * \param[in]  alpha    Scalar multiplier.
      * \param[in]  x        Input vector.
@@ -141,7 +141,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Compute dot product of complex vectors: \( \sum \text(conj)(x[i]) * y[i]) \).
+     * \brief Compute dot product of complex vectors: \f$ \sum \text(conj)(x[i]) * y[i]) \f$.
      * \param[in] n        Number of elements to compute.
      * \param[in] x        First input vector.
      * \param[in] x_offset Starting index within the x vector.
@@ -161,7 +161,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Compute the Euclidean norm (2-norm) of a complex vector: \( \|x\| \).
+     * \brief Compute the Euclidean norm (2-norm) of a complex vector: \f$ \|x\| \f$.
      * \param[in] n        Number of elements to compute.
      * \param[in] x        Input vector.
      * \param[in] x_offset Starting index within the x vector.
@@ -177,7 +177,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Hermitian packed 'U' matrix-vector multiplication: \( y = \alpha*A*x + \beta*y \).
+     * \brief Hermitian packed 'U' matrix-vector multiplication: \f$ y = \alpha*A*x + \beta*y \f$.
      * \param[in]     alpha    Scalar multiplier for A*x.
      * \param[in]     A        Packed Hermitian matrix (upper triagnle stored).
      * \param[in]     x        Input vector.
