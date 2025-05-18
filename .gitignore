@@ -3,3 +3,5 @@ bin/
 data/*.mtx
 data/*.csr
 memo.txt
+docs/html/
+docs/latex
