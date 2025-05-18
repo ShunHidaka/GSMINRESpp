@@ -82,63 +82,63 @@ $(document).ready(function() { init_codefold(0); });
 </div><!--header-->
 <div class="contents">
 <a href="gsminres__c__api_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef GSMINRES_C_API_H</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define GSMINRES_C_API_H</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;complex.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="comment">// Opaque solver handle to internal C++ gsminres::Solver class</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">   18</a></span>  <span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> <a class="code hl_function" href="gsminres__c__api_8h.html#a6e5f60ad569fe528610aac16ac10e797">gsminres_create</a>(<span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> m);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a0a9671eb7ee8cbd19ccd9c5064a2c5ba">gsminres_destroy</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef GSMINRES_C_API_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define GSMINRES_C_API_H</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;complex.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="comment">// Opaque solver handle to internal C++ gsminres::Solver class</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">   24</a></span>  <span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> <a class="code hl_function" href="gsminres__c__api_8h.html#a6e5f60ad569fe528610aac16ac10e797">gsminres_create</a>(<span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> m);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#ab288fc66ded8f2ab6a84e43b7d94f36b">gsminres_initialize</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                           <span class="keywordtype">void</span>            *x,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                           <span class="keyword">const</span> <span class="keywordtype">void</span>      *b,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                           <span class="keywordtype">void</span>            *w,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                           <span class="keyword">const</span> <span class="keywordtype">void</span>      *sigma,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                           <span class="keyword">const</span> <span class="keywordtype">double</span>    threshold,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#ac64dd7d7c4ff97a8cae416e2bbf3e212">gsminres_glanczos_pre</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                             <span class="keywordtype">void</span>            *u,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a5b1909fd8561fc38fcbc075ac9b966d7">gsminres_glanczos_pst</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                             <span class="keywordtype">void</span>            *w,</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                             <span class="keywordtype">void</span>            *u,</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordtype">int</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a1b6356903082a4c49d4a74cc1f3b8946">gsminres_update</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                      <span class="keywordtype">void</span>            *x,</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                      <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n,</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                      <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a5ae1ca17bd20b352c4cd43b9a58fda0d">gsminres_finalize</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                         <span class="keywordtype">void</span>            *conv_itr,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                         <span class="keywordtype">void</span>            *conv_res,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                         <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a82baae1ab1e3462ca818d7368a8a5d48">gsminres_get_residual</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                             <span class="keywordtype">void</span>            *res,</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif </span><span class="comment">// GSMINRES_C_API_H</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a0a9671eb7ee8cbd19ccd9c5064a2c5ba">gsminres_destroy</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#ab288fc66ded8f2ab6a84e43b7d94f36b">gsminres_initialize</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                           <span class="keywordtype">void</span>            *x,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                           <span class="keyword">const</span> <span class="keywordtype">void</span>      *b,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                           <span class="keywordtype">void</span>            *w,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                           <span class="keyword">const</span> <span class="keywordtype">void</span>      *sigma,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                           <span class="keyword">const</span> <span class="keywordtype">double</span>    threshold,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#ac64dd7d7c4ff97a8cae416e2bbf3e212">gsminres_glanczos_pre</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                             <span class="keywordtype">void</span>            *u,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a5b1909fd8561fc38fcbc075ac9b966d7">gsminres_glanczos_pst</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                             <span class="keywordtype">void</span>            *w,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                             <span class="keywordtype">void</span>            *u,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordtype">int</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a1b6356903082a4c49d4a74cc1f3b8946">gsminres_update</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                      <span class="keywordtype">void</span>            *x,</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                      <span class="keyword">const</span> <span class="keywordtype">size_t</span>    n,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                      <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a5ae1ca17bd20b352c4cd43b9a58fda0d">gsminres_finalize</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                         <span class="keywordtype">void</span>            *conv_itr,</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                         <span class="keywordtype">void</span>            *conv_res,</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                         <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="gsminres__c__api_8h.html#a82baae1ab1e3462ca818d7368a8a5d48">gsminres_get_residual</a>(<a class="code hl_typedef" href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a> handle,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                             <span class="keywordtype">void</span>            *res,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span>    m);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#endif </span><span class="comment">// GSMINRES_C_API_H</span></div>
 <div class="ttc" id="agsminres__c__api_8h_html_a0a9671eb7ee8cbd19ccd9c5064a2c5ba"><div class="ttname"><a href="gsminres__c__api_8h.html#a0a9671eb7ee8cbd19ccd9c5064a2c5ba">gsminres_destroy</a></div><div class="ttdeci">void gsminres_destroy(gsminres_handle handle)</div><div class="ttdoc">Destroy the solver and free memory.</div><div class="ttdef"><b>Definition</b> gsminres_c_api.cpp:24</div></div>
 <div class="ttc" id="agsminres__c__api_8h_html_a1b6356903082a4c49d4a74cc1f3b8946"><div class="ttname"><a href="gsminres__c__api_8h.html#a1b6356903082a4c49d4a74cc1f3b8946">gsminres_update</a></div><div class="ttdeci">int gsminres_update(gsminres_handle handle, void *x, const size_t n, const size_t m)</div><div class="ttdoc">Update the approximate solutions.</div><div class="ttdef"><b>Definition</b> gsminres_c_api.cpp:69</div></div>
-<div class="ttc" id="agsminres__c__api_8h_html_a57e57589998268e4e0f92582ded6126e"><div class="ttname"><a href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a></div><div class="ttdeci">void * gsminres_handle</div><div class="ttdef"><b>Definition</b> gsminres_c_api.h:18</div></div>
+<div class="ttc" id="agsminres__c__api_8h_html_a57e57589998268e4e0f92582ded6126e"><div class="ttname"><a href="gsminres__c__api_8h.html#a57e57589998268e4e0f92582ded6126e">gsminres_handle</a></div><div class="ttdeci">void * gsminres_handle</div><div class="ttdef"><b>Definition</b> gsminres_c_api.h:24</div></div>
 <div class="ttc" id="agsminres__c__api_8h_html_a5ae1ca17bd20b352c4cd43b9a58fda0d"><div class="ttname"><a href="gsminres__c__api_8h.html#a5ae1ca17bd20b352c4cd43b9a58fda0d">gsminres_finalize</a></div><div class="ttdeci">void gsminres_finalize(gsminres_handle handle, void *conv_itr, void *conv_res, const size_t m)</div><div class="ttdoc">Get converged iteration and converged residual norm.</div><div class="ttdef"><b>Definition</b> gsminres_c_api.cpp:80</div></div>
 <div class="ttc" id="agsminres__c__api_8h_html_a5b1909fd8561fc38fcbc075ac9b966d7"><div class="ttname"><a href="gsminres__c__api_8h.html#a5b1909fd8561fc38fcbc075ac9b966d7">gsminres_glanczos_pst</a></div><div class="ttdeci">void gsminres_glanczos_pst(gsminres_handle handle, void *w, void *u, const size_t n)</div><div class="ttdoc">Apply post-processing step of the Generalized Lanczos process.</div><div class="ttdef"><b>Definition</b> gsminres_c_api.cpp:57</div></div>
 <div class="ttc" id="agsminres__c__api_8h_html_a6e5f60ad569fe528610aac16ac10e797"><div class="ttname"><a href="gsminres__c__api_8h.html#a6e5f60ad569fe528610aac16ac10e797">gsminres_create</a></div><div class="ttdeci">gsminres_handle gsminres_create(size_t n, size_t m)</div><div class="ttdoc">Create a new GSMINRES Solver.</div><div class="ttdef"><b>Definition</b> gsminres_c_api.cpp:20</div></div>

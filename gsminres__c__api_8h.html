@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>C API for the GSMINRES++ solver. \detail.  
+<p>C API for the GSMINRES++ solver.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;complex.h&gt;</code><br />
@@ -89,7 +89,7 @@ Include dependency graph for gsminres_c_api.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="gsminres__c__api_8h__incl.png" border="0" usemap="#ainclude_2gsminres__c__api_8h" alt=""/></div>
 <map name="ainclude_2gsminres__c__api_8h" id="ainclude_2gsminres__c__api_8h">
-<area shape="rect" title="C API for the GSMINRES++ solver. \detail." alt="" coords="23,5,169,45"/>
+<area shape="rect" title="C API for the GSMINRES++ solver." alt="" coords="23,5,169,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,80,119"/>
 <area shape="poly" title=" " alt="" coords="85,47,61,83,56,80,81,44"/>
 <area shape="rect" title=" " alt="" coords="104,93,195,119"/>
@@ -101,7 +101,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="gsminres__c__api_8h__dep__incl.png" border="0" usemap="#ainclude_2gsminres__c__api_8hdep" alt=""/></div>
 <map name="ainclude_2gsminres__c__api_8hdep" id="ainclude_2gsminres__c__api_8hdep">
-<area shape="rect" title="C API for the GSMINRES++ solver. \detail." alt="" coords="103,5,249,45"/>
+<area shape="rect" title="C API for the GSMINRES++ solver." alt="" coords="103,5,249,45"/>
 <area shape="rect" href="sample2__c_8c.html" title=" " alt="" coords="5,93,160,119"/>
 <area shape="poly" title=" " alt="" coords="145,56,98,95,95,91,141,52"/>
 <area shape="rect" href="gsminres__c__api_8cpp.html" title=" " alt="" coords="184,93,357,119"/>
@@ -144,7 +144,9 @@ Functions</h2></td></tr>
 <tr class="separator:a82baae1ab1e3462ca818d7368a8a5d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>C API for the GSMINRES++ solver. \detail. </p>
+<div class="textblock"><p>C API for the GSMINRES++ solver. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This file provides a C interface for the GSMINRES++ library, which solves multiple shifted linear systems of the form ( (A + \sigma^{(m)} B)x^{(m)} = b ) using a generalized MINRES method. The API is designed for interoperability with C and Fortran, and uses row-major layout for storing multiple solution vectors ( x^{(m)} ). </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a57e57589998268e4e0f92582ded6126e" name="a57e57589998268e4e0f92582ded6126e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57e57589998268e4e0f92582ded6126e">&#9670;&#160;</a></span>gsminres_handle</h2>

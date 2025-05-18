@@ -193,7 +193,8 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>BLAS wrappers for the GSMINRES++ solver. </p>
-<p>Provide minimal C++ wrappers for selected BLAS level-1 and level-2 routines such as 'axpy', 'nrm2', 'dot', and 'mv' used internally in GSMINRES++. The interfaces are based on std::vector and allow explicit control over offsets and strides for flexible and safe numerical computations. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This header defines lightweight C++ wrapper functions for selected BLAS Level-1 and Level-2 routines such as <code>zaxpy</code>, <code>dznrm2</code>, <code>zdotc</code>, and <code>zhpmv</code>, which are used internally in GSMINRES++. The interfaces are designed for safety and usability using <code>std::vector</code>, and provide explicit control over starting offsets and memory strides for advanced vector operations. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a042828cbdf34541b3ef1d16926cef567" name="a042828cbdf34541b3ef1d16926cef567"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a042828cbdf34541b3ef1d16926cef567">&#9670;&#160;</a></span>dcopy_()</h2>

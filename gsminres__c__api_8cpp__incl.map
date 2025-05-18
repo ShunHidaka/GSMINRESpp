@@ -6,7 +6,7 @@
 <area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="277,25,205,31,132,41,70,58,47,68,32,80,26,93,25,108,34,139,29,140,20,109,21,92,28,77,44,64,68,53,131,36,205,26,276,20"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="205,152,268,177"/>
 <area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="332,33,296,52,264,80,249,109,242,139,237,138,244,107,260,77,293,48,330,28"/>
-<area shape="rect" id="Node000006" href="$gsminres__c__api_8h.html" title="C API for the GSMINRES++ solver. \detail." alt="" coords="528,79,663,104"/>
+<area shape="rect" id="Node000006" href="$gsminres__c__api_8h.html" title="C API for the GSMINRES++ solver." alt="" coords="528,79,663,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="401,28,546,72,544,77,400,33"/>
 <area shape="rect" id="Node000009" href="$gsminres__c__api__util_8hpp.html" title=" " alt="" coords="274,79,453,104"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="366,31,366,65,361,65,361,31"/>
