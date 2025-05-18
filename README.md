@@ -152,7 +152,7 @@ $ gfortran myprog.cpp
 ---
 
 ## API Summary
-See the [manual](https://shunhidaka.github.io/GSMINRESpp/).
+See the [manual](https://shunhidaka.github.io/GSMINRESpp/namespaces.html).
 
 ---
 
