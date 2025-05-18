@@ -5,8 +5,8 @@
  *
  * \details This header defines lightweight C++ wrapper functions for
  *          selected BLAS Level-1 and Level-2 routines such as
- *          \c zaxpy, \c dznrm2, \c zdotc, and \c zhpmv, which are used internally in GSMINRES++.
- *          The interfaces are designed for safety and usability using \c std::vector,
+ *          `zaxpy`, `dznrm2`, `zdotc`, and `zhpmv`, which are used internally in GSMINRES++.
+ *          The interfaces are designed for safety and usability using `std::vector`,
  *          and provide explicit control over starting offsets and memory strides
  *          for advanced vector operations.
  */
@@ -121,7 +121,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Perform \f$ y = \alpha * x + y \f$ for complex vector
+     * \brief Perform \f$ y = \alpha x + y \f$ for complex vector
      * \param[in]  n        Number of elements to perform.
      * \param[in]  alpha    Scalar multiplier.
      * \param[in]  x        Input vector.
@@ -141,7 +141,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Compute dot product of complex vectors: \f$ \sum \text(conj)(x[i]) * y[i]) \f$.
+     * \brief Compute dot product of complex vectors: \f$ \sum_i \bar{x[i]} * y[i]) \f$.
      * \param[in] n        Number of elements to compute.
      * \param[in] x        First input vector.
      * \param[in] x_offset Starting index within the x vector.
@@ -177,7 +177,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Hermitian packed 'U' matrix-vector multiplication: \f$ y = \alpha*A*x + \beta*y \f$.
+     * \brief Hermitian packed 'U' matrix-vector multiplication: \f$ y = \alpha A x + \beta y \f$.
      * \param[in]     alpha    Scalar multiplier for A*x.
      * \param[in]     A        Packed Hermitian matrix (upper triagnle stored).
      * \param[in]     x        Input vector.

@@ -1,9 +1,16 @@
 /**
  * \file gsminres_util.hpp
  * \brief Utility functions and data structures for GSMINRES++
- * \details This header provides matrix/vector loaders, generators and
- *          sparse matrix data structure (CSR format), as well as utility kernels
- *          such as sparse matrix-vector multiplication and a simple CG solver.
+ * \author Shuntaro Hidaka
+ *
+ * \details This header provides common utility components related to
+ *          matrix and vector operations, including functions to load and generate test data,
+ *          a custom sparse matrix data structure in CSR format,
+ *          and basic computational kernels such as sparse matrix-vector multiplication
+ *          and a simple Conjugate Gradient (CG) solver.
+ *
+ *          These functions are not used internally by the GSMINRES++ solver itself,
+ *          but are provided for convenience in sample programs, testing, and exploratory use.
  */
 
 #ifndef GSMINRES_UTIL_HPP
@@ -19,18 +26,18 @@ namespace gsminres {
 
     /**
      * \brief Load a packed 'U' Hermitian or symmetric matrix from a Matrix Market file.
-     * \param[in]  filename File path of the Matrix Market file.
-     * \param[out] size     Size of the square matrix.
-     * \return Packed upper-triangular matrix in std::vector<std::complex<double>>.
+     * \param[in]  filename Path to the Matrix Market file.
+     * \param[out] size     Size of the resulting square matrix.
+     * \return `std::vector<std::complex<double>>` containing packed matrix (upper-triangular).
      * \note Exits the program on failure.
      */
     std::vector<std::complex<double>> load_matrix_from_mm(const std::string& filename,
                                                           std::size_t&       size);
 
     /**
-     * \brief Load a complex vector from a plain text file.
-     * \param[in] filename File path of the vector file.
-     * \return std::vector<std::complex<double>>.
+     * \brief Load a complex-value vector from a plain text file.
+     * \param[in] filename Path to the vector file.
+     * \return `std::vector<std::complex<double>>`.
      * \note Exits the program on failure.
      */
     std::vector<std::complex<double>> load_vector(const std::string& filename);
@@ -38,30 +45,30 @@ namespace gsminres {
     /**
      * \brief Generate a vector filled with ones.
      * \param[in] size Number of elements.
-     * \return st::vector<std::complex<double>> with all entries set to 1.0+0.0i.
+     * \return `std::vector<std::complex<double>>` with all entries set to `1.0+0.0i`.
      */
     std::vector<std::complex<double>> generate_ones(const std::size_t size);
 
     /**
-     * \brief Generate a packed 'U' identity matrix.
-     * \param[in] size Matrix size
-     * \return Packed upper-triangular identity matrix.
+     * \brief Generate a packed identity matrix in upper-triangular format.
+     * \param[in] size Dimension of the square matrix
+     * \return `std::vector<std::complex<double>>` storing identity matrix in packed format (upper triangle).
      */
     std::vector<std::complex<double>> generate_identity(const std::size_t size);
 
     /**
      * \struct CSRMat
-     * \brief Struct representing a sparse matrix in CSR format
+     * \brief Struct representing a sparse matrix in Compressed Sparse Row (CSR) format.
      */
     struct CSRMat {
-      std::size_t matrix_size; ///< Number of rows/columns (N times N square matrix)
-      std::vector<std::size_t> row_pointer; ///< Row pointer array (size = N+1)
-      std::vector<std::size_t> col_indices; ///< Column index array (size = nnz)
-      std::vector<std::complex<double>> values; /// Non-zero values (size = nnz)
+      std::size_t                       matrix_size; ///< Dimension of the square matrix (N).
+      std::vector<std::size_t>          row_pointer; ///< Row pointer array (size = N+1).
+      std::vector<std::size_t>          col_indices; ///< Column index array (size = nnz).
+      std::vector<std::complex<double>> values;      ///< Non-zero values (size = nnz).
       /**
-       * \brief Construct an empty CSR matrix with given size and number of non-zero elements.
-       * \param[in] ROWPSIZE Size of the row pointer array (usually N+1)
-       * \param[in] DATASIZE Number of non-zero elements (nnz)
+       * \brief Construct for CSRMat
+       * \param[in] ROWPSIZE Size of the row pointer array (N+1).
+       * \param[in] DATASIZE Number of non-zero elements (nnz).
        */
       CSRMat(std::size_t ROWPSIZE, std::size_t DATASIZE) :
         matrix_size(ROWPSIZE-1),
@@ -73,31 +80,36 @@ namespace gsminres {
     // Read MM format to CSR format
     //CSRMat load_csr_from_mm(const std::string& filename);
     /**
-     * \brief Load a sparse matrix form a custom CSR-format file.
-     * \param[in] filename File path of the CSR matrix
-     * \return CSR matrix.
+     * \brief Load a sparse matrix from a file in custom CSR format.
+     * \param[in] filename Path to the file containing CSR-formatted matrix.
+     * \return CSR matrix object.
      * \note Exits the program on failure.
      */
     CSRMat load_csr_from_csr(const std::string& filename);
 
     /**
-     * \brief Sparse matrix-vector multiplication: y = A * x
+     * \brief Perform sparse matrix-vector multiplication: \f$ y = A x \f$.
      * \param[in]  A Matrix in CSR format.
      * \param[in]  x Input vector.
-     * \param[out] y Output vector (A * x).
+     * \param[out] y Output vector where result is stored.
      */
-    void spmv(const CSRMat& A, const std::vector<std::complex<double>>& x, std::vector<std::complex<double>>& y);
+    void spmv(const CSRMat&                            A,
+              const std::vector<std::complex<double>>& x,
+              std::vector<std::complex<double>>&       y);
 
     /**
-     * \brief Conjugate Gradient method for solving Ax = b.
-     * \param[in]     A        Coefficient matrix (CSR format).
-     * \param[in,out] x        Solution vector (initial guess input, solution output).
-     * \param[in]     b        Right-hand side vector.
-     * \param[in]     tol      Tolerance for relative residual (default = 1e-12).
-     * \param[in]     max_iter Maximum number of iterations (default = 10000).
+     * \brief Solve \f$ Ax=b \f$ using the Conjugate Gradient method.
+     * \param[in]  A        Coefficient matrix (CSR format).
+     * \param[out] x        Solution vector.
+     * \param[in]  b        Right-hand side vector.
+     * \param[in]  tol      Relative residual tolerance (default = 1e-12).
+     * \param[in]  max_iter Maximum number of iterations (default = 10000).
      * \return true if converged, false otherwise.
      */
-    bool cg(const CSRMat&A, std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& b, const double tol, const std::size_t max_iter);
+    bool cg(const CSRMat&                            A,
+            std::vector<std::complex<double>>&       x,
+            const std::vector<std::complex<double>>& b,
+            const double tol, const std::size_t max_iter);
 
   }  // namespace util
 }  //namespace gsminres

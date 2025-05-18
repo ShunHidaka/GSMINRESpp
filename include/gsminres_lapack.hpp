@@ -1,8 +1,16 @@
 /**
  * \file gsminres_lapack.hpp
  * \brief LAPACK wrapper functions for the GSMINRES++ solver.
- * \details Provede minimal C++ wrapperf for selected LAPACK routines used sample programs.
- *          The wrappers support packed Hermitian 'U' matrices.
+ * \author Shuntaro Hidaka
+ *
+ * \details This header provides minimal C++ wrappers for selected LAPACK routines
+ *          used in sample programs of the GSMINRES++ solver.
+ *          In particular, it supports operations on packed Hermitian matrices
+ *          stored in upper-triangular ('U') format.
+ *
+ *          The routines include Cholesky factorization (zpptrf), linear solve (zpptrs),
+ *          and robust Givens rotation computation (zlartg) as a workaround for known
+ *          OpenBLAS issues in zrot.
  */
 
 #ifndef GSMINRES_LAPACK_HPP
@@ -25,7 +33,7 @@ namespace gsminres {
 
     /**
      * \brief Perform Cholesky factorization of a Hermitian positive-definite packed matrix.
-     * \param[in]     n  Dimension of the matrix (n times n).
+     * \param[in]     n  Dimension of the matrix (n x n).
      * \param[in,out] ap Packed Hermitian matrix stored in upper triangle (column-major).
      *                   On output, contains the Cholesky factor.
      * \note Exits the program on failure.
@@ -42,9 +50,10 @@ namespace gsminres {
 
     /**
      * \brief Solve Ax = b using the Cholesky factorization of a Hermitian positive-definite packed matrix.
-     * \param[in]     n  Dimension of the matrix (n x n).
-     * \param[in]     ap Cholesky factor of A (as computed by zpptrf).
-     * \param[in,out] x  Right-hand side vector on input, solution vector on output.
+     * \param[in]  n  Dimension of the matrix (n x n).
+     * \param[in]  ap Cholesky factor of A (as computed by zpptrf).
+     * \param[out] x  Solution vector on output.
+     * \param[in]  b  Input right-hand side vector (copied internally to x).
      * \note Exits the program on failure.
      */
     inline void zpptrs(int n, const std::vector<std::complex<double>>& ap, std::vector<std::complex<double>>& x, const std::vector<std::complex<double>>& b){
@@ -59,7 +68,7 @@ namespace gsminres {
     }
 
     /**
-     * \brief Compute Givens rotation parameters for complex values using LAPACK's zlartg routine.
+     * \brief Compute Givens rotation parameters for complex values using LAPACK's `zlartg` routine.
      * \details This function computes the parameters of a Givens rotation matrix
      *          that eliminates the second entry of a 2-vector.
      *          It is a LAPACK-based alternative to zrotg, used in GSMINRES++
