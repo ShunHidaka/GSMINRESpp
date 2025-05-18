@@ -5,9 +5,9 @@
  *
  * \details This file provides a C interface for the GSMINRES++ library,
  *          which solves multiple shifted linear systems of the form
- *          \( (A + \sigma^{(m)} B)x^{(m)} = b \) using a generalized MINRES method.
+ *          \f (A + \sigma^{(m)} B)x^{(m)} = b \f using a generalized MINRES method.
  *          The API is designed for interoperability with C and Fortran,
- *          and uses row-major layout for storing multiple solution vectors \( x^{(m)} \).
+ *          and uses row-major layout for storing multiple solution vectors \f x^{(m)} \f.
  */
 
 #ifndef GSMINRES_C_API_H
