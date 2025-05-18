@@ -33,5 +33,5 @@ var searchData=
   ['gsminres_5fupdate_30',['gsminres_update',['../gsminres__c__api_8h.html#a1b6356903082a4c49d4a74cc1f3b8946',1,'gsminres_update(gsminres_handle handle, void *x, const size_t n, const size_t m):&#160;gsminres_c_api.cpp'],['../gsminres__c__api_8cpp.html#a1b6356903082a4c49d4a74cc1f3b8946',1,'gsminres_update(gsminres_handle handle, void *x, const size_t n, const size_t m):&#160;gsminres_c_api.cpp'],['../namespacegsminres__mod.html#a5c851626ae78622df580e0c5d67d3883',1,'gsminres_mod::gsminres_update()']]],
   ['gsminres_5futil_2ecpp_31',['gsminres_util.cpp',['../gsminres__util_8cpp.html',1,'']]],
   ['gsminres_5futil_2ehpp_32',['gsminres_util.hpp',['../gsminres__util_8hpp.html',1,'']]],
-  ['guide_33',['Installation Guide',['../installation_page.html',1,'']]]
+  ['guide_33',['Installation Guide',['../installation_page.html',1,'index']]]
 ];
