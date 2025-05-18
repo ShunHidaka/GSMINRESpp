@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['toc_2edox_0',['toc.dox',['../toc_8dox.html',1,'']]]
+  ['usage_2edox_0',['usage.dox',['../usage_8dox.html',1,'']]]
 ];

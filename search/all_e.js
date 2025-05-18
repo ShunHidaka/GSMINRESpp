@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['u_5fcurr_5f_0',['u_curr_',['../classgsminres_1_1Solver.html#a7a6a490498ccf5f30ac72879a3bf091d',1,'gsminres::Solver']]],
-  ['u_5fnext_5f_1',['u_next_',['../classgsminres_1_1Solver.html#a91f5dcd12dbac17f5c477b3b2c541814',1,'gsminres::Solver']]],
-  ['u_5fprev_5f_2',['u_prev_',['../classgsminres_1_1Solver.html#a61bea1bafbd91897f87c5880868701c3',1,'gsminres::Solver']]],
-  ['update_3',['update',['../classgsminres_1_1Solver.html#a9ee840487e30608fce0e0550cbdffd84',1,'gsminres::Solver']]],
-  ['usage_2edox_4',['usage.dox',['../usage_8dox.html',1,'']]]
+  ['t_5fcurr_5f_0',['T_curr_',['../classgsminres_1_1Solver.html#a60f7ebb66e24c56371a8eb756e1287d7',1,'gsminres::Solver']]],
+  ['t_5fnext_5f_1',['T_next_',['../classgsminres_1_1Solver.html#ab96fed68ec615ed134749bf643a63b76',1,'gsminres::Solver']]],
+  ['t_5fprev2_5f_2',['T_prev2_',['../classgsminres_1_1Solver.html#ac559a3b7e48428dcd897f991303cef7b',1,'gsminres::Solver']]],
+  ['t_5fprev_5f_3',['T_prev_',['../classgsminres_1_1Solver.html#ae89cf634bfe31a2537877e0a3496d0cc',1,'gsminres::Solver']]],
+  ['table_20of_20contens_4',['Table of Contens',['../index.html#toc_sec',1,'']]],
+  ['threshold_5f_5',['threshold_',['../classgsminres_1_1Solver.html#a8a86d25adb6d2ced17791d296d957708',1,'gsminres::Solver']]],
+  ['to_5fcpp_5fvector_6',['to_cpp_vector',['../namespacegsminres__c__api__util.html#afcc6e76db887ad780f05d32951a93440',1,'gsminres_c_api_util']]]
 ];

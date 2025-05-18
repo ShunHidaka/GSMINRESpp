@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gsminres_0',['GSMINRES++',['../index.html',1,'']]]
+  ['algorithm_0',['Algorithm',['../algorithm_page.html',1,'index']]]
 ];

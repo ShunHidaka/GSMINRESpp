@@ -80,17 +80,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <p>Example of using GSMINRES++ with Matrix Market input and LAPACK.</p>
-<p>Example of using GSMINRES++ with Matrix Market input and LAPACK </p><pre class="fragment">   This example demonstrates how to solve generalized shifted linear systems:
-   \f[
-     (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
-   \f]
-   using the GSMINRES++ solver.
-   It read packed Hermitian matrices A and B from Matrix Market format files,
-   applies Cholesky factorization via LAPACK (`zpptrf`), and uses `zhpmv` and `zpptrs`
-   for matrix-vector multiplication and solving linear systems.
-</pre> <dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka \usage <div class="fragment"><div class="line">./sample1 ../data/A.mtx ../data/B.mtx</div>
-</div><!-- fragment --></dd></dl>
-<div class="fragment"><div class="line"> </div>
+<p>Example of using GSMINRES++ with Matrix Market input and LAPACK </p><dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This example demonstrates how to solve generalized shifted linear systems:  </p><p class="formulaDsp">
+\[
+          (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
+        \]
+</p>
+<p> using the GSMINRES++ solver. It read packed Hermitian matrices A and B from Matrix Market format files, applies Cholesky factorization via LAPACK (<code>zpptrf</code>), and uses <code>zhpmv</code> and <code>zpptrs</code> for matrix-vector multiplication and solving linear systems. \usage </p><div class="fragment"><div class="line">./sample1 ../data/A.mtx ../data/B.mtx</div>
+</div><!-- fragment --><div class="fragment"><div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>

@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['_7esolver_0',['~Solver',['../classgsminres_1_1Solver.html#a90f352d4ba10033799b69915b3f7c01e',1,'gsminres::Solver']]]
+  ['zaxpy_0',['zaxpy',['../namespacegsminres_1_1blas.html#af89158adba329c653f70b09df16a3327',1,'gsminres::blas']]],
+  ['zaxpy_5f_1',['zaxpy_',['../gsminres__blas_8hpp.html#a0a93662fd0800569265ccfaad28ae24c',1,'zaxpy_(const int *n, const std::complex&lt; double &gt; *alpha, const std::complex&lt; double &gt; *x, const int *incx, std::complex&lt; double &gt; *y, const int *incy):&#160;gsminres_blas.hpp'],['../sample2__c_8c.html#afedb3499f4e9d3be3c3d8e62ece49e0b',1,'zaxpy_(const int *, const double _Complex *, const double _Complex *, const int *, double _Complex *, const int *):&#160;sample2_c.c']]],
+  ['zcopy_2',['zcopy',['../namespacegsminres_1_1blas.html#a9935ed025609eecae27547d07c0ca404',1,'gsminres::blas']]],
+  ['zcopy_5f_3',['zcopy_',['../gsminres__blas_8hpp.html#ab7080420ba8cc766de694a99b1da3739',1,'zcopy_(const int *n, const std::complex&lt; double &gt; *x, const int *incx, std::complex&lt; double &gt; *y, const int *incy):&#160;gsminres_blas.hpp'],['../sample2__c_8c.html#a3469b33859726cfee3ba35b80754ce15',1,'zcopy_(const int *, const double _Complex *, const int *, double _Complex *, const int *):&#160;sample2_c.c']]],
+  ['zdotc_4',['zdotc',['../namespacegsminres_1_1blas.html#aa346370f9c015965e0a5cb8a05a4a3b8',1,'gsminres::blas']]],
+  ['zdotc_5f_5',['zdotc_',['../gsminres__blas_8hpp.html#ac7b44dae13186a2822fcceb5b3b9577d',1,'zdotc_(const int *n, const std::complex&lt; double &gt; *x, const int *incx, const std::complex&lt; double &gt; *y, const int *incy):&#160;gsminres_blas.hpp'],['../sample2__c_8c.html#a858716957fe9e0b785ed9ef939ef065e',1,'zdotc_(const int *, const double _Complex *, const int *, const double _Complex *, const int *):&#160;sample2_c.c']]],
+  ['zdscal_6',['zdscal',['../namespacegsminres_1_1blas.html#ab8351c3795114c5a7e3def9f511c9aed',1,'gsminres::blas']]],
+  ['zdscal_5f_7',['zdscal_',['../gsminres__blas_8hpp.html#ae0fc577ab4c155f62cbf9682aedeab95',1,'gsminres_blas.hpp']]],
+  ['zhpmv_8',['zhpmv',['../namespacegsminres_1_1blas.html#aa7d10a4ab8e8ce4049d0fe87bd1dd7fd',1,'gsminres::blas']]],
+  ['zhpmv_5f_9',['zhpmv_',['../gsminres__blas_8hpp.html#abdbf0e7b1b6eed7e6de9333790828e33',1,'gsminres_blas.hpp']]],
+  ['zlartg_10',['zlartg',['../namespacegsminres_1_1lapack.html#a5c554f2ac59deee2ec7081b763421a3e',1,'gsminres::lapack']]],
+  ['zlartg_5f_11',['zlartg_',['../gsminres__lapack_8hpp.html#a516fd41c01ebbfee6c4b9176caee14b4',1,'gsminres_lapack.hpp']]],
+  ['zpptrf_12',['zpptrf',['../namespacegsminres_1_1lapack.html#ac1ddbab8690e7795bc26ed63fda0afb6',1,'gsminres::lapack']]],
+  ['zpptrf_5f_13',['zpptrf_',['../gsminres__lapack_8hpp.html#a158ea839a27bad5ab7718682bd632767',1,'gsminres_lapack.hpp']]],
+  ['zpptrs_14',['zpptrs',['../namespacegsminres_1_1lapack.html#a4634c0c2b1e5ba6200b826ecaa79eadd',1,'gsminres::lapack']]],
+  ['zpptrs_5f_15',['zpptrs_',['../gsminres__lapack_8hpp.html#a6374bd67aa5fcd4bdcbb2debd7269ffe',1,'gsminres_lapack.hpp']]],
+  ['zrot_16',['zrot',['../namespacegsminres_1_1blas.html#a8fe5b10f96103db4b20ddad09bd3ba28',1,'gsminres::blas']]],
+  ['zrot_5f_17',['zrot_',['../gsminres__blas_8hpp.html#a0e9f0b3cb238386f6cd057c05a0bae46',1,'gsminres_blas.hpp']]],
+  ['zrotg_18',['zrotg',['../namespacegsminres_1_1blas.html#afadf4aaee4c35e0723beb9d742ab5539',1,'gsminres::blas']]],
+  ['zrotg_5f_19',['zrotg_',['../gsminres__blas_8hpp.html#a3211488a9b5b984a342daeb7db486427',1,'gsminres_blas.hpp']]],
+  ['zscal_20',['zscal',['../namespacegsminres_1_1blas.html#a940294fe540e9c388283c5ff3bb83de6',1,'gsminres::blas']]],
+  ['zscal_5f_21',['zscal_',['../gsminres__blas_8hpp.html#a0b87f676c279c97912cd91a13aacb515',1,'zscal_(const int *n, const std::complex&lt; double &gt; *a, std::complex&lt; double &gt; *x, const int *incx):&#160;gsminres_blas.hpp'],['../sample2__c_8c.html#ad9909e8a7c641f22fdda1d201ef55e9a',1,'zscal_(const int *, const double _Complex *, double _Complex *, const int *):&#160;sample2_c.c']]]
 ];
