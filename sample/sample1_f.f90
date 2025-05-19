@@ -1,3 +1,25 @@
+!**
+!* \file sample1_f.f90
+!* \brief Example of using GSMINRES++ with Matrix Market input and LAPACK by Fortran
+!* \example sample1_f.f90
+!* \author Shuntaro Hidaka
+!* 
+!* \details This example demonstrates how to solve generalized shifted linear systems:
+!*         \f[
+!*           (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
+!*         \f]
+!*          using the GSMINRES++ solver.
+!*
+!*          It read packed 'U' Hermitian matrices A and B from Matrix Market format files,
+!*          applies Cholesky factorization via LAPACK (`zpptrf`), and uses `zhpmv` and `zpptrs`
+!*          for matrix-vector multiplication and solving linear systems.
+!* \usage
+!* \code
+!*  Edit line number 48, 49
+!*  $ ./sample1_f
+!* \endcode
+!*
+!*/
 program sample1_f
   use gsminres_mod
   use iso_c_binding

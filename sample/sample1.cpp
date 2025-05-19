@@ -1,6 +1,6 @@
 /**
  * \file sample1.cpp
- * \brief Example of using GSMINRES++ with Matrix Market input and LAPACK
+ * \brief Example of using GSMINRES++ with Matrix Market input and LAPACK by C++
  * \example sample1.cpp
  * \author Shuntaro Hidaka
  *
@@ -9,12 +9,13 @@
  *           (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
  *         \f]
  *          using the GSMINRES++ solver.
- *          It read packed Hermitian matrices A and B from Matrix Market format files,
+ *
+ *          It read packed 'U' Hermitian matrices A and B from Matrix Market format files,
  *          applies Cholesky factorization via LAPACK (`zpptrf`), and uses `zhpmv` and `zpptrs`
  *          for matrix-vector multiplication and solving linear systems.
  * \usage
  * \code
- *  ./sample1 ../data/A.mtx ../data/B.mtx
+ *  $ ./sample1 ../data/A.mtx ../data/B.mtx
  * \endcode
  */
 
