@@ -327,7 +327,7 @@ EXTENSION_MAPPING      = .cpp=C++ \
                          .hpp=C++ \
                          .c=C \
                          .h=C \
-                         .f90=Fortran
+                         .f90=Fortran \
                          .py=Python
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments

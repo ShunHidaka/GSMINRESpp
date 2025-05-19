@@ -33,7 +33,7 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 
 ## Documents
 
-- [Manual(HTML)](https://shunhidaka.github.io/GSMINRESpp/)
+- Manual ([HTML](https://shunhidaka.github.io/GSMINRESpp/)/PDF)
 
 ---
 
