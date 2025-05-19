@@ -1,4 +1,33 @@
-// Sample Program that Solving Standard shifted linear system
+/**
+ * \file sample_std.cpp
+ * \brief Example of using GSMINRES++ with identity matrix as B (standard shifted MINRES).
+ * \example sample_std.cpp
+ * \author Shuntaro Hidaka
+ *
+ * \details This example solves a set of (standard) shifted linear systems of the form:
+ *          \f[
+ *            (A + \sigma^{(m)} I)x^{(m)} = b, \quad (m=1,\dots,M)
+ *          \f]
+ *          where \f$ I \f$ is identity matrix.
+ *          Unlike the generalized shifted linear systems, this version assumes that
+ *          \f$ B = I \f$, so the solver simplifies to the (standard) shifted MINRES method.
+ *
+ *          Matrices A is given in Matrix Market format (`.mtx`) and
+ *          are loaded as packed `U` Hermitian matrices.
+ *          The solver uses BLAS routines internally for matrix-vector multiplication (`zhpmv`).
+ *
+ *          A key feature of GSMINRES++ is that the user is free to implement
+ *          matrix-vector multiplications.
+ *          This example shows one such approach using BLAS, but any other representation
+ *          or computation method can be used as long as the required computational steps
+ *          are performed in accordance with the expected algorithmic flow.
+ *
+ * \par Usage:
+ * \code
+ *  $ ./sample_std ../data/A.mtx
+ * \endcode
+ */
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>

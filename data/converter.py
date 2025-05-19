@@ -1,3 +1,15 @@
+## \file converter.py
+#  \brief Python script
+#  \author Shuntaro Hidaka
+#
+#  \details TMPTMPTMP
+#
+#  \par Usage:
+#  \code
+#   $ python converter.py A.mtx A.csr
+#  \endcode
+#
+
 import sys
 import numpy as np
 import scipy as sp

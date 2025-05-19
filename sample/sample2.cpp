@@ -1,3 +1,36 @@
+/**
+ * \file sample2.cpp
+ * \brief C++ example of using GSMINRES++ with CSR format input and built-in SpMV+CG.
+ * \example sample2.cpp
+ * \author Shuntaro Hidaka
+ *
+ * \details This example solves a set of generalized shifted linear systems of the form:
+ *          \f[
+ *            (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M)
+ *          \f]
+ *          using the GSMINRES++ solver.
+ *
+ *          Matrices A and B are provided in a custom CSR format (`.csr`) and
+ *          are read using the utilities in \ref gsminres_util.hpp "gsminres_util.cpp".
+ *          Sparse matrix-vector multiplication and inner linear solves
+ *          are performed using built-in routines (`SpMV` and `CG`).
+ *
+ *          The CSR files are generated from Matrix Market (.mtx) input files
+ *          using \ref converter.py "Python script", which converts
+ *          the Matrix Market format matrix into a custom CSR format.
+ *
+ *          A key feature of GSMINRES++ is that the user is free to implement
+ *          matrix-vector multiplications and linear solves externally.
+ *          This example shows built-in approach, but any other representation
+ *          or computation method can be used as long as the required computational steps
+ *          are performed in accordance with the expected algorithmic flow.
+ *
+ * \par Usage:
+ * \code
+ *  $ ./sample2 ../data/A.mtx ../data/B.mtx
+ * \endcode
+ */
+
 #include <iostream>
 #include <iomanip>
 #include <complex>

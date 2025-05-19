@@ -1,25 +1,33 @@
-!**
-!* \file sample1_f.f90
-!* \brief Example of using GSMINRES++ with Matrix Market input and LAPACK by Fortran
-!* \example sample1_f.f90
-!* \author Shuntaro Hidaka
-!* 
-!* \details This example demonstrates how to solve generalized shifted linear systems:
-!*         \f[
-!*           (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
-!*         \f]
-!*          using the GSMINRES++ solver.
-!*
-!*          It read packed 'U' Hermitian matrices A and B from Matrix Market format files,
-!*          applies Cholesky factorization via LAPACK (`zpptrf`), and uses `zhpmv` and `zpptrs`
-!*          for matrix-vector multiplication and solving linear systems.
-!* \usage
-!* \code
-!*  Edit line number 48, 49
-!*  $ ./sample1_f
-!* \endcode
-!*
-!*/
+!>
+!! \file sample1_f.f90
+!! \brief Fortran example of using GSMINRES++ with Matrix Market input and LAPACK routines.
+!! \example sample1_f.f90
+!! \author Shuntaro Hidaka
+!! 
+!! \details This example solves a set of shifted linear systems of the form:
+!!          \f[
+!!            (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M)
+!!          \f]
+!!          using the GSMINRES++ solver.
+!!
+!!          Matrices A and B are given in Matrix Market format (`.mtx`) and
+!!          are loaded as packed `U` Hermitian matrices.
+!!          The solver uses BLAS/LAPACK routines internally for matrix-vector
+!!          multiplication (`zhpmv`) and linear solves (`zpptrf` and `zpptrs`).
+!!
+!!          A key feature of GSMINRES++ is that the user is free to implement
+!!          matrix-vector multiplications and linear solves externally.
+!!          This example shows one such approach using BLAS/LAPACK, but any other representation
+!!          or computation method can be used as long as the required computational steps
+!!          are performed in accordance with the expected algorithmic flow.
+!!
+!! \par Usage:
+!! \code
+!!  Edit line number 48, 49
+!!  $ ./sample1_f
+!! \endcode
+!!
+
 program sample1_f
   use gsminres_mod
   use iso_c_binding
