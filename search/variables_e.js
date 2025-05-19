@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['w_5fcurr_5f_0',['w_curr_',['../classgsminres_1_1Solver.html#aefcc62ed227bd7f205d9434984f0d6c3',1,'gsminres::Solver']]],
-  ['w_5fnext_5f_1',['w_next_',['../classgsminres_1_1Solver.html#aeebbe5cb5c78f5d653994444913e46b9',1,'gsminres::Solver']]],
-  ['w_5fprev_5f_2',['w_prev_',['../classgsminres_1_1Solver.html#ac67c56c39b13407f4daccc1e976e9bb7',1,'gsminres::Solver']]]
+  ['shift_5fsize_5f_0',['shift_size_',['../classgsminres_1_1Solver.html#a7f4175da74f26f5590f2c215853cb603',1,'gsminres::Solver']]],
+  ['sigma_5f_1',['sigma_',['../classgsminres_1_1Solver.html#a4244b86c8ac7f6b8a2042167f8d00995',1,'gsminres::Solver']]]
 ];

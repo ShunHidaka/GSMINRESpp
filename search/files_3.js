@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mainpage_2edox_0',['mainpage.dox',['../mainpage_8dox.html',1,'']]]
+  ['install_2edox_0',['install.dox',['../install_8dox.html',1,'']]]
 ];

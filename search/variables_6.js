@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['is_5fconv_5f_0',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
-  ['iter_5f_1',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
+  ['h_5f_0',['h_',['../classgsminres_1_1Solver.html#a487052bdf956cff0a314ce913069c2a7',1,'gsminres::Solver']]]
 ];

@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['_7esolver_0',['~Solver',['../classgsminres_1_1Solver.html#a90f352d4ba10033799b69915b3f7c01e',1,'gsminres::Solver']]]
+  ['w_5fcurr_5f_0',['w_curr_',['../classgsminres_1_1Solver.html#aefcc62ed227bd7f205d9434984f0d6c3',1,'gsminres::Solver']]],
+  ['w_5fnext_5f_1',['w_next_',['../classgsminres_1_1Solver.html#aeebbe5cb5c78f5d653994444913e46b9',1,'gsminres::Solver']]],
+  ['w_5fprev_5f_2',['w_prev_',['../classgsminres_1_1Solver.html#ac67c56c39b13407f4daccc1e976e9bb7',1,'gsminres::Solver']]],
+  ['with_20cmake_3',['Building with CMake',['../installation_page.html#cmake_sec',1,'']]],
+  ['without_20cmake_4',['Manual Compilation (without CMake)',['../installation_page.html#manual_sec',1,'']]]
 ];

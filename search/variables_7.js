@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['matrix_5fsize_0',['matrix_size',['../structgsminres_1_1util_1_1CSRMat.html#a01a308ecf97d11dbabb9dbbca12c4707',1,'gsminres::util::CSRMat']]],
-  ['matrix_5fsize_5f_1',['matrix_size_',['../classgsminres_1_1Solver.html#a4beb73c3d16b0dc6f5824e5d05f0a69f',1,'gsminres::Solver']]]
+  ['i_0',['i',['../namespaceconverter.html#ad86a0962c91177b3179900689d382417',1,'converter']]],
+  ['ind_1',['ind',['../namespaceconverter.html#a5782642950295f986183370be424ebab',1,'converter']]],
+  ['infile_2',['infile',['../namespaceconverter.html#a62bf12925b45da18a67e74d19741c9c3',1,'converter']]],
+  ['info_3',['info',['../namespaceconverter.html#a896ac8257fe1427dfe2880f335fa835f',1,'converter']]],
+  ['is_5fconv_5f_4',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
+  ['iter_5f_5',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
 ];

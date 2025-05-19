@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['t_5fcurr_5f_0',['T_curr_',['../classgsminres_1_1Solver.html#a60f7ebb66e24c56371a8eb756e1287d7',1,'gsminres::Solver']]],
-  ['t_5fnext_5f_1',['T_next_',['../classgsminres_1_1Solver.html#ab96fed68ec615ed134749bf643a63b76',1,'gsminres::Solver']]],
-  ['t_5fprev2_5f_2',['T_prev2_',['../classgsminres_1_1Solver.html#ac559a3b7e48428dcd897f991303cef7b',1,'gsminres::Solver']]],
-  ['t_5fprev_5f_3',['T_prev_',['../classgsminres_1_1Solver.html#ae89cf634bfe31a2537877e0a3496d0cc',1,'gsminres::Solver']]],
-  ['table_20of_20contens_4',['Table of Contens',['../index.html#toc_sec',1,'']]],
-  ['threshold_5f_5',['threshold_',['../classgsminres_1_1Solver.html#a8a86d25adb6d2ced17791d296d957708',1,'gsminres::Solver']]],
-  ['to_5fcpp_5fvector_6',['to_cpp_vector',['../namespacegsminres__c__api__util.html#afcc6e76db887ad780f05d32951a93440',1,'gsminres_c_api_util']]]
+  ['r0_5fnorm_5f_0',['r0_norm_',['../classgsminres_1_1Solver.html#ae6f3415ffe3abaaf3779624676d1a76f',1,'gsminres::Solver']]],
+  ['read_5fcsr_1',['read_csr',['../sample2__c_8c.html#a815a0fb583a955059ab00699a3ea5ef3',1,'sample2_c.c']]],
+  ['ref_2',['ref',['../structgsminres__mod_1_1gsminres__handle.html#a5f0421c4243c3fee7d80e2935044f240',1,'gsminres_mod::gsminres_handle']]],
+  ['row_5fpointer_3',['row_pointer',['../structgsminres_1_1util_1_1CSRMat.html#aff686701a9bcbb430191c73f90781cab',1,'gsminres::util::CSRMat']]],
+  ['row_5fptr_5fsize_4',['row_ptr_size',['../namespaceconverter.html#a70876f48fe8d1fa88851170acf0567a1',1,'converter']]]
 ];
