@@ -1,3 +1,9 @@
+/**
+ * \file gsminres_c_api.cpp
+ * \brief Implementation of C API for the GSMINRES++ solver.
+ * \author Shuntaro Hidaka
+ */
+
 #include "gsminres_solver.hpp"
 #include "gsminres_c_api.h"
 #include "gsminres_c_api_util.hpp"

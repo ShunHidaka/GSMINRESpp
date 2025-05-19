@@ -1,6 +1,6 @@
 /**
  * \file gsminres_util.hpp
- * \brief Utility functions and data structures for GSMINRES++
+ * \brief Utility functions and data structures for GSMINRES++.
  * \author Shuntaro Hidaka
  *
  * \details This header provides common utility components related to

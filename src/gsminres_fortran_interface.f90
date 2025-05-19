@@ -1,3 +1,9 @@
+!>
+!! \file gsminres_fortran_interface.f90
+!! \brief Fortran interface via C API for GSMINRES++.
+!! \author Shuntaro Hidaka
+!!
+
 module gsminres_mod
   ! Note:
   ! BIND(C) で complex 配列（例: x(:)）を C に inout 引数として渡す場合、

@@ -1,3 +1,9 @@
+/**
+ * \file gsminres_solver.cpp
+ * \brief Implementation of the GSMINRES++ solver class.
+ * \author Shuntaro Hidaka
+ */
+
 #include "gsminres_solver.hpp"
 #include "gsminres_blas.hpp"
 //#include "gsminres_lapack.hpp"

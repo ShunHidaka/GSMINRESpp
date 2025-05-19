@@ -1,13 +1,25 @@
-## \file converter.py
-#  \brief Python script
-#  \author Shuntaro Hidaka
+##
+# \file converter.py
+# \brief Python script to convert Matrix Market (.mtx) files into a custom CSR text format.
+# \author Shuntaro Hidaka
 #
-#  \details TMPTMPTMP
+# This script reads a sparse matrix in Matrix Market format (.mtx) and outputs
+# a plain-text CSR (Compressed Sparse Row) format suitable for use with the
+# GSMINRES++ example programs (e.g., \ref sample2.cpp).
 #
-#  \par Usage:
-#  \code
-#   $ python converter.py A.mtx A.csr
-#  \endcode
+# The output format contains:
+# - Matrix dimension and number of non-zero entries
+# - Row pointer array (size N+1)
+# - Column indices
+# - Complex values
+#
+# This simplified format allows fast loading of sparse matrices in educational
+# and testing environments without relying on external libraries.
+#
+# \par Usage:
+# \code
+#  $ python converter.py A.mtx A.csr
+# \endcode
 #
 
 import sys

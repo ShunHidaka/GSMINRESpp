@@ -1,3 +1,8 @@
+/**
+ * \file gsminres_util.hpp
+ * \brief Implementation of Utility functions and data structures for GSMINRES++.
+ */
+
 #include "gsminres_util.hpp"
 #include "gsminres_blas.hpp"
 #include <iostream>

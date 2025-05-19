@@ -1,6 +1,6 @@
 /**
  * \file gsminres_solver.hpp
- * \brief Header file for the GSMINRES++ solver class
+ * \brief Header file for the GSMINRES++ solver class.
  * \author Shuntaro Hidaka
  *
  * \details This header defines the core `Solver` class used in the GSMINRES++ library.
