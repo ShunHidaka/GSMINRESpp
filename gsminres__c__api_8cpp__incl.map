@@ -1,5 +1,5 @@
 <map id="src/gsminres_c_api.cpp" name="src/gsminres_c_api.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="277,5,450,31"/>
+<area shape="rect" id="Node000001" title="Implementation of C API for the GSMINRES++ solver." alt="" coords="277,5,450,31"/>
 <area shape="rect" id="Node000002" href="$gsminres__solver_8hpp.html" title="Header file for the GSMINRES++ solver class." alt="" coords="43,79,199,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="325,33,174,77,172,72,324,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,152,84,177"/>

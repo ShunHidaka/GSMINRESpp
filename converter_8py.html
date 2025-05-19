@@ -87,7 +87,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Python script.  
+<p>Python script to convert Matrix Market (.mtx) files into a custom CSR text format.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -129,9 +129,16 @@ Variables</h2></td></tr>
 <tr class="separator:a1e1cb5282251941da3be7c61d30afc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Python script. </p>
+<div class="textblock"><p>Python script to convert Matrix Market (.mtx) files into a custom CSR text format. </p>
 <dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
-<p>TMPTMPTMP</p>
+<p>This script reads a sparse matrix in Matrix Market format (.mtx) and outputs a plain-text CSR (Compressed Sparse Row) format suitable for use with the GSMINRES++ example programs (e.g., <a class="el" href="sample2_8cpp-example.html">sample2.cpp</a>).</p>
+<p>The output format contains:</p><ul>
+<li>Matrix dimension and number of non-zero entries</li>
+<li>Row pointer array (size N+1)</li>
+<li>Column indices</li>
+<li>Complex values</li>
+</ul>
+<p>This simplified format allows fast loading of sparse matrices in educational and testing environments without relying on external libraries.</p>
 <dl class="section user"><dt>Usage:</dt><dd><div class="fragment"><div class="line">$ python converter.py A.mtx A.csr</div>
 </div><!-- fragment --> </dd></dl>
 </div></div><!-- contents -->

@@ -1,5 +1,5 @@
 <map id="include/gsminres_c_api_util.hpp" name="include/gsminres_c_api_util.hpp">
 <area shape="rect" id="Node000001" title="Internal utility functions for GSMINRES++ C API complex data conversion." alt="" coords="19,5,165,45"/>
-<area shape="rect" id="Node000002" href="$gsminres__c__api_8cpp.html" title=" " alt="" coords="5,93,179,119"/>
+<area shape="rect" id="Node000002" href="$gsminres__c__api_8cpp.html" title="Implementation of C API for the GSMINRES++ solver." alt="" coords="5,93,179,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,95,93,89,93,89,59"/>
 </map>

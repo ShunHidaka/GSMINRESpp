@@ -48,7 +48,6 @@ var menudata={children:[
 {text:"d",url:"namespacemembers_func.html#index_d"},
 {text:"f",url:"namespacemembers_func.html#index_f"},
 {text:"g",url:"namespacemembers_func.html#index_g"},
-{text:"i",url:"namespacemembers_func.html#index_i"},
 {text:"l",url:"namespacemembers_func.html#index_l"},
 {text:"s",url:"namespacemembers_func.html#index_s"},
 {text:"t",url:"namespacemembers_func.html#index_t"},
@@ -94,7 +93,7 @@ var menudata={children:[
 {text:"w",url:"functions_vars.html#index_w"}]}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
+{text:"Globals",url:"globals.html",children:[
 {text:"All",url:"globals.html",children:[
 {text:"a",url:"globals.html#index_a"},
 {text:"c",url:"globals.html#index_c"},

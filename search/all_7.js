@@ -9,6 +9,5 @@ var searchData=
   ['installation_20guide_6',['Installation Guide',['../installation_page.html',1,'index']]],
   ['introduction_7',['Introduction',['../index.html#intro_sec',1,'']]],
   ['is_5fconv_5f_8',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
-  ['is_5fpositive_5fdefinite_9',['is_positive_definite',['../namespacecheck__PD.html#a590958327923caeb835ea5bf92b27ec6',1,'check_PD']]],
-  ['iter_5f_10',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
+  ['iter_5f_9',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
 ];
