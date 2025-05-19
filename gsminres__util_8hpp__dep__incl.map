@@ -1,6 +1,6 @@
 <map id="include/gsminres_util.hpp" name="include/gsminres_util.hpp">
 <area shape="rect" id="Node000001" title="Utility functions and data structures for GSMINRES++." alt="" coords="265,5,455,31"/>
-<area shape="rect" id="Node000002" href="$sample1_8cpp.html" title="Example of using GSMINRES++ with Matrix Market input and LAPACK." alt="" coords="5,79,163,104"/>
+<area shape="rect" id="Node000002" href="$sample1_8cpp.html" title="Example of using GSMINRES++ with Matrix Market input and LAPACK by C++." alt="" coords="5,79,163,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="303,37,129,81,128,76,302,31"/>
 <area shape="rect" id="Node000003" href="$sample2_8cpp.html" title=" " alt="" coords="187,79,344,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="335,41,282,81,279,76,332,37"/>
