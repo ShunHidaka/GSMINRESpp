@@ -21,6 +21,12 @@
 #include <complex>
 #include <vector>
 
+/**
+ * \namespace gsminres::util
+ * \brief This namespace provides utility functions and data structures used in GSMINRES++ samples.
+ * \details This namespace provides auxiliary functionality for matrix loading,
+ *          vector initialization, and sparse matrix operations.
+ */
 namespace gsminres {
   namespace util {
 

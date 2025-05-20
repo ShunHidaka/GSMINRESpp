@@ -1,5 +1,5 @@
 /**
- * \file gsminres_util.hpp
+ * \file gsminres_util.cpp
  * \brief Implementation of Utility functions and data structures for GSMINRES++.
  * \author Shuntaro Hidaka
  */

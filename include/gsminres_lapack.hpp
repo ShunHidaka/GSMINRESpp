@@ -28,6 +28,16 @@ extern "C" {
   void zlartg_(std::complex<double> *f, std::complex<double> *g, double *c, std::complex<double> *s, std::complex<double> *r);
 }
 
+/**
+ * \namespace gsminres::lapack
+ * \brief This namespace provides C++ wrappers for LAPACK routines used in GSMINRES++ sample programs.
+ * \details This namespace provides simple LAPACK routines necessary for
+ *          Cholesky factorization and solving linear equations, used in sample programs.
+ *
+ *          In addition, it provides a wrapper for `zlartg` as a numerically robust
+ *          alternative to the BLAS routine `zrotg`, which is known to produce incorrect
+ *          results in certain environments such as OpenBLAS versions prior to 0.3.27.
+ */
 namespace gsminres {
   namespace lapack {
 

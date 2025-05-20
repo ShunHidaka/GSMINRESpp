@@ -20,6 +20,17 @@
 #include <vector>
 #include <array>
 
+/**
+ * \namespace gsminres
+ * \brief This namespace defines the core classes and logic for the GSMINRES++ solver.
+ * \details The `gsminres` namespace provides the core infrastructure for solving
+ *          multiple shifted linear systems using the generalized shited MIRNES method.
+ *
+ *          It includes:
+ *          - The `Solver` class for orchestrating the generalized MINRES iteration.
+ *          - Numerical routines interfacing with BLAS and LAPACK.
+ *          - Utility functions and data structures for managing matrices and vectors.
+ */
 namespace gsminres {
 
   /**

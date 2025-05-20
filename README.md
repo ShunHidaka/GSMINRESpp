@@ -42,15 +42,14 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 ```
 .  
 ├── CMakeLists.txt                         # CMake build script
+├── Doxyfile                            #     Doxygen configuration file   
 ├── Makefile                               # Make build script
 ├── README.md                              # This file
-├── bin/                                   # Output directory (created by Make)
-├── build/                                 # Build directory (created by CMake)
-├── cmake/                                 #
+├── cmake/                          
 │   ├── gsminresConfig.cmake.in            # CMake configuration file
-├── data/  
-│   ├── check_PD.py                        # Check if matrix is positive definite
+├── data/
 │   ├── converter.py                       # Convert Matrix Market format to CSR
+├── docs/
 ├── include/  
 │   ├── gsminres_blas.hpp                  # BLAS wrapper for C++
 │   ├── gsminres_c_api.h                   # C API header

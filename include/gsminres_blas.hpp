@@ -34,6 +34,12 @@ extern "C" {
   void zrot_(const int *n, std::complex<double> *x, const int *incx, std::complex<double> *y, const int *incy, const double *c, const std::complex<double> *s);
 }
 
+/**
+ * \namespace gsminres::blas
+ * \brief This namespace provides C++ wrappers for BLAS routines used in GSMINRES++.
+ * \details This namespace provides simple C++ wrappers over the BLAS routines.
+ *          These routines are used in GSMINRES++.
+ */
 namespace gsminres {
   namespace blas {
 

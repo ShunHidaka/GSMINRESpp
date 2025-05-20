@@ -1,5 +1,5 @@
 /**
- * \file sample2_c.cpp
+ * \file sample2_c.c
  * \brief C example of using GSMINRES++ with CSR format input and built-in SpMV+CG.
  * \example sample2_c.cpp
  * \author Shuntaro Hidaka
