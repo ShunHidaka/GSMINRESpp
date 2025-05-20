@@ -1,5 +1,5 @@
 <map id="gsminres_mod::gsminres_handle" name="gsminres_mod::gsminres_handle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,192,133"/>
+<area shape="rect" id="Node000001" title="Opaque pointer handle to the internal GSMINRES++ solver object." alt="" coords="5,93,192,133"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="71,5,126,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,44,101,93,96,93,96,44"/>
 </map>

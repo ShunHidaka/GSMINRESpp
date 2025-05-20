@@ -88,12 +88,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Fortran interface via C API for GSMINRES++.  
+<p>Fortran interface module for GSMINRES++ C API.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Types</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">type &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsminres__mod_1_1gsminres__handle.html">gsminres_mod::gsminres_handle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque pointer handle to the internal GSMINRES++ solver object.  <a href="structgsminres__mod_1_1gsminres__handle.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -104,25 +105,35 @@ Modules</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a59705f14d125325cdb2ca0e739acc273" id="r_a59705f14d125325cdb2ca0e739acc273"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structgsminres__mod_1_1gsminres__handle.html">gsminres_handle</a>) function, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#a59705f14d125325cdb2ca0e739acc273">gsminres_mod::gsminres_create</a> (n, m)</td></tr>
+<tr class="memdesc:a59705f14d125325cdb2ca0e739acc273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new GSMINRES solver instance.  <br /></td></tr>
 <tr class="separator:a59705f14d125325cdb2ca0e739acc273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fc076de1a36c97988efe374e6f67ea8" id="r_a2fc076de1a36c97988efe374e6f67ea8"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#a2fc076de1a36c97988efe374e6f67ea8">gsminres_mod::gsminres_destroy</a> (handle)</td></tr>
+<tr class="memdesc:a2fc076de1a36c97988efe374e6f67ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the solver object and release internal resources.  <br /></td></tr>
 <tr class="separator:a2fc076de1a36c97988efe374e6f67ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe84b15b4d61e01c39dcdc53a141acc2" id="r_afe84b15b4d61e01c39dcdc53a141acc2"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#afe84b15b4d61e01c39dcdc53a141acc2">gsminres_mod::gsminres_initialize</a> (handle, x, b, w, sigma, threshold, n, m)</td></tr>
+<tr class="memdesc:afe84b15b4d61e01c39dcdc53a141acc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the GSMINRES solver.  <br /></td></tr>
 <tr class="separator:afe84b15b4d61e01c39dcdc53a141acc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e4df9eb9776e9e52b659a57e691f767" id="r_a1e4df9eb9776e9e52b659a57e691f767"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#a1e4df9eb9776e9e52b659a57e691f767">gsminres_mod::gsminres_glanczos_pre</a> (handle, u, n)</td></tr>
+<tr class="memdesc:a1e4df9eb9776e9e52b659a57e691f767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply pre-processing step of the generalized Lanczos process.  <br /></td></tr>
 <tr class="separator:a1e4df9eb9776e9e52b659a57e691f767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2540915caefcaf5f8df6aead0a15f67" id="r_ab2540915caefcaf5f8df6aead0a15f67"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#ab2540915caefcaf5f8df6aead0a15f67">gsminres_mod::gsminres_glanczos_pst</a> (handle, w, u, n)</td></tr>
+<tr class="memdesc:ab2540915caefcaf5f8df6aead0a15f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply post-processing step of the generalized Lanczos process.  <br /></td></tr>
 <tr class="separator:ab2540915caefcaf5f8df6aead0a15f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c851626ae78622df580e0c5d67d3883" id="r_a5c851626ae78622df580e0c5d67d3883"><td class="memItemLeft" align="right" valign="top">integer(c_int) function, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#a5c851626ae78622df580e0c5d67d3883">gsminres_mod::gsminres_update</a> (handle, x, n, m)</td></tr>
+<tr class="memdesc:a5c851626ae78622df580e0c5d67d3883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the solution vectors.  <br /></td></tr>
 <tr class="separator:a5c851626ae78622df580e0c5d67d3883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb7c4e635a3e79693102a8a2fd88ac9c" id="r_acb7c4e635a3e79693102a8a2fd88ac9c"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#acb7c4e635a3e79693102a8a2fd88ac9c">gsminres_mod::gsminres_finalize</a> (handle, conv_itr, conv_res, m)</td></tr>
+<tr class="memdesc:acb7c4e635a3e79693102a8a2fd88ac9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the number of iterations and final residual norms after convergence.  <br /></td></tr>
 <tr class="separator:acb7c4e635a3e79693102a8a2fd88ac9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accc7cd3395ffc50aae95545091b64223" id="r_accc7cd3395ffc50aae95545091b64223"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres__mod.html#accc7cd3395ffc50aae95545091b64223">gsminres_mod::gsminres_get_residual</a> (handle, res, m)</td></tr>
+<tr class="memdesc:accc7cd3395ffc50aae95545091b64223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current residual norms.  <br /></td></tr>
 <tr class="separator:accc7cd3395ffc50aae95545091b64223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Fortran interface via C API for GSMINRES++. </p>
-<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka </dd></dl>
+<div class="textblock"><p>Fortran interface module for GSMINRES++ C API. </p>
+<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
+<p>This module provides a Fortran interface to the GSMINRES++ solver library, enabling Fortran programs to call the C-based API functions. It defines type bindings and interface wrappers for initialization, iteration, residual query, and destruction of the solver.</p>
+<p>The module handles conversion of data types between Fortran and C, and assumes row-major layout for solution vectors as used in the C interface. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
