@@ -42,7 +42,7 @@ make: *** [Makefile:83: bin/sample2_c] エラー 1
 ```
 .  
 ├── CMakeLists.txt                         # CMake build script
-├── Doxyfile                            #     Doxygen configuration file   
+├── Doxyfile                               # Doxygen configuration file   
 ├── Makefile                               # Make build script
 ├── README.md                              # This file
 ├── cmake/                          
@@ -151,7 +151,7 @@ $ gfortran myprog.cpp
 ---
 
 ## API Summary
-See the [manual](https://shunhidaka.github.io/GSMINRESpp/namespaces.html).
+See the [manual](https://shunhidaka.github.io/GSMINRESpp/annotated.html).
 
 ---
 

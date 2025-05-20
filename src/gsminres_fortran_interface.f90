@@ -1,8 +1,16 @@
 !>
-!! \file gsminres_fortran_interface.f90
-!! \brief Fortran interface via C API for GSMINRES++.
-!! \author Shuntaro Hidaka
-!!
+!> \file gsminres_fortran_interface.f90
+!> \brief Fortran interface module for GSMINRES++ C API.
+!> \author Shuntaro Hidaka
+!>
+!> \details This module provides a Fortran interface to the GSMINRES++ solver library,
+!>          enabling Fortran programs to call the C-based API functions.
+!>          It defines type bindings and interface wrappers for initialization, iteration,
+!>          residual query, and destruction of the solver.
+!>
+!>          The module handles conversion of data types between Fortran and C,
+!>          and assumes row-major layout for solution vectors as used in the C interface.
+!>
 
 module gsminres_mod
   ! Note:
@@ -22,12 +30,23 @@ module gsminres_mod
   public :: gsminres_finalize
   public :: gsminres_get_residual
 
+  !> \brief Opaque pointer handle to the internal GSMINRES++ solver object.
+  !> \details This handle is returned by `gsminres_create` and passed to all subsequent
+  !>          API calls to identify the solver instance.
+  !>          The underlying structure is managed on the C++ side and must be released
+  !>          explicitly by calling `gsminres_destroy`.
   type :: gsminres_handle
      type(c_ptr) :: ref
   end type gsminres_handle
 
 contains
 
+  !> \brief Create a new GSMINRES solver instance.
+  !> \details Allocates an internal solver object.
+  !>          The returned opaque handle must be passed to all other GSMINRES C API routines.
+  !> \param[in] n  Matrix size
+  !> \param[in] m  Number of shift values
+  !> \return Solver handle (type(c_ptr))
   function gsminres_create(n, m) result(handle)
     integer(c_size_t), intent(in), value :: n, m
     type(gsminres_handle) :: handle
@@ -41,6 +60,8 @@ contains
     handle%ref = c_gsminres_create(n, m)
   end function gsminres_create
 
+  !> \brief Free the solver object and release internal resources.
+  !> \param[in] handle Solver handle (obtained from gsminres_create)
   subroutine gsminres_destroy(handle)
     type(gsminres_handle), intent(inout) :: handle
     interface
@@ -53,6 +74,15 @@ contains
     handle%ref = c_null_ptr
   end subroutine gsminres_destroy
 
+  !> \brief Initialize the GSMINRES solver.
+  !> \param[in]     handle   Solver handle (opaque pointer)
+  !> \param[out]    x        Initial approximate solutions (row-major, size = n * m)
+  !> \param[in]     b        Right-hand side vector (size = n)
+  !> \param[in,out] w        Preconditioned vector B^{-1}b (size = n)
+  !> \param[in]     sigma    Shift values (size = m)
+  !> \param[in]     threshold Convergence threshold
+  !> \param[in]     n        Size of the system
+  !> \param[in]     m        Number of shifts
   subroutine gsminres_initialize(handle, x, b, w, sigma, threshold, n, m)
     type(gsminres_handle),     intent(in)            :: handle
     complex(c_double_complex), intent(inout), target :: x(*), w(*)
@@ -73,6 +103,10 @@ contains
     call c_gsminres_initialize(handle%ref, xp, bp, wp, sigmap, threshold, n, m)
   end subroutine gsminres_initialize
 
+  !> \brief Apply pre-processing step of the generalized Lanczos process.
+  !> \param[in]     handle Solver handle
+  !> \param[in,out] u      Input/output vector (stores A*w)
+  !> \param[in]     n      Size of the vector
   subroutine gsminres_glanczos_pre(handle, u, n)
     type(gsminres_handle),     intent(in)            :: handle
     complex(c_double_complex), intent(inout), target :: u(*)
@@ -90,6 +124,11 @@ contains
     call c_gsminres_glanczos_pre(handle%ref, up, n)
   end subroutine gsminres_glanczos_pre
 
+  !> \brief Apply post-processing step of the generalized Lanczos process.
+  !> \param[in]     handle Solver handle
+  !> \param[in,out] w      Vector to be updated
+  !> \param[in,out] u      Vector storing intermediate value A*w 
+  !> \param[in]     n      Matrix size
   subroutine gsminres_glanczos_pst(handle, w, u, n)
     type(gsminres_handle),     intent(in)            :: handle
     complex(c_double_complex), intent(inout), target :: w(*), u(*)
@@ -107,6 +146,12 @@ contains
     call c_gsminres_glanczos_pst(handle%ref, wp, up, n)
   end subroutine gsminres_glanczos_pst
 
+  !> \brief Update the solution vectors.
+  !> \param[in]     handle Solver handle
+  !> \param[in,out] x      Approximate solutions (updated in place)
+  !> \param[in]     n      Matrix size
+  !> \param[in]     m      Number of shifts
+  !> \return 1 if all systems have converged, 0 otherwise
   function gsminres_update(handle, x, n, m) result(flag)
     type(gsminres_handle),     intent(in)            :: handle
     complex(c_double_complex), intent(inout), target :: x(*)
@@ -123,11 +168,14 @@ contains
        end function c_gsminres_update
     end interface
     xp = c_loc(x(1))
-    !write(*,*) 'Before: ', x(1), x(2)
     flag = c_gsminres_update(handle%ref, xp, n ,m)
-    !write(*,*) 'After: ', x(1), x(2)
   end function gsminres_update
 
+  !> \brief Query the number of iterations and final residual norms after convergence.
+  !> \param[in]  handle    Solver handle
+  !> \param[out] conv_itr  Iteration counts (output, size = m)
+  !> \param[out] conv_res  Final residual norms (output, size = m)
+  !> \param[in]  m         Number of shifts
   subroutine gsminres_finalize(handle, conv_itr, conv_res, m)
     type(gsminres_handle), intent(in)          :: handle
     integer(c_int),        intent(out), target :: conv_itr(*)
@@ -146,6 +194,10 @@ contains
     call c_gsminres_finalize(handle%ref, itrp, resp, m)
   end subroutine gsminres_finalize
 
+  !> \brief Get current residual norms.
+  !> \param[in]  handle Solver handle
+  !> \param[out] res    Residual norms (output, size = m)
+  !> \param[out] m      Number of shifts
   subroutine gsminres_get_residual(handle, res, m)
     type(gsminres_handle), intent(in)          :: handle
     real(c_double),        intent(out), target :: res(*)
