@@ -1,5 +1,5 @@
 <map id="sample/sample2_c.c" name="sample/sample2_c.c">
-<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,326,31"/>
+<area shape="rect" id="Node000001" title="C example of using GSMINRES++ with CSR format input and built&#45;in SpMV+CG." alt="" coords="171,5,326,31"/>
 <area shape="rect" id="Node000002" href="$gsminres__c__api_8h.html" title="C API for the GSMINRES++ solver." alt="" coords="5,79,140,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,33,115,76,113,71,219,28"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="133,152,223,177"/>

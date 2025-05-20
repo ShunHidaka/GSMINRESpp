@@ -1,5 +1,5 @@
 <map id="src/gsminres_util.cpp" name="src/gsminres_util.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="219,5,379,31"/>
+<area shape="rect" id="Node000001" title="Implementation of Utility functions and data structures for GSMINRES++." alt="" coords="219,5,379,31"/>
 <area shape="rect" id="Node000002" href="$gsminres__util_8hpp.html" title="Utility functions and data structures for GSMINRES++." alt="" coords="97,79,236,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,33,201,74,199,70,276,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="108,152,188,177"/>

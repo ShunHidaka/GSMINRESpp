@@ -122,7 +122,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="335,41,282,81,279,76,332,37"/>
 <area shape="rect" href="sample__std_8cpp.html" title="Example of using GSMINRES++ with identity matrix as B (standard shifted MINRES)." alt="" coords="368,79,544,104"/>
 <area shape="poly" title=" " alt="" coords="388,37,442,76,439,81,385,41"/>
-<area shape="rect" href="gsminres__util_8cpp.html" title=" " alt="" coords="568,79,728,104"/>
+<area shape="rect" href="gsminres__util_8cpp.html" title="Implementation of Utility functions and data structures for GSMINRES++." alt="" coords="568,79,728,104"/>
 <area shape="poly" title=" " alt="" coords="420,31,602,76,601,81,419,37"/>
 </map>
 </div>
@@ -137,9 +137,11 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacegsminres" id="r_namespacegsminres"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres.html">gsminres</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacegsminres_1_1util" id="r_namespacegsminres_1_1util"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres_1_1util.html">gsminres::util</a></td></tr>
+<tr class="memdesc:namespacegsminres_1_1util"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace provides utility functions and data structures used in GSMINRES++ samples. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacegsminres" id="r_namespacegsminres"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegsminres.html">gsminres</a></td></tr>
+<tr class="memdesc:namespacegsminres"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace defines the core classes and logic for the GSMINRES++ solver. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -168,11 +170,9 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility functions and data structures for GSMINRES++. </p>
-<p>Implementation of Utility functions and data structures for GSMINRES++.</p>
 <dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka</dd></dl>
 <p>This header provides common utility components related to matrix and vector operations, including functions to load and generate test data, a custom sparse matrix data structure in CSR format, and basic computational kernels such as sparse matrix-vector multiplication and a simple Conjugate Gradient (CG) solver.</p>
-<p>These functions are not used internally by the GSMINRES++ solver itself, but are provided for convenience in sample programs, testing, and exploratory use.</p>
-<dl class="section author"><dt>Author</dt><dd>Shuntaro Hidaka </dd></dl>
+<p>These functions are not used internally by the GSMINRES++ solver itself, but are provided for convenience in sample programs, testing, and exploratory use. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

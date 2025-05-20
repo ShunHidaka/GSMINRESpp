@@ -85,6 +85,9 @@ $(function() {
   <div class="headertitle"><div class="title">gsminres::lapack Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>This namespace provides C++ wrappers for LAPACK routines used in GSMINRES++ sample programs.  
+<a href="namespacegsminres_1_1lapack.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -98,7 +101,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5c554f2ac59deee2ec7081b763421a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute Givens rotation parameters for complex values using LAPACK's <code>zlartg</code> routine.  <br /></td></tr>
 <tr class="separator:a5c554f2ac59deee2ec7081b763421a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This namespace provides C++ wrappers for LAPACK routines used in GSMINRES++ sample programs. </p>
+<p>This namespace provides simple LAPACK routines necessary for Cholesky factorization and solving linear equations, used in sample programs.</p>
+<p>In addition, it provides a wrapper for <code>zlartg</code> as a numerically robust alternative to the BLAS routine <code>zrotg</code>, which is known to produce incorrect results in certain environments such as OpenBLAS versions prior to 0.3.27. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a5c554f2ac59deee2ec7081b763421a3e" name="a5c554f2ac59deee2ec7081b763421a3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c554f2ac59deee2ec7081b763421a3e">&#9670;&#160;</a></span>zlartg()</h2>
 
