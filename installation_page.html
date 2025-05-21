@@ -83,23 +83,49 @@ $(function() {
   <div class="headertitle"><div class="title">Installation Guide</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="cmake_sec"></a>
-Building with CMake</h1>
-<p>To build GSMINRES++ using CMake:</p>
-<div class="fragment"><div class="line">mkdir build</div>
-<div class="line">cd build</div>
-<div class="line">cmake ..</div>
-<div class="line">make</div>
-</div><!-- fragment --><p>Optional CMake variables:</p><ul>
-<li><code>USE_OPENMP:</code> Enable OpenMP parallelism (default: ON)</li>
-<li><code>CMAKE_INSTALL_PREFIX:</code> Specify install location</li>
+<div class="textblock"><h2><a class="anchor" id="autotoc_md0"></a>
+Contents</h2>
+<ul>
+<li><a class="el" href="installation_page.html#cmake_anchor">Building with CMake</a></li>
+<li><a class="el" href="installation_page.html#make_anchor">Building with Make</a></li>
+<li><a class="el" href="installation_page.html#manual_anchor">Building Manually</a></li>
 </ul>
-<p>To install the library: </p><div class="fragment"><div class="line">make install DESTDIR=~/gsminres_install</div>
-</div><!-- fragment --><hr  />
+<p><a class="anchor" id="cmake_anchor"></a></p>
+<h1><a class="anchor" id="cmake_sec"></a>
+Building with CMake</h1>
+<p>To build GSMINRES++ using CMake: </p><div class="fragment"><div class="line">$ mkdir build</div>
+<div class="line">$ cd build</div>
+<div class="line">$ cmake ..</div>
+<div class="line">$ make install</div>
+</div><!-- fragment --><p>Optional CMake variables:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Variable   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>-DCMAKE_INSTALL_PREFIX</code>   </td><td class="markdownTableBodyNone">Specify install location (default: Home directory)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>-DCMAKE_PREFIX_PATH</code>   </td><td class="markdownTableBodyNone">Add path to find external libraries like OpenBLAS    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>-DCMAKE_BUILD_TYPE</code>   </td><td class="markdownTableBodyNone">Set to <code>Release</code> or <code>Debug</code> (default: Release)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>-DUSE_OPENMP</code>   </td><td class="markdownTableBodyNone">Enable OpenMP parallelism (default: ON)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>-DGSMINRES_ENABLE_C_API</code>   </td><td class="markdownTableBodyNone">Enable the C API (default: ON)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>-DGSMINRES_ASSUME_ABI_COMPATIBLE</code>   </td><td class="markdownTableBodyNone">Assume ABI compatibility between <code>double _Complex</code> and <code>std::complex&lt;double&gt;</code> (default: OFF)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>-DGSMINRES_ENABLE_FORTRAN_INTERFACE</code>   </td><td class="markdownTableBodyNone">Enable Fortran interface (default: ON)   </td></tr>
+</table>
+<hr  />
+<p><a class="anchor" id="make_anchor"></a></p>
+<h1><a class="anchor" id="make_sec"></a>
+Building with Make</h1>
+<hr  />
+<p><a class="anchor" id="manual_anchor"></a></p>
 <h1><a class="anchor" id="manual_sec"></a>
-Manual Compilation (without CMake)</h1>
+Building manually</h1>
 <p>If you prefer to compile manually:</p>
-<div class="fragment"><div class="line">g++ -std=c++17 -Iinclude -O2 -fopenmp                   \</div>
+<div class="fragment"><div class="line">g++ -std=c++17 -Iinclude -O2 -fopenmp             \</div>
 <div class="line">-c src/gsminres_solver.cpp -o obj/gsminres_solver.o</div>
 <div class="line"> </div>
 <div class="line">ar rcs libgsminres.a obj/gsminres_solver.o</div>
