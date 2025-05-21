@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['documentation_0',['GSMINRES++ Documentation',['../index.html',1,'']]]
+  ['contact_20information_0',['License and Contact Information',['../license_page.html',1,'index']]]
 ];

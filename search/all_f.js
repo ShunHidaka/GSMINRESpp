@@ -9,5 +9,6 @@ var searchData=
   ['shift_5fsize_5f_6',['shift_size_',['../classgsminres_1_1Solver.html#a7f4175da74f26f5590f2c215853cb603',1,'gsminres::Solver']]],
   ['sigma_5f_7',['sigma_',['../classgsminres_1_1Solver.html#a4244b86c8ac7f6b8a2042167f8d00995',1,'gsminres::Solver']]],
   ['solver_8',['solver',['../classgsminres_1_1Solver.html',1,'gsminres::Solver'],['../classgsminres_1_1Solver.html#a652aa6cf07811368c3bb2d0e0ec46d05',1,'gsminres::Solver::Solver()']]],
-  ['spmv_9',['spmv',['../sample2__c_8c.html#a0ec091ccc27106ecdbd9df1f77d1e2c6',1,'SpMV():&#160;sample2_c.c'],['../namespacegsminres_1_1util.html#ae53ba88d8f8faa06be510f24d52ba5c0',1,'gsminres::util::spmv()']]]
+  ['spmv_9',['spmv',['../sample2__c_8c.html#a0ec091ccc27106ecdbd9df1f77d1e2c6',1,'SpMV():&#160;sample2_c.c'],['../namespacegsminres_1_1util.html#ae53ba88d8f8faa06be510f24d52ba5c0',1,'gsminres::util::spmv()']]],
+  ['system_20requirements_10',['System Requirements',['../installation_page.html#requirements',1,'']]]
 ];

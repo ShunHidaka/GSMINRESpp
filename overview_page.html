@@ -83,9 +83,27 @@ $(function() {
   <div class="headertitle"><div class="title">Overview</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="Overview"></a>
-Overview</h1>
-<p>This document is a manual for <code>GSMINRES++</code> which is the library </p>
+<div class="textblock"><p>GSMINRES++ is a modern C++ solver library designed to efficiently handle large-scale systems of the form:</p>
+<p class="formulaDsp">
+\[
+  (A + \sigma^{(m)} B) x^{(m)} = b, \quad (m = 1, 2, \dots, M),
+\]
+</p>
+<p>where \( A \) and \( B \) are Hermitian (or real symmetric) matrices, \( B \) is positive definite, and \( \sigma^{(m)} \) are complex shift parameters.</p>
+<p>This type of system appears in a wide range of computational science applications such as:</p><ul>
+<li>Computation of the Green's function</li>
+<li>Sakurai&ndash;Sugiura method for eigenvalue problems</li>
+<li>Computation of matrix functions</li>
+<li>Solution of the Sternheimer equations</li>
+</ul>
+<p>GSMINRES++ is based on a generalization of the MINRES method, extended to handle multiple shifted systems with a single Lanczos process using the \( B \)-inner product. The algorithm minimizes the \( B^{-1} \)-norm of the residual in each iteration.</p>
+<p>Key features:</p><ul>
+<li>Flexible matrix-vector product and inner solve interfaces: users can define their own operations</li>
+<li>Support for complex arithmetic and shift-dependent behavior</li>
+<li>Compact memory usage and short recurrence structure</li>
+<li>Interoperable with C and Fortran though a C API</li>
+</ul>
+<p>GSMINRES++ is written in standard C++17, utilizes BLAS for vector operations, and is suitable for integration into high-performance computing workflows. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

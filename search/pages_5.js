@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usage_0',['Usage',['../usage_page.html',1,'index']]]
+  ['license_20and_20contact_20information_0',['License and Contact Information',['../license_page.html',1,'index']]]
 ];

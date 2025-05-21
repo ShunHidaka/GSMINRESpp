@@ -83,24 +83,32 @@ $(function() {
   <div class="headertitle"><div class="title">Installation Guide</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md0"></a>
-Contents</h2>
+<div class="textblock"><p>This section describes how to build and install the GSMINRES++ library. The core library is implemented using standard C++17 and relies only on BLAS for numerical computations. Interfaces are available for C and Fortran via a C-compatible API. CMake is the recommended build system.</p>
+<p>Ensure that the runtime linker can locate libgsminres.so, or set LD_LIBRARY_PATH accordingly.</p>
+<hr  />
+<h1><a class="anchor" id="requirements"></a>
+System Requirements</h1>
 <ul>
-<li><a class="el" href="installation_page.html#cmake_anchor">Building with CMake</a></li>
-<li><a class="el" href="installation_page.html#make_anchor">Building with Make</a></li>
-<li><a class="el" href="installation_page.html#manual_anchor">Building Manually</a></li>
+<li>C++17-compliant compiler</li>
+<li>BLAS and LAPACK libraries (e.g., OpenBLAS <a class="el" href="installation_page.html#openblas_note">Warning</a>, Intel MKL)</li>
 </ul>
-<p><a class="anchor" id="cmake_anchor"></a></p>
+<p>Optional:</p><ul>
+<li>C compiler (required for the C API)</li>
+<li>Fortran compiler (required for Fortran interface)</li>
+<li>Python 3 with Numpy and Scipy (only required for auxiliary script <code><a class="el" href="converter_8py.html" title="Python script to convert Matrix Market (.mtx) files into a custom CSR text format.">converter.py</a></code>)</li>
+</ul>
+<hr  />
 <h1><a class="anchor" id="cmake_sec"></a>
 Building with CMake</h1>
-<p>To build GSMINRES++ using CMake: </p><div class="fragment"><div class="line">$ mkdir build</div>
+<p><a class="anchor" id="cmake_anchor"></a> Recommended method using CMake: </p><div class="fragment"><div class="line">$ mkdir build</div>
 <div class="line">$ cd build</div>
 <div class="line">$ cmake ..</div>
 <div class="line">$ make install</div>
-</div><!-- fragment --><p>Optional CMake variables:</p>
-<table class="markdownTable">
+</div><!-- fragment --><p>By default, the library is installed to Home directory. You can specify a custom install path: </p><div class="fragment"><div class="line">$ cmake -DCMAKE_INSTALL_PREFIX=...</div>
+<div class="line">$ make install</div>
+</div><!-- fragment --><p>Optional CMake variables: </p><table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Variable   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<th class="markdownTableHeadNone">Option   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>-DCMAKE_INSTALL_PREFIX</code>   </td><td class="markdownTableBodyNone">Specify install location (default: Home directory)    </td></tr>
 <tr class="markdownTableRowEven">
@@ -120,19 +128,27 @@ Building with CMake</h1>
 <p><a class="anchor" id="make_anchor"></a></p>
 <h1><a class="anchor" id="make_sec"></a>
 Building with Make</h1>
-<hr  />
+<p>A simple Makefile is included, but it is intended mainly for testing or minimal environments. It does not provide robust dependency management.</p>
+<p>Users who choose to use the Makefile should manually edit it to reflect their system-specific settings, such as compiler flags, BLAS/LAPACK paths..</p>
+<div class="fragment"><div class="line">$ make</div>
+</div><!-- fragment --><hr  />
 <p><a class="anchor" id="manual_anchor"></a></p>
 <h1><a class="anchor" id="manual_sec"></a>
-Building manually</h1>
-<p>If you prefer to compile manually:</p>
-<div class="fragment"><div class="line">g++ -std=c++17 -Iinclude -O2 -fopenmp             \</div>
-<div class="line">-c src/gsminres_solver.cpp -o obj/gsminres_solver.o</div>
-<div class="line"> </div>
-<div class="line">ar rcs libgsminres.a obj/gsminres_solver.o</div>
-<div class="line"> </div>
-<div class="line"># Example usage</div>
-<div class="line"># g++ -std=c++17 -Iinclude sample1.cpp libgsminres.a -llapack -lblas -o sample1</div>
-</div><!-- fragment --><p>Ensure you link against BLAS and LAPACK. The library uses <code>zpptrf</code>, <code>zpptrs</code>, <code>zhpmv</code>. </p>
+Manual Compilation</h1>
+<p>If you prefer to compile manually without using CMake or Makefiles, you may build the library and its sample programs directly via the compiler. This approach gives full control over compiler flags, linking, and build behavior. Below is a example</p>
+<div class="fragment"><div class="line">$ TODO_TODO_TODO</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="openblas_note"></a>
+Warning</h1>
+<p>OpenBLAS versions prior to 0.3.27 has bug in the <code>zrotg</code>.</p><ul>
+<li>See: <a href="https://github.com/OpenMathLib/OpenBLAS/issues/4909">https://github.com/OpenMathLib/OpenBLAS/issues/4909</a></li>
+<li><b>Workarounds</b><ul>
+<li>Update OpenBLAS version 0.3.27 or later.</li>
+<li>Use an alternative BLAS implementation (e.g., Netlib BLAS or Interl MKL).</li>
+<li>Optionally, modify the source ~~~ </li>
+</ul>
+</li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

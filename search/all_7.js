@@ -4,9 +4,10 @@ var searchData=
   ['ind_1',['ind',['../namespaceconverter.html#a5782642950295f986183370be424ebab',1,'converter']]],
   ['infile_2',['infile',['../namespaceconverter.html#a62bf12925b45da18a67e74d19741c9c3',1,'converter']]],
   ['info_3',['info',['../namespaceconverter.html#a896ac8257fe1427dfe2880f335fa835f',1,'converter']]],
-  ['initialize_4',['initialize',['../classgsminres_1_1Solver.html#a9278fe3602d86353509a7e85f8d33528',1,'gsminres::Solver']]],
-  ['install_2edox_5',['install.dox',['../install_8dox.html',1,'']]],
-  ['installation_20guide_6',['Installation Guide',['../installation_page.html',1,'index']]],
-  ['is_5fconv_5f_7',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
-  ['iter_5f_8',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
+  ['information_4',['License and Contact Information',['../license_page.html',1,'index']]],
+  ['initialize_5',['initialize',['../classgsminres_1_1Solver.html#a9278fe3602d86353509a7e85f8d33528',1,'gsminres::Solver']]],
+  ['install_2edox_6',['install.dox',['../install_8dox.html',1,'']]],
+  ['installation_20guide_7',['Installation Guide',['../installation_page.html',1,'index']]],
+  ['is_5fconv_5f_8',['is_conv_',['../classgsminres_1_1Solver.html#a289603b24d872433de2169cd57462880',1,'gsminres::Solver']]],
+  ['iter_5f_9',['iter_',['../classgsminres_1_1Solver.html#a5c019a181c36f210c0bec2293fba0803',1,'gsminres::Solver']]]
 ];
