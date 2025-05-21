@@ -12,6 +12,7 @@
 !>          and assumes row-major layout for solution vectors as used in the C interface.
 !>
 
+!> Fortran interface module for GSMINRES++ C API.
 module gsminres_mod
   ! Note:
   ! BIND(C) で complex 配列（例: x(:)）を C に inout 引数として渡す場合、

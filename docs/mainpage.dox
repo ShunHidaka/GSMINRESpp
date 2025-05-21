@@ -1,23 +1,17 @@
 /*!
  * \mainpage GSMINRES++ Documentation
  *
- * \section intro_sec Introduction
- * GSMINRES++ is a modern C++ library for solving multiple shifted linear systems of the form:
- * \f[
- *   (A + \sigma^{(m)} B)x^{(m)} = b, \quad (m=1,\dots,M).
- * \f]
- *
- * \section toc_sec Table of Contens
+ * - \subpage overview_page
  * - \subpage installation_page - How to build and install the GSMINRES++
- * - \subpage algorithm_page    - Algorithm of the generalized shifted MINRES method
- * - \subpage usage_page        - Sample usage and API examples
+ *   - \ref cmake_anchor "CMake" (Strongly recommend)
+ *   - \ref make_anchor "Make"
+ *   - \ref manual_anchor "Manually" (Not recommend)
+ * - \subpage algorithm_page - Algorithm of the generalized shifted MINRES method
+ *   - Lanczos process
+ *   - Shifted MINRES method
+ *   - Generalized Lanczos process
+ *   - Generalized shifted MINRES method
+ * - \subpage usage_page - Sample usage and API examples
  *   - \subpage usage_page
  *
- * \section license_sec License
- * This project is licensed under the MIT License.
- *
- * \author
- * Shuntaro Hidaka
- * \date
- * 2025/05/19
  */

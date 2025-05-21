@@ -1,40 +1,58 @@
 /*! \page installation_page Installation Guide
-
-\section cmake_sec Building with CMake
-
-To build GSMINRES++ using CMake:
-
-\code{.sh}
-mkdir build
-cd build
-cmake ..
-make
-\endcode
-
-Optional CMake variables:
-- \c USE_OPENMP: Enable OpenMP parallelism (default: ON)
-- \c CMAKE_INSTALL_PREFIX: Specify install location
-
-To install the library:
-\code{.sh}
-make install DESTDIR=~/gsminres_install
-\endcode
-
----
-
-\section manual_sec Manual Compilation (without CMake)
-
-If you prefer to compile manually:
-
-\code{.sh}
-g++ -std=c++17 -Iinclude -O2 -fopenmp                   \
--c src/gsminres_solver.cpp -o obj/gsminres_solver.o
-
-ar rcs libgsminres.a obj/gsminres_solver.o
-
-# Example usage
-# g++ -std=c++17 -Iinclude sample1.cpp libgsminres.a -llapack -lblas -o sample1
-\endcode
-
-Ensure you link against BLAS and LAPACK. The library uses `zpptrf`, `zpptrs`, `zhpmv`.
-*/
+ *
+ * ## Contents
+ *
+ * - \ref cmake_anchor "Building with CMake"
+ * - \ref make_anchor "Building with Make"
+ * - \ref manual_anchor "Building Manually"
+ *
+ * \anchor cmake_anchor
+ * \section cmake_sec Building with CMake
+ *
+ * To build GSMINRES++ using CMake:
+ * \code{.sh}
+ * $ mkdir build
+ * $ cd build
+ * $ cmake ..
+ * $ make install
+ * \endcode
+ * 
+ * Optional CMake variables:
+ *
+ * | Variable                              | Description |
+ * |---------------------------------------|-------------|
+ * | `-DCMAKE_INSTALL_PREFIX`              | Specify install location (default: Home directory) |
+ * | `-DCMAKE_PREFIX_PATH`                 | Add path to find external libraries like OpenBLAS |
+ * | `-DCMAKE_BUILD_TYPE`                  | Set to `Release` or `Debug` (default: Release) |
+ * | `-DUSE_OPENMP`                        | Enable OpenMP parallelism (default: ON) |
+ * | `-DGSMINRES_ENABLE_C_API`             | Enable the C API (default: ON) |
+ * | `-DGSMINRES_ASSUME_ABI_COMPATIBLE`    | Assume ABI compatibility between `double _Complex` and `std::complex<double>` (default: OFF) |
+ * | `-DGSMINRES_ENABLE_FORTRAN_INTERFACE` | Enable Fortran interface (default: ON) |
+ * 
+ * 
+ * ----------
+ *
+ * \anchor make_anchor
+ * \section make_sec Building with Make
+ *
+ *
+ *
+ * ----------
+ *
+ * \anchor manual_anchor
+ * \section manual_sec Building manually
+ * 
+ * If you prefer to compile manually:
+ * 
+ * \code{.sh}
+ * g++ -std=c++17 -Iinclude -O2 -fopenmp             \
+ * -c src/gsminres_solver.cpp -o obj/gsminres_solver.o
+ * 
+ * ar rcs libgsminres.a obj/gsminres_solver.o
+ * 
+ * # Example usage
+ * # g++ -std=c++17 -Iinclude sample1.cpp libgsminres.a -llapack -lblas -o sample1
+ * \endcode
+ * 
+ * Ensure you link against BLAS and LAPACK. The library uses `zpptrf`, `zpptrs`, `zhpmv`.
+ */
