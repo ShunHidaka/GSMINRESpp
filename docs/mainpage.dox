@@ -3,15 +3,20 @@
  *
  * - \subpage overview_page
  * - \subpage installation_page - How to build and install the GSMINRES++
- *   - \ref cmake_anchor "CMake" (Strongly recommend)
+ *   - \ref cmake_anchor "CMake" (Strongly recommended)
  *   - \ref make_anchor "Make"
- *   - \ref manual_anchor "Manually" (Not recommend)
+ *   - \ref manual_anchor "Manual build" (Not recommended)
  * - \subpage algorithm_page - Algorithm of the generalized shifted MINRES method
  *   - Lanczos process
  *   - Shifted MINRES method
  *   - Generalized Lanczos process
  *   - Generalized shifted MINRES method
  * - \subpage usage_page - Sample usage and API examples
- *   - \subpage usage_page
- *
+ *   \htmlonly
+ *     <ul>
+ *       <li><a href="annotated.html">Detailed API documentation</a></li>
+ *       <li><a href="examples.html">Code examples</a></li>
+ *     </ul>
+ *   \endhtmlonly
+ * - \subpage license_page - License and Contacts
  */

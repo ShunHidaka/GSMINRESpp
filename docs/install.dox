@@ -1,25 +1,46 @@
 /*! \page installation_page Installation Guide
  *
- * ## Contents
+ * This section describes how to build and install the GSMINRES++ library.
+ * The core library is implemented using standard C++17 and relies only on BLAS for numerical computations.
+ * Interfaces are available for C and Fortran via a C-compatible API.
+ * CMake is the recommended build system.
  *
- * - \ref cmake_anchor "Building with CMake"
- * - \ref make_anchor "Building with Make"
- * - \ref manual_anchor "Building Manually"
+ * Ensure that the runtime linker can locate libgsminres.so, or set LD_LIBRARY_PATH accordingly.
  *
- * \anchor cmake_anchor
+ * ----------
+ *
+ * \section requirements System Requirements
+ *
+ * - C++17-compliant compiler
+ * - BLAS and LAPACK libraries (e.g., OpenBLAS \ref openblas_note, Intel MKL)
+ *
+ * Optional:
+ * - C compiler (required for the C API)
+ * - Fortran compiler (required for Fortran interface)
+ * - Python 3 with Numpy and Scipy (only required for auxiliary script `converter.py`)
+ *
+ * ----------
+ *
  * \section cmake_sec Building with CMake
+ * \anchor cmake_anchor
  *
- * To build GSMINRES++ using CMake:
+ * Recommended method using CMake:
  * \code{.sh}
  * $ mkdir build
  * $ cd build
  * $ cmake ..
  * $ make install
  * \endcode
- * 
- * Optional CMake variables:
  *
- * | Variable                              | Description |
+ * By default, the library is installed to Home directory.
+ * You can specify a custom install path:
+ * \code{.sh}
+ * $ cmake -DCMAKE_INSTALL_PREFIX=...
+ * $ make install
+ * \endcode
+ *
+ * Optional CMake variables:
+ * | Option                                | Description |
  * |---------------------------------------|-------------|
  * | `-DCMAKE_INSTALL_PREFIX`              | Specify install location (default: Home directory) |
  * | `-DCMAKE_PREFIX_PATH`                 | Add path to find external libraries like OpenBLAS |
@@ -35,24 +56,37 @@
  * \anchor make_anchor
  * \section make_sec Building with Make
  *
+ * A simple Makefile is included, but it is intended mainly for testing or minimal environments.
+ * It does not provide robust dependency management.
  *
+ * Users who choose to use the Makefile should manually edit it to reflect their system-specific
+ * settings, such as compiler flags, BLAS/LAPACK paths..
+ *
+ * \code{.sh}
+ * $ make
+ * \endcode
  *
  * ----------
  *
  * \anchor manual_anchor
- * \section manual_sec Building manually
+ * \section manual_sec Manual Compilation
  * 
- * If you prefer to compile manually:
+ * If you prefer to compile manually without using CMake or Makefiles, you may build
+ * the library and its sample programs directly via the compiler. This approach gives
+ * full control over compiler flags, linking, and build behavior. Below is a example
  * 
  * \code{.sh}
- * g++ -std=c++17 -Iinclude -O2 -fopenmp             \
- * -c src/gsminres_solver.cpp -o obj/gsminres_solver.o
- * 
- * ar rcs libgsminres.a obj/gsminres_solver.o
- * 
- * # Example usage
- * # g++ -std=c++17 -Iinclude sample1.cpp libgsminres.a -llapack -lblas -o sample1
+ * $ TODO_TODO_TODO
  * \endcode
  * 
- * Ensure you link against BLAS and LAPACK. The library uses `zpptrf`, `zpptrs`, `zhpmv`.
+ * ----------
+ *
+ * \section openblas_note Warning
+ * OpenBLAS versions prior to 0.3.27 has bug in the `zrotg`.
+ * - See: https://github.com/OpenMathLib/OpenBLAS/issues/4909
+ * - **Workarounds**
+ *   - Update OpenBLAS version 0.3.27 or later.
+ *   - Use an alternative BLAS implementation (e.g., Netlib BLAS or Interl MKL).
+ *   - Optionally, modify the source ~~~
+ *
  */

@@ -1,7 +1,31 @@
 /*! \page overview_page Overview
  *
- * \section Overview
- * This document is a manual for `GSMINRES++` which is the library
+ * GSMINRES++ is a modern C++ solver library designed to efficiently handle large-scale systems
+ * of the form:
  *
+ * \f[
+ *   (A + \sigma^{(m)} B) x^{(m)} = b, \quad (m = 1, 2, \dots, M),
+ * \f]
+ *
+ * where \f$ A \f$ and \f$ B \f$ are Hermitian (or real symmetric) matrices, \f$ B \f$ is positive definite,
+ * and \f$ \sigma^{(m)} \f$ are complex shift parameters.
+ *
+ * This type of system appears in a wide range of computational science applications such as:
+ * - Computation of the Green's function
+ * - Sakurai--Sugiura method for eigenvalue problems
+ * - Computation of matrix functions
+ * - Solution of the Sternheimer equations
+ *
+ * GSMINRES++ is based on a generalization of the MINRES method, extended to handle multiple shifted systems
+ * with a single Lanczos process using the \f$ B \f$-inner product. The algorithm minimizes the \f$ B^{-1} \f$-norm
+ * of the residual in each iteration.
+ *
+ * Key features:
+ * - Flexible matrix-vector product and inner solve interfaces: users can define their own operations
+ * - Support for complex arithmetic and shift-dependent behavior
+ * - Compact memory usage and short recurrence structure
+ * - Interoperable with C and Fortran though a C API
+ *
+ * GSMINRES++ is written in standard C++17, utilizes BLAS for vector operations, and is suitable for integration into high-performance computing workflows.
  *
  */

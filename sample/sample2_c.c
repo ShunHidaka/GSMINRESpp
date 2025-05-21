@@ -1,7 +1,7 @@
 /**
  * \file sample2_c.c
  * \brief C example of using GSMINRES++ with CSR format input and built-in SpMV+CG.
- * \example sample2_c.cpp
+ * \example sample2_c.c
  * \author Shuntaro Hidaka
  *
  * \details This example solves a set of generalized shifted linear systems of the form:
